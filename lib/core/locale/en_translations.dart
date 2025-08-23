@@ -25,6 +25,9 @@ class EnTranslations extends Translations {
       "idNumber": "ID Number",
       "enterIdNumber": "Enter your ID number",
       "alreadyHaveAnAccount": "Already have an account?",
+      "confirmPassword": "Confirm Password",
+      "iAgreeToAll": "I agree to all",
+      "termsAndConditions": "Terms and Conditions",
     },
   };
 }

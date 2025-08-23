@@ -7,8 +7,8 @@ import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/size_config.dart';
 import '../getx/controllers/login_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({super.key});
+class AuthView extends GetView<LoginController> {
+  const AuthView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                     child: child,
                   );
                 },
-                child: controller.currentPage.value == 0
+                child: controller.authController.currentPage.value == 0
                     ? const LoginBody()
                     : const SignUpBody(),
               ),

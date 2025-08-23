@@ -24,6 +24,9 @@ class ArTranslations extends Translations {
       "idNumber": "رقم الهوية",
       "enterIdNumber": "أدخل رقم الهوية",
       "alreadyHaveAnAccount": "لديك حساب بالفعل؟",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "iAgreeToAll": "أوافق على كل",
+      "termsAndConditions": "الشروط والأحكام",
     },
   };
 }

@@ -34,7 +34,7 @@ class LoginBody extends GetView<LoginController> {
               hintText: '******'.tr,
               style: AppTextTheme.primary700(size: 18),
               title: 'password'.tr,
-              controller: controller.phoneController,
+              controller: controller.passwordController,
               isObscure: controller.obscureText.value,
               validator: AppValidation.name,
               suffixIcon: Padding(
@@ -75,7 +75,7 @@ class LoginBody extends GetView<LoginController> {
               ),
               InkWell(
                 onTap: () {
-                  controller.changePage(1);
+                  controller.authController.changePage(1);
                 },
                 child: Text(
                   ' ${'signUp'.tr}',

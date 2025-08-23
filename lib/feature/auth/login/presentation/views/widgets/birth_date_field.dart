@@ -1,14 +1,13 @@
+import 'package:active_deer/feature/auth/login/presentation/getx/controllers/date_picker_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import '../../../../../../core/theme/app_text_theme.dart';
 import '../../../../../../core/utils/app_assets.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/size_config.dart';
-import '../../getx/controllers/login_controller.dart';
 
-class BirthDateField extends GetView<LoginController> {
+class BirthDateField extends GetView<DatePickerController> {
   const BirthDateField({super.key});
 
   @override
@@ -24,37 +23,39 @@ class BirthDateField extends GetView<LoginController> {
             child: Container(
               height: AppSize.getHeight(48),
               padding: EdgeInsets.symmetric(
-                horizontal: AppSize.getWidth(16),
-                vertical: AppSize.getHeight(12),
+                horizontal: AppSize.getWidth(14),
+                vertical: AppSize.getHeight(8),
               ),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.secondry, width: 1),
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.white,
+                border: Border.all(
+                  color: AppColors.primary,
+                  width: AppSize.getWidth(1.5),
+                ),
+                borderRadius: BorderRadius.circular(6.77),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(
-                    AppAssets.date,
-                    height: AppSize.getHeight(20),
-                    width: AppSize.getWidth(20),
-                    colorFilter: ColorFilter.mode(
-                      AppColors.secondry,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  SizedBox(width: AppSize.getWidth(12)),
                   Expanded(
                     child: Text(
                       controller.selectedBirthDate.value != null
                           ? controller.formattedBirthDate
                           : 'selectBirthDate'.tr,
-                      style: AppTextTheme.primary700(size: 16).copyWith(
+                      style: AppTextTheme.primary700(size: 14).copyWith(
                         color: controller.selectedBirthDate.value != null
                             ? AppColors.primary
                             : AppColors.secondry,
                       ),
                       textAlign: TextAlign.right,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    AppAssets.date,
+                    height: AppSize.getHeight(27),
+                    width: AppSize.getWidth(27),
+                    colorFilter: ColorFilter.mode(
+                      AppColors.primary,
+                      BlendMode.srcIn,
                     ),
                   ),
                 ],
