@@ -1,0 +1,25 @@
+import 'package:active_deer/core/theme/app_bar_theme.dart';
+import 'package:active_deer/core/theme/app_text_field_theme.dart';
+import 'package:active_deer/core/utils/app_colors.dart';
+import 'package:active_deer/core/theme/bottom_nav_bar_theme.dart';
+import 'package:active_deer/core/theme/pop_up_theme.dart';
+import 'package:active_deer/core/theme/text_selection_theme.dart';
+import 'package:flutter/material.dart';
+
+class AppThemes {
+  static final lightTheme = ThemeData(
+    popupMenuTheme: AppPopupMenuThemeData.popupMenuLightTheme,
+    dividerColor: AppColors.primary,
+    bottomNavigationBarTheme:
+        AppBottomNavigationBarThemeData.bottomNavigationBarLightTheme,
+    scaffoldBackgroundColor: AppColors.background,
+    textSelectionTheme: AppTextSelectionThemeData.textSelectionLightTheme,
+    fontFamily: 'Cairo',
+    inputDecorationTheme: AppTextFieldTheme.textFieldLightTheme,
+    appBarTheme: AppBarThemeData.appBarLightTheme,
+  );
+
+  // static final darkTheme = ThemeData(
+
+  // );
+}
