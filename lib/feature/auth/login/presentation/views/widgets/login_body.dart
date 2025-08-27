@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../core/routes/app_pages.dart';
 import '../../../../../../core/theme/app_text_theme.dart';
 import '../../../../../../core/utils/app_assets.dart';
 import '../../../../../../core/utils/app_colors.dart';
@@ -18,7 +19,7 @@ class LoginBody extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.horizontalPadding,
+      padding: AppPadding.horizontalPadding20,
       child: Column(
         children: [
           AuthField(
@@ -64,7 +65,12 @@ class LoginBody extends GetView<LoginController> {
             ),
           ),
           SizedBox(height: AppSize.getHeight(105)),
-          CustomPrimaryButton(title: 'login'.tr, onTap: () {}),
+          CustomPrimaryButton(
+            title: 'login'.tr,
+            onTap: () {
+              Get.toNamed(Routes.home);
+            },
+          ),
           SizedBox(height: AppSize.getHeight(10)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

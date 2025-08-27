@@ -21,7 +21,7 @@ class BirthDateField extends GetView<DatePickerController> {
           () => InkWell(
             onTap: () => controller.selectBirthDate(context),
             child: Container(
-              height: AppSize.getHeight(48),
+              height: AppSize.getHeight(40),
               padding: EdgeInsets.symmetric(
                 horizontal: AppSize.getWidth(14),
                 vertical: AppSize.getHeight(8),
@@ -36,18 +36,16 @@ class BirthDateField extends GetView<DatePickerController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text(
-                      controller.selectedBirthDate.value != null
-                          ? controller.formattedBirthDate
-                          : 'selectBirthDate'.tr,
-                      style: AppTextTheme.primary700(size: 14).copyWith(
-                        color: controller.selectedBirthDate.value != null
-                            ? AppColors.primary
-                            : AppColors.secondry,
-                      ),
-                      textAlign: TextAlign.right,
+                  Text(
+                    controller.selectedBirthDate.value != null
+                        ? controller.formattedBirthDate
+                        : 'selectBirthDate'.tr,
+                    style: AppTextTheme.primary600(size: 12).copyWith(
+                      color: controller.selectedBirthDate.value != null
+                          ? AppColors.primary
+                          : AppColors.darkGrey,
                     ),
+                    textAlign: TextAlign.right,
                   ),
                   SvgPicture.asset(
                     AppAssets.date,

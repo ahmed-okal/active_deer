@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
+    iconTheme: IconThemeData(color: AppColors.primary),
     popupMenuTheme: AppPopupMenuThemeData.popupMenuLightTheme,
     dividerColor: AppColors.primary,
     bottomNavigationBarTheme:
@@ -16,7 +17,7 @@ class AppThemes {
     textSelectionTheme: AppTextSelectionThemeData.textSelectionLightTheme,
     fontFamily: 'Cairo',
     inputDecorationTheme: AppTextFieldTheme.textFieldLightTheme,
-    appBarTheme: AppBarThemeData.appBarLightTheme,
+    appBarTheme: AppAppBarThemeData.appBarLightTheme,
   );
 
   // static final darkTheme = ThemeData(

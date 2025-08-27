@@ -3,7 +3,7 @@ import 'package:active_deer/core/utils/app_colors.dart';
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class AppBarThemeData {
+class AppAppBarThemeData {
   static final appBarLightTheme = AppBarTheme(
     backgroundColor: AppColors.primary,
     surfaceTintColor: AppColors.primary,

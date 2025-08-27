@@ -96,8 +96,86 @@ class AppTextTheme {
     );
   }
 
+  static TextStyle white300({
+    FontWeight weight = FontWeight.w300,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle white400({
+    FontWeight weight = FontWeight.w400,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle white500({
+    FontWeight weight = FontWeight.w500,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle white600({
+    FontWeight weight = FontWeight.w600,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
   static TextStyle white700({
     FontWeight weight = FontWeight.w700,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle white800({
+    FontWeight weight = FontWeight.w800,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.white,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle white900({
+    FontWeight weight = FontWeight.w900,
     Color? customColor,
     required double size,
   }) {
@@ -117,7 +195,59 @@ class AppTextTheme {
     return TextStyle(
       fontSize: AppSize.getSize(size),
       fontWeight: weight,
-      color: AppColors.secondry,
+      color: AppColors.darkGrey,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle secondary500({
+    FontWeight weight = FontWeight.w500,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.darkGrey,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle secondary600({
+    FontWeight weight = FontWeight.w600,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.darkGrey,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle secondary700({
+    FontWeight weight = FontWeight.w700,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.darkGrey,
+      fontFamily: _fontFamily,
+    );
+  }
+
+  static TextStyle secondary800({
+    FontWeight weight = FontWeight.w800,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.darkGrey,
       fontFamily: _fontFamily,
     );
   }

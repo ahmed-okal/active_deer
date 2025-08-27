@@ -1,3 +1,4 @@
+import 'package:active_deer/core/routes/app_pages.dart';
 import 'package:active_deer/core/widgets/custom_primary_button.dart';
 import 'package:active_deer/feature/auth/login/presentation/getx/controllers/signup_controller.dart';
 import 'package:active_deer/feature/auth/login/presentation/views/widgets/auth_field.dart';
@@ -18,7 +19,7 @@ class SignUpBody extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.horizontalPadding,
+      padding: AppPadding.horizontalPadding20,
       child: Column(
         spacing: AppSize.getHeight(10),
         children: [
@@ -121,7 +122,12 @@ class SignUpBody extends GetView<SignUpController> {
             ],
           ),
           SizedBox(height: AppSize.getHeight(70)),
-          CustomPrimaryButton(title: 'signUp'.tr, onTap: () {}),
+          CustomPrimaryButton(
+            title: 'signUp'.tr,
+            onTap: () {
+              Get.toNamed(Routes.home);
+            },
+          ),
           SizedBox(height: AppSize.getHeight(10)),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

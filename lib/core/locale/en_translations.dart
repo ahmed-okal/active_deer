@@ -28,6 +28,22 @@ class EnTranslations extends Translations {
       "confirmPassword": "Confirm Password",
       "iAgreeToAll": "I agree to all",
       "termsAndConditions": "Terms and Conditions",
+      "premiumSubscription": "Premium Subscription",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hi": "Hi",
+      "timeToChallenge": "Time to challenge yourself!",
+      "bookFitnessClass": "Book a fitness class",
+      "startYourJourney":
+          "Start your journey to a stronger body and better health.",
+      "mySubscriptions": "My Subscriptions",
+      "offers": "Offers",
+      "idCard": "ID Card",
+      "fitnessClassesschedule": "Fitness Classes Schedule",
+      "more": "More",
+      "waiver": "Waiver",
+      "stop": "Stop",
+      "enterPhoneNumber": "Enter your phone number",
     },
   };
 }
