@@ -41,6 +41,8 @@ class AppPadding {
       EdgeInsetsDirectional.only(end: AppSize.getWidth(25));
   static EdgeInsetsGeometry get allPadding12 =>
       EdgeInsets.all(AppSize.getHeight(12));
+  static EdgeInsetsGeometry get allPadding8 =>
+      EdgeInsets.all(AppSize.getHeight(8));
   static EdgeInsetsGeometry get homeCardPadding => EdgeInsets.symmetric(
     horizontal: AppSize.getWidth(15),
     vertical: AppSize.getHeight(9),
