@@ -13,4 +13,5 @@ class AppAssets {
   static const String star = 'assets/icons/star.svg';
   static const String person = 'assets/icons/person.svg';
   static const String waiver = 'assets/icons/waiver.svg';
+  static const String correct = 'assets/icons/correct.svg';
 }
