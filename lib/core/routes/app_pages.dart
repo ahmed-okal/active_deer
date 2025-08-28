@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
-import '../../feature/offers/presentation/getx/bindings/offers_binding.dart';
-import '../../feature/offers/presentation/views/offers_view.dart';
+import '../../feature/mySubscription/presentation/getx/bindings/my_subscription_binding.dart';
+import '../../feature/mySubscription/presentation/views/my_subscription_view.dart';
 import '../../feature/auth/login/presentation/getx/bindings/login_binding.dart';
 import '../../feature/auth/login/presentation/views/auth_view.dart';
 import '../../feature/home/presentation/getx/bindings/home_binding.dart';
 import '../../feature/home/presentation/views/home_view.dart';
+import '../../feature/offers/presentation/getx/bindings/offers_binding.dart';
+import '../../feature/offers/presentation/views/offers_view.dart';
 
 part 'app_routes.dart';
 
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.offers,
       page: () => const OffersView(),
       binding: OffersBinding(),
+    ),
+    GetPage(
+      name: _Paths.mySubscription,
+      page: () => const MySubscriptionView(),
+      binding: MySubscriptionBinding(),
     ),
   ];
 }

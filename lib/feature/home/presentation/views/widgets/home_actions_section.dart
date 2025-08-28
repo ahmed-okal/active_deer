@@ -50,7 +50,9 @@ class HomeActionsSection extends StatelessWidget {
             spacing: AppSize.getHeight(8),
             children: [
               HomeActionsCard(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(Routes.mySubscription);
+                },
                 title: 'mySubscriptions'.tr,
                 icon: Icon(
                   Icons.access_time_rounded,
