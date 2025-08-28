@@ -42,6 +42,9 @@ class ArTranslations extends Translations {
       "waiver": "تنازل",
       "stop": "إيقاف",
       "enterPhoneNumber": "أدخل رقم الهاتف",
+      "all": "الكل",
+      "active": "النشطة",
+      "expired": "المنتهية",
     },
   };
 }

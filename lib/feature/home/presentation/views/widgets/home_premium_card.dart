@@ -2,23 +2,22 @@ import 'package:active_deer/feature/home/presentation/views/widgets/home_pop_up_
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_border.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
+import '../../../../../core/widgets/custom_present_indicator.dart';
 
 class HomePremiumCard extends StatelessWidget {
-  const HomePremiumCard({super.key});
-
+  const HomePremiumCard({super.key, this.padding = EdgeInsets.zero});
+  final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: AppPadding.horizontalPadding6,
+        padding: padding,
         child: Container(
           height: AppSize.getHeight(83),
           decoration: AppBorder.homeContainerBorder,
@@ -48,19 +47,7 @@ class HomePremiumCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: AppSize.getHeight(10)),
-                  Center(
-                    child: LinearPercentIndicator(
-                      padding: EdgeInsets.zero,
-                      isRTL: Locale('ar', 'EG') == Get.locale ? true : false,
-                      barRadius: const Radius.circular(10),
-                      animation: true,
-                      animationDuration: 1000,
-                      lineHeight: 8.0,
-                      percent: 0.5,
-                      progressColor: AppColors.primary,
-                      backgroundColor: AppColors.grey,
-                    ),
-                  ),
+                  const CustomPresentIndicator(percent: 0.5),
                   Spacer(),
                   Row(
                     children: [

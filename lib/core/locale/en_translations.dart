@@ -44,6 +44,9 @@ class EnTranslations extends Translations {
       "waiver": "Waiver",
       "stop": "Stop",
       "enterPhoneNumber": "Enter your phone number",
+      "all": "All",
+      "active": "Active",
+      "expired": "Expired",
     },
   };
 }
