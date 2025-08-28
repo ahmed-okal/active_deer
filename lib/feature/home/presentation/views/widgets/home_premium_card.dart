@@ -15,67 +15,65 @@ class HomePremiumCard extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: padding,
+    return Padding(
+      padding: padding,
+      child: Container(
+        height: AppSize.getHeight(83),
+        decoration: AppBorder.homeContainerBorder,
         child: Container(
-          height: AppSize.getHeight(83),
-          decoration: AppBorder.homeContainerBorder,
-          child: Container(
-            margin: EdgeInsets.all(AppSize.getHeight(1)),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Padding(
-              padding: AppPadding.homeCardPadding,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.premiumIcon,
-                        height: AppSize.getHeight(19),
-                        width: AppSize.getWidth(19),
-                      ),
-                      Text(
-                        'premiumSubscription'.tr,
-                        style: AppTextTheme.primary800(size: 14),
-                      ),
-                      const Spacer(),
-                      const HomePopupMenuButton(),
-                    ],
-                  ),
-                  SizedBox(height: AppSize.getHeight(10)),
-                  const CustomPresentIndicator(percent: 0.5),
-                  Spacer(),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.access_time_rounded,
-                        color: AppColors.primary,
-                        size: AppSize.getHeight(11),
-                      ),
-                      SizedBox(width: AppSize.getWidth(2)),
-                      Text(
-                        '${'startDate'.tr}: 29/4/2025',
-                        style: AppTextTheme.secondary700(size: 10),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.access_time_rounded,
-                        color: AppColors.primary,
-                        size: AppSize.getHeight(11),
-                      ),
-                      SizedBox(width: AppSize.getWidth(2)),
-                      Text(
-                        '${'endDate'.tr}: 29/4/2025',
-                        style: AppTextTheme.secondary700(size: 10),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          margin: EdgeInsets.all(AppSize.getHeight(1)),
+          decoration: BoxDecoration(
+            color: AppColors.background,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Padding(
+            padding: AppPadding.homeCardPadding,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      AppAssets.premiumIcon,
+                      height: AppSize.getHeight(19),
+                      width: AppSize.getWidth(19),
+                    ),
+                    Text(
+                      'premiumSubscription'.tr,
+                      style: AppTextTheme.primary800(size: 14),
+                    ),
+                    const Spacer(),
+                    const HomePopupMenuButton(),
+                  ],
+                ),
+                SizedBox(height: AppSize.getHeight(10)),
+                const CustomPresentIndicator(percent: 0.5),
+                Spacer(),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.access_time_rounded,
+                      color: AppColors.primary,
+                      size: AppSize.getHeight(11),
+                    ),
+                    SizedBox(width: AppSize.getWidth(2)),
+                    Text(
+                      '${'startDate'.tr}: 29/4/2025',
+                      style: AppTextTheme.secondary700(size: 10),
+                    ),
+                    Spacer(),
+                    Icon(
+                      Icons.access_time_rounded,
+                      color: AppColors.primary,
+                      size: AppSize.getHeight(11),
+                    ),
+                    SizedBox(width: AppSize.getWidth(2)),
+                    Text(
+                      '${'endDate'.tr}: 29/4/2025',
+                      style: AppTextTheme.secondary700(size: 10),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),

@@ -45,6 +45,11 @@ class ArTranslations extends Translations {
       "all": "الكل",
       "active": "النشطة",
       "expired": "المنتهية",
+      "home": "الرئيسية",
+      "settings": "الإعدادات",
+      "logout": "تسجيل الخروج",
+      "nutritionalAdvice": "نصائح غذائية",
+      "phoneNumber": "رقم الهاتف",
     },
   };
 }

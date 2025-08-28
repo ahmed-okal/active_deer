@@ -19,10 +19,15 @@ class HomeSliverAppBar extends StatelessWidget {
           child: Row(
             spacing: AppSize.getWidth(12),
             children: [
-              SvgPicture.asset(
-                AppAssets.menuIcon,
-                height: AppSize.getHeight(18),
-                width: AppSize.getWidth(18),
+              InkWell(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: SvgPicture.asset(
+                  AppAssets.menuIcon,
+                  height: AppSize.getHeight(18),
+                  width: AppSize.getWidth(18),
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -14,4 +14,10 @@ class AppAssets {
   static const String person = 'assets/icons/person.svg';
   static const String waiver = 'assets/icons/waiver.svg';
   static const String correct = 'assets/icons/correct.svg';
+  static const String home = 'assets/icons/home.svg';
+  static const String logout = 'assets/icons/log_out.svg';
+  static const String mySubscription = 'assets/icons/my_subscription.svg';
+  static const String nutritionalAdvice = 'assets/icons/nutritional_advice.svg';
+  static const String settings = 'assets/icons/settings.svg';
+  static const String time = 'assets/icons/time.svg';
 }

@@ -39,7 +39,9 @@ class HomePremiumCardSection extends StatelessWidget {
             ),
           ],
         ),
-        HomePremiumCard(padding: AppPadding.horizontalPadding6),
+        Expanded(
+          child: HomePremiumCard(padding: AppPadding.horizontalPadding6),
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           spacing: AppSize.getHeight(3),

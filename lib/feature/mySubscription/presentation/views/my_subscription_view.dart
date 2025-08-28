@@ -4,6 +4,7 @@ import 'package:active_deer/feature/mySubscription/presentation/views/widgets/my
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/size_config.dart';
+import '../../../../core/widgets/custom_drawer.dart';
 import '../../../home/presentation/views/widgets/home_premium_card.dart';
 import '../getx/controllers/my_subscription_controller.dart';
 
@@ -12,6 +13,7 @@ class MySubscriptionView extends GetView<MySubscriptionController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -20,14 +22,17 @@ class MySubscriptionView extends GetView<MySubscriptionController> {
             flexibleSpace: const MySubscriptionAppBar(),
           ),
           SliverToBoxAdapter(child: MySubscriptionTapBar()),
-          SliverList.separated(
-            itemCount: 30,
-            itemBuilder: (context, index) {
-              return HomePremiumCard(padding: AppPadding.horizontalPadding20);
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(height: AppSize.getHeight(16));
-            },
+          SliverPadding(
+            padding: AppPadding.bottomPadding25,
+            sliver: SliverList.separated(
+              itemCount: 30,
+              itemBuilder: (context, index) {
+                return HomePremiumCard(padding: AppPadding.horizontalPadding20);
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: AppSize.getHeight(16));
+              },
+            ),
           ),
         ],
       ),

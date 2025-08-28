@@ -1,7 +1,5 @@
 import 'package:active_deer/feature/mySubscription/presentation/views/widgets/my_subscription_tap_item.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../../../../core/utils/size_config.dart';
 
 class MySubscriptionTapBar extends StatelessWidget {
@@ -24,7 +22,7 @@ class MySubscriptionTapBar extends StatelessWidget {
           separatorBuilder: (context, index) =>
               SizedBox(width: AppSize.getWidth(6)),
           itemBuilder: (context, index) {
-            return Obx(() => MySubscriptionTapItem(index));
+            return MySubscriptionTapItem(index);
           },
         ),
       ),

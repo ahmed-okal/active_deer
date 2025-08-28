@@ -23,10 +23,15 @@ class OffersAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: AppSize.getWidth(12),
             children: [
-              SvgPicture.asset(
-                AppAssets.menuIcon,
-                height: AppSize.getHeight(18),
-                width: AppSize.getWidth(18),
+              InkWell(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: SvgPicture.asset(
+                  AppAssets.menuIcon,
+                  height: AppSize.getHeight(18),
+                  width: AppSize.getWidth(18),
+                ),
               ),
               Text('offers'.tr, style: AppTextTheme.white900(size: 12)),
               Padding(

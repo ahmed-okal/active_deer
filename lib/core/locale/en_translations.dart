@@ -47,6 +47,11 @@ class EnTranslations extends Translations {
       "all": "All",
       "active": "Active",
       "expired": "Expired",
+      "home": "Home",
+      "settings": "Settings",
+      "logout": "Logout",
+      "nutritionalAdvice": "Nutritional Advice",
+      "phoneNumber": "Phone Number",
     },
   };
 }
