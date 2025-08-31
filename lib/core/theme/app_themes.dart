@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class AppThemes {
   static final lightTheme = ThemeData(
     drawerTheme: DrawerThemeData(
-      scrimColor: AppColors.darkGrey.withOpacity(0.5),
+      scrimColor: AppColors.darkGrey.withValues(alpha: 0.5),
       backgroundColor: AppColors.primary,
       width: AppSize.getWidth(243),
     ),
