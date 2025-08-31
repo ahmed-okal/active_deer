@@ -1,5 +1,5 @@
 import 'package:active_deer/core/utils/app_padding.dart';
-import 'package:active_deer/feature/mySubscription/presentation/views/widgets/my_subscription_app_bar.dart';
+import 'package:active_deer/core/widgets/custom_app_bar.dart';
 import 'package:active_deer/feature/mySubscription/presentation/views/widgets/my_subscription_tap_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class MySubscriptionView extends GetView<MySubscriptionController> {
           SliverAppBar(
             automaticallyImplyLeading: false,
             pinned: true,
-            flexibleSpace: const MySubscriptionAppBar(),
+            flexibleSpace: CustomAppBar(title: 'mySubscriptions'.tr),
           ),
           SliverToBoxAdapter(child: MySubscriptionTapBar()),
           SliverPadding(

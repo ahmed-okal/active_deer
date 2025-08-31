@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
 
-class OffersAppBar extends StatelessWidget {
-  const OffersAppBar({super.key});
-
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
@@ -33,7 +31,7 @@ class OffersAppBar extends StatelessWidget {
                   width: AppSize.getWidth(18),
                 ),
               ),
-              Text('offers'.tr, style: AppTextTheme.white900(size: 12)),
+              Text(title, style: AppTextTheme.white900(size: 12)),
               Padding(
                 padding: AppPadding.endPadding20,
                 child: SvgPicture.asset(

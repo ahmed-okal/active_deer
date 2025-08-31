@@ -1,9 +1,9 @@
-import 'package:active_deer/feature/offers/presentation/views/widgets/offer_app_bar.dart';
 import 'package:active_deer/feature/offers/presentation/views/widgets/offers_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_padding.dart';
 import '../../../../core/utils/size_config.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/offers_controller.dart';
 
@@ -18,7 +18,7 @@ class OffersView extends GetView<OffersController> {
           SliverAppBar(
             automaticallyImplyLeading: false,
             pinned: true,
-            flexibleSpace: const OffersAppBar(),
+            flexibleSpace: CustomAppBar(title: 'offers'.tr),
           ),
           SliverPadding(
             padding: AppPadding.allPadding20,
