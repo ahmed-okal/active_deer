@@ -8,6 +8,7 @@ import '../../../../core/routes/app_pages.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_padding.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/nutritional_advice_controller.dart';
 
 class NutritionalAdviceView extends GetView<NutritionalAdviceController> {
@@ -15,6 +16,7 @@ class NutritionalAdviceView extends GetView<NutritionalAdviceController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

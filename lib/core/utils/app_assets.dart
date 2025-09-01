@@ -20,4 +20,7 @@ class AppAssets {
   static const String nutritionalAdvice = 'assets/icons/nutritional_advice.svg';
   static const String settings = 'assets/icons/settings.svg';
   static const String time = 'assets/icons/time.svg';
+  static const String swim = 'assets/icons/swim.svg';
+  static const String capacity = 'assets/icons/capacity.svg';
+  static const String door = 'assets/icons/door.svg';
 }

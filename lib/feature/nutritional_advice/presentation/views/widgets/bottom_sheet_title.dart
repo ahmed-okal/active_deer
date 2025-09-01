@@ -5,8 +5,8 @@ import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/size_config.dart';
 
-class BottomSheetTitle extends StatelessWidget {
-  const BottomSheetTitle({super.key});
+class BottomAdviceSheetTitle extends StatelessWidget {
+  const BottomAdviceSheetTitle({super.key});
 
   @override
   Widget build(BuildContext context) {

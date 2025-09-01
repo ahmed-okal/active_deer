@@ -52,6 +52,9 @@ class EnTranslations extends Translations {
       "nutritionalAdvice": "Nutritional Advice",
       "phoneNumber": "Phone Number",
       "fitnessClassSchedule": "Fitness class schedule",
+      "availableExercises": "Available exercises",
+      "approveBooking": "Approve booking",
+      "bookingSuccess": "The session has been successfully booked.",
     },
   };
 }

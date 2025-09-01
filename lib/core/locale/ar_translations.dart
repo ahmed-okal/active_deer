@@ -50,6 +50,9 @@ class ArTranslations extends Translations {
       "nutritionalAdvice": "نصائح غذائية",
       "phoneNumber": "رقم الهاتف",
       "fitnessClassSchedule": "جدول حصص اللياقة",
+      "availableExercises": "التمارين المتاحة",
+      "approveBooking": "اعتمد الحجز",
+      "bookingSuccess": "تم حجز الجلسة بنجاح.",
     },
   };
 }

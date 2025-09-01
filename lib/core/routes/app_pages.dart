@@ -1,9 +1,11 @@
+import 'package:active_deer/feature/book_fitness_class/presentation/views/book_exercise.dart';
 import 'package:get/get.dart';
 
 import '../../feature/book_fitness_class/presentation/getx/bindings/book_fitness_class_binding.dart';
 import '../../feature/book_fitness_class/presentation/views/book_fitness_class_view.dart';
 import '../../feature/auth/login/presentation/getx/bindings/login_binding.dart';
 import '../../feature/auth/login/presentation/views/auth_view.dart';
+import '../../feature/book_fitness_class/presentation/views/book_success.dart';
 import '../../feature/fitness_class_schedule/presentation/getx/bindings/fitness_class_schedule_binding.dart';
 import '../../feature/fitness_class_schedule/presentation/views/fitness_class_schedule_view.dart';
 import '../../feature/home/presentation/getx/bindings/home_binding.dart';
@@ -62,6 +64,16 @@ class AppPages {
     GetPage(
       name: _Paths.bookFitnessClass,
       page: () => const BookFitnessClassView(),
+      binding: BookFitnessClassBinding(),
+    ),
+    GetPage(
+      name: _Paths.bookExercise,
+      page: () => const BookExercise(),
+      binding: BookFitnessClassBinding(),
+    ),
+    GetPage(
+      name: _Paths.bookSuccess,
+      page: () => const BookSuccess(),
       binding: BookFitnessClassBinding(),
     ),
   ];
