@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../controllers/advice_controller.dart';
 import '../controllers/nutritional_advice_controller.dart';
 
 class NutritionalAdviceBinding extends Bindings {
@@ -8,5 +9,6 @@ class NutritionalAdviceBinding extends Bindings {
     Get.lazyPut<NutritionalAdviceController>(
       () => NutritionalAdviceController(),
     );
+    Get.lazyPut<AdviceController>(() => AdviceController());
   }
 }
