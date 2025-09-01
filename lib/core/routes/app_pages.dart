@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
-import '../../feature/fitness_class_schedule/bindings/fitness_class_schedule_binding.dart';
-import '../../feature/fitness_class_schedule/views/fitness_class_schedule_view.dart';
+import '../../feature/book_fitness_class/presentation/getx/bindings/book_fitness_class_binding.dart';
+import '../../feature/book_fitness_class/presentation/views/book_fitness_class_view.dart';
 import '../../feature/auth/login/presentation/getx/bindings/login_binding.dart';
 import '../../feature/auth/login/presentation/views/auth_view.dart';
+import '../../feature/fitness_class_schedule/presentation/getx/bindings/fitness_class_schedule_binding.dart';
+import '../../feature/fitness_class_schedule/presentation/views/fitness_class_schedule_view.dart';
 import '../../feature/home/presentation/getx/bindings/home_binding.dart';
 import '../../feature/home/presentation/views/home_view.dart';
 import '../../feature/mySubscription/presentation/getx/bindings/my_subscription_binding.dart';
@@ -56,6 +58,11 @@ class AppPages {
       name: _Paths.fitnessClassSchedule,
       page: () => const FitnessClassScheduleView(),
       binding: FitnessClassScheduleBinding(),
+    ),
+    GetPage(
+      name: _Paths.bookFitnessClass,
+      page: () => const BookFitnessClassView(),
+      binding: BookFitnessClassBinding(),
     ),
   ];
 }
