@@ -39,7 +39,6 @@ class EnTranslations extends Translations {
       "mySubscriptions": "My Subscriptions",
       "offers": "Offers",
       "idCard": "ID Card",
-      "fitnessClassesschedule": "Fitness Classes Schedule",
       "more": "More",
       "waiver": "Waiver",
       "stop": "Stop",
@@ -52,6 +51,7 @@ class EnTranslations extends Translations {
       "logout": "Logout",
       "nutritionalAdvice": "Nutritional Advice",
       "phoneNumber": "Phone Number",
+      "fitnessClassSchedule": "Fitness class schedule",
     },
   };
 }

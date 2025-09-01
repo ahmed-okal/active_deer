@@ -9,6 +9,7 @@ abstract class Routes {
   static const mySubscription = _Paths.mySubscription;
   static const nutritionalAdvice = _Paths.nutritionalAdvice;
   static const advice = _Paths.advice;
+  static const fitnessClassSchedule = _Paths.fitnessClassSchedule;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const mySubscription = '/my-subscription';
   static const nutritionalAdvice = '/nutritional-advice';
   static const advice = '/advice';
+  static const fitnessClassSchedule = '/ftness-class-schedule';
 }

@@ -37,7 +37,6 @@ class ArTranslations extends Translations {
       "mySubscriptions": "اشتراكاتي",
       "offers": "العروض",
       "idCard": "بطاقة الدخول",
-      "fitnessClassesschedule": "جدول حصص اللياقة",
       "more": "المزيد",
       "waiver": "تنازل",
       "stop": "إيقاف",
@@ -50,6 +49,7 @@ class ArTranslations extends Translations {
       "logout": "تسجيل الخروج",
       "nutritionalAdvice": "نصائح غذائية",
       "phoneNumber": "رقم الهاتف",
+      "fitnessClassSchedule": "جدول حصص اللياقة",
     },
   };
 }

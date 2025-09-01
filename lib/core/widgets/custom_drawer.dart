@@ -41,8 +41,10 @@ class CustomDrawer extends StatelessWidget {
           Divider(height: AppSize.getHeight(15)),
           DrawerItem(
             icon: AppAssets.time,
-            title: 'fitnessClassesschedule'.tr,
-            onTap: () {},
+            title: 'fitnessClassSchedule'.tr,
+            onTap: () {
+              Get.toNamed(Routes.fitnessClassSchedule);
+            },
           ),
           Divider(height: AppSize.getHeight(15)),
           DrawerItem(
