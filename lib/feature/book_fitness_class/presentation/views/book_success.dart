@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/theme/app_text_theme.dart';
+import 'widgets/animated_two_up_lines.dart';
+import 'widgets/check_mark_painter.dart';
 
 class BookSuccess extends StatefulWidget {
   const BookSuccess({super.key});
@@ -29,13 +31,13 @@ class _BookSuccessState extends State<BookSuccess>
 
     // Main animation controller for overall sequence
     _mainController = AnimationController(
-      duration: const Duration(milliseconds: 1600),
+      duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
 
     // Separate controller for check mark drawing
     _checkController = AnimationController(
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 1200),
       vsync: this,
     );
 
@@ -166,162 +168,6 @@ class _BookSuccessState extends State<BookSuccess>
           );
         },
       ),
-    );
-  }
-}
-
-// Animated version of TwoUpLines that slides in from sides
-class AnimatedTwoUpLines extends StatelessWidget {
-  final Animation<double> animation;
-
-  const AnimatedTwoUpLines({super.key, required this.animation});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animation,
-      builder: (context, child) {
-        return Column(
-          children: [
-            // Top line slides in from left
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: Transform.translate(
-                offset: Offset(
-                  -AppSize.getWidth(200) * (1 - animation.value),
-                  0,
-                ),
-                child: Container(
-                  margin: EdgeInsetsDirectional.only(
-                    start: AppSize.getWidth(16),
-                  ),
-                  height: AppSize.getHeight(5),
-                  width: AppSize.getWidth(160) * animation.value,
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: AppSize.getHeight(20)),
-            // Bottom line slides in from right
-            Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: Transform.translate(
-                offset: Offset(
-                  AppSize.getWidth(200) * (1 - animation.value),
-                  0,
-                ),
-                child: Container(
-                  height: AppSize.getHeight(5),
-                  width: AppSize.getWidth(160) * animation.value,
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-// Custom painter for animated check mark
-class CheckMarkPainter extends CustomPainter {
-  final double progress;
-
-  CheckMarkPainter({required this.progress});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.white
-      ..strokeWidth = 12.0
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
-
-    final center = Offset(size.width / 2, size.height / 2);
-    final checkSize = size.width * 0.6;
-
-    // Define check mark path points
-    final startPoint = Offset(center.dx - checkSize * 0.3, center.dy);
-    final middlePoint = Offset(
-      center.dx - checkSize * 0.1,
-      center.dy + checkSize * 0.2,
-    );
-    final endPoint = Offset(
-      center.dx + checkSize * 0.3,
-      center.dy - checkSize * 0.2,
-    );
-
-    final path = Path();
-
-    if (progress <= 0.5) {
-      // First half: draw from start to middle
-      final firstProgress = progress * 2;
-      final currentPoint = Offset.lerp(startPoint, middlePoint, firstProgress)!;
-
-      path.moveTo(startPoint.dx, startPoint.dy);
-      path.lineTo(currentPoint.dx, currentPoint.dy);
-    } else {
-      // Second half: draw from middle to end
-      final secondProgress = (progress - 0.5) * 2;
-      final currentPoint = Offset.lerp(middlePoint, endPoint, secondProgress)!;
-
-      path.moveTo(startPoint.dx, startPoint.dy);
-      path.lineTo(middlePoint.dx, middlePoint.dy);
-      path.lineTo(currentPoint.dx, currentPoint.dy);
-    }
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CheckMarkPainter oldDelegate) {
-    return oldDelegate.progress != progress;
-  }
-}
-
-// Keep original TwoUpLines for backward compatibility
-class TwoUpLines extends StatelessWidget {
-  const TwoUpLines({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: Container(
-            margin: EdgeInsetsDirectional.only(start: AppSize.getWidth(16)),
-            height: AppSize.getHeight(5),
-            width: AppSize.getWidth(160),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadiusDirectional.only(
-                topEnd: Radius.circular(6),
-                bottomEnd: Radius.circular(6),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: AppSize.getHeight(20)),
-        Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: Container(
-            height: AppSize.getHeight(5),
-            width: AppSize.getWidth(160),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(6),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -54,13 +54,10 @@ class AdviceView extends GetView<AdviceController> {
               ),
             ],
           ),
-
-          // Draggable bottom sheet that starts at 200 height and can expand
           DraggableScrollableSheet(
-            initialChildSize:
-                0.67, // Starts at 25% of screen (approximately 200px)
-            minChildSize: 0.67, // Minimum 15% of screen
-            maxChildSize: 0.89, // Can expand to 95% of screen
+            initialChildSize: 0.67,
+            minChildSize: 0.67,
+            maxChildSize: 0.89,
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(

@@ -45,7 +45,7 @@ class HomeViewBody extends GetView<HomeController> {
               child: Row(
                 children: [
                   Text(
-                    'fitnessClassesschedule'.tr,
+                    'fitnessClassSchedule'.tr,
                     style: AppTextTheme.primary700(size: 12),
                   ),
                   Spacer(),

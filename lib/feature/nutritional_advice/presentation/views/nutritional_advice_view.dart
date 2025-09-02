@@ -25,7 +25,7 @@ class NutritionalAdviceView extends GetView<NutritionalAdviceController> {
             flexibleSpace: CustomAppBar(title: 'nutritionalAdvice'.tr),
           ),
           SliverPadding(
-            padding: AppPadding.horizontalPadding20,
+            padding: AppPadding.allPadding20,
             sliver: SliverList.separated(
               itemBuilder: (context, index) {
                 return InkWell(
