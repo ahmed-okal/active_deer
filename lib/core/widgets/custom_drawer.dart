@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../routes/app_pages.dart';
+import '../services/cash_data_source.dart';
 import '../theme/app_text_theme.dart';
 import '../utils/app_assets.dart';
 import '../utils/size_config.dart';
@@ -74,7 +75,8 @@ class CustomDrawer extends StatelessWidget {
           Divider(height: AppSize.getHeight(15)),
           InkWell(
             onTap: () {
-              Get.toNamed(Routes.auth);
+              Get.lazyPut(() => Get.find<CashDataSource>().logout());
+              Get.offAllNamed(Routes.auth);
             },
             child: Row(
               children: [

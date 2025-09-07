@@ -54,6 +54,26 @@ class ArTranslations extends Translations {
       "approveBooking": "اعتمد الحجز",
       "bookingSuccess": "تم حجز الجلسة بنجاح.",
       "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح!",
+      "dontWorryEnterYourPhoneNumber":
+          "لا تقلق ! يرجى ادخال رقم الهاتف المرتبط بحسابك",
+      "next": "التالي",
+      "enterPinCode": "أدخل رمز التحقق",
+      "enterPinCodeThatWasSentToYourPhone":
+          "أدخل رمز التحقق المرسل على رقم الهاتف المسجل",
+      "didntReceiveTheCode": "لم تستلم رمز التحقق؟ ",
+      "resendCode": "إعادة الإرسال",
+      "resetPassword": "إعادة تعيين كلمة المرور",
+      "createNewPasswordToRecoverYourAccount":
+          "قم بإنشاء كلمة مرور جديدة لاستعادة حسابك ",
+      "resendCodeIn": "إعادة الإرسال خلال",
+      "tryAgainLater": "حاول مرة أخرى لاحقاً",
+      "tooManyAttemptsPleaseTryAgainLater":
+          "محاولات كثيرة جداً. يرجى المحاولة مرة أخرى لاحقاً.",
+      "codeSent": "تم الإرسال",
+      "verificationCodeSentSuccessfully":
+          "تم إرسال رمز التحقق بنجاح إلى هاتفك.",
+      "done": "تم",
+      "failed": "فشل",
     },
   };
 }

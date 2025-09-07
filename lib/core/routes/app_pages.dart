@@ -2,6 +2,9 @@ import 'package:active_deer/feature/book_fitness_class/presentation/views/book_e
 import 'package:get/get.dart';
 
 import '../../feature/auth/presentation/views/change_password_success.dart';
+import '../../feature/auth/presentation/views/create_new_password.dart';
+import '../../feature/auth/presentation/views/enter_pin_view.dart';
+import '../../feature/auth/presentation/views/forgot_password_view.dart';
 import '../../feature/book_fitness_class/presentation/getx/bindings/book_fitness_class_binding.dart';
 import '../../feature/book_fitness_class/presentation/views/book_fitness_class_view.dart';
 import '../../feature/auth/presentation/getx/bindings/login_binding.dart';
@@ -79,6 +82,21 @@ class AppPages {
     GetPage(
       name: _Paths.passwordSuccess,
       page: () => const PasswordChangeSuccessPage(),
+    ),
+    GetPage(
+      name: _Paths.forgotPassword,
+      page: () => const ForgotPasswordView(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.enterPin,
+      page: () => const EnterPinView(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.createNewPassword,
+      page: () => const CreateNewPasswordView(),
+      binding: LoginBinding(),
     ),
   ];
 }

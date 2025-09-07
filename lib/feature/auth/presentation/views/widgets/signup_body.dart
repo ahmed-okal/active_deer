@@ -30,8 +30,8 @@ class SignUpBody extends GetView<SignUpController> {
             isObscure: false,
           ),
           AuthField(
-            hintText: 'phoneNumber'.tr,
-            title: 'enterPhoneNumber'.tr,
+            title: 'phoneNumber'.tr,
+            hintText: 'enterPhoneNumber'.tr,
             controller: controller.phoneController,
             isObscure: false,
           ),

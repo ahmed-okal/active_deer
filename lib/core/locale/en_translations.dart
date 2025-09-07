@@ -56,6 +56,26 @@ class EnTranslations extends Translations {
       "approveBooking": "Approve booking",
       "bookingSuccess": "The session has been successfully booked.",
       "passwordChangedSuccessfully": "Password changed successfully!",
+      "dontWorryEnterYourPhoneNumber":
+          "Don't worry! Please enter your phone number associated with your account.",
+      "next": "Next",
+      "enterPinCode": "Enter Pin Code",
+      "enterPinCodeThatWasSentToYourPhone":
+          "Enter the pin code sent to your phone number",
+      "didntReceiveTheCode": "Didn't receive the verification code?",
+      "resendCode": "Resend code",
+      "resetPassword": "Reset Password",
+      "createNewPasswordToRecoverYourAccount":
+          "Create a new password to recover your account.",
+      "resendCodeIn": "Resend code in",
+      "tryAgainLater": "Try Again Later",
+      "tooManyAttemptsPleaseTryAgainLater":
+          "Too many attempts. Please try again later.",
+      "codeSent": "Code Sent",
+      "verificationCodeSentSuccessfully":
+          "Verification code sent successfully to your phone.",
+      "done": "Done",
+      "failed": "Failed",
     },
   };
 }

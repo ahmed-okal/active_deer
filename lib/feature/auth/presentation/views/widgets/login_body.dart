@@ -58,7 +58,7 @@ class LoginBody extends GetView<LoginController> {
             alignment: AlignmentDirectional.centerEnd,
             child: InkWell(
               onTap: () {
-                Get.toNamed(Routes.passwordSuccess);
+                Get.toNamed(Routes.forgotPassword);
               },
               child: Text(
                 'forgotPassword'.tr,

@@ -14,6 +14,9 @@ abstract class Routes {
   static const bookExercise = _Paths.bookExercise;
   static const bookSuccess = _Paths.bookSuccess;
   static const passwordSuccess = _Paths.passwordSuccess;
+  static const forgotPassword = _Paths.forgotPassword;
+  static const enterPin = _Paths.enterPin;
+  static const createNewPassword = _Paths.createNewPassword;
 }
 
 abstract class _Paths {
@@ -29,4 +32,7 @@ abstract class _Paths {
   static const bookExercise = '/book-exercise';
   static const bookSuccess = '/book-success';
   static const passwordSuccess = '/password-success';
+  static const forgotPassword = '/forgot-password';
+  static const enterPin = '/enter-pin';
+  static const createNewPassword = '/create-new-password';
 }
