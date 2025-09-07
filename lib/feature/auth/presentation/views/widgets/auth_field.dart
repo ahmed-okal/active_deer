@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/theme/app_text_theme.dart';
-import '../../../../../../core/utils/size_config.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/utils/size_config.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class AuthField extends StatelessWidget {
   const AuthField({

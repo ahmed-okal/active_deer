@@ -1,4 +1,4 @@
-import 'package:active_deer/feature/auth/login/presentation/getx/controllers/date_picker_controller.dart';
+import 'package:active_deer/feature/auth/presentation/getx/controllers/date_picker_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/auth_controller.dart';

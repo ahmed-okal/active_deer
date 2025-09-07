@@ -53,6 +53,7 @@ class ArTranslations extends Translations {
       "availableExercises": "التمارين المتاحة",
       "approveBooking": "اعتمد الحجز",
       "bookingSuccess": "تم حجز الجلسة بنجاح.",
+      "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح!",
     },
   };
 }

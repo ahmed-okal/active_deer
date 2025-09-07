@@ -1,4 +1,4 @@
-import 'package:active_deer/feature/auth/login/presentation/getx/controllers/auth_controller.dart';
+import 'package:active_deer/feature/auth/presentation/getx/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

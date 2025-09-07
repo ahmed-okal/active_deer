@@ -1,9 +1,9 @@
-import 'package:active_deer/feature/auth/login/presentation/views/widgets/auth_custom_app_bar_painter.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/auth_custom_app_bar_painter.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/utils/app_assets.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/size_config.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/size_config.dart';
 
 class AuthSliverAppBar extends StatelessWidget {
   const AuthSliverAppBar({super.key});

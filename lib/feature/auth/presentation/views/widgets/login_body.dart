@@ -1,16 +1,16 @@
-import 'package:active_deer/feature/auth/login/presentation/views/widgets/auth_field.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../core/routes/app_pages.dart';
-import '../../../../../../core/theme/app_text_theme.dart';
-import '../../../../../../core/utils/app_assets.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/app_padding.dart';
-import '../../../../../../core/utils/app_validation.dart';
-import '../../../../../../core/utils/size_config.dart';
-import '../../../../../../core/widgets/custom_primary_button.dart';
+import '../../../../../core/routes/app_pages.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_padding.dart';
+import '../../../../../core/utils/app_validation.dart';
+import '../../../../../core/utils/size_config.dart';
+import '../../../../../core/widgets/custom_primary_button.dart';
 import '../../getx/controllers/login_controller.dart';
 
 class LoginBody extends GetView<LoginController> {
@@ -56,11 +56,16 @@ class LoginBody extends GetView<LoginController> {
           SizedBox(height: AppSize.getHeight(10)),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: Text(
-              'forgotPassword'.tr,
-              style: AppTextTheme.primary700(size: 12).copyWith(
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.primary,
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(Routes.passwordSuccess);
+              },
+              child: Text(
+                'forgotPassword'.tr,
+                style: AppTextTheme.primary700(size: 12).copyWith(
+                  decoration: TextDecoration.underline,
+                  decorationColor: AppColors.primary,
+                ),
               ),
             ),
           ),

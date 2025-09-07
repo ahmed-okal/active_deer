@@ -55,6 +55,7 @@ class EnTranslations extends Translations {
       "availableExercises": "Available exercises",
       "approveBooking": "Approve booking",
       "bookingSuccess": "The session has been successfully booked.",
+      "passwordChangedSuccessfully": "Password changed successfully!",
     },
   };
 }

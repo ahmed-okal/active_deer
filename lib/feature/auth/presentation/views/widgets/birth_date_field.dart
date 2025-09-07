@@ -1,11 +1,11 @@
-import 'package:active_deer/feature/auth/login/presentation/getx/controllers/date_picker_controller.dart';
+import 'package:active_deer/feature/auth/presentation/getx/controllers/date_picker_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../../../core/theme/app_text_theme.dart';
-import '../../../../../../core/utils/app_assets.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/size_config.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/size_config.dart';
 
 class BirthDateField extends GetView<DatePickerController> {
   const BirthDateField({super.key});

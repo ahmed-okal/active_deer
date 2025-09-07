@@ -13,6 +13,7 @@ abstract class Routes {
   static const bookFitnessClass = _Paths.bookFitnessClass;
   static const bookExercise = _Paths.bookExercise;
   static const bookSuccess = _Paths.bookSuccess;
+  static const passwordSuccess = _Paths.passwordSuccess;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const bookFitnessClass = '/book-fitness-class';
   static const bookExercise = '/book-exercise';
   static const bookSuccess = '/book-success';
+  static const passwordSuccess = '/password-success';
 }

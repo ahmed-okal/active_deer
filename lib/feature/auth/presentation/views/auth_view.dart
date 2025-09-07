@@ -1,10 +1,10 @@
-import 'package:active_deer/feature/auth/login/presentation/views/widgets/auth_sliver_app_bar.dart';
-import 'package:active_deer/feature/auth/login/presentation/views/widgets/login_body.dart';
-import 'package:active_deer/feature/auth/login/presentation/views/widgets/signup_body.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/auth_sliver_app_bar.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/login_body.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/signup_body.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../core/theme/app_text_theme.dart';
-import '../../../../../core/utils/size_config.dart';
+import '../../../../core/theme/app_text_theme.dart';
+import '../../../../core/utils/size_config.dart';
 import '../getx/controllers/login_controller.dart';
 
 class AuthView extends GetView<LoginController> {
