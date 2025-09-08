@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
+import '../routes/app_pages.dart';
 import '../utils/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -36,7 +38,9 @@ class CustomAppBar extends StatelessWidget {
               Padding(
                 padding: AppPadding.endPadding20,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.notification);
+                  },
                   child: Badge.count(
                     backgroundColor: AppColors.red,
                     count: 5,

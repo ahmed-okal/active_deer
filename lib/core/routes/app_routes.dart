@@ -17,6 +17,7 @@ abstract class Routes {
   static const forgotPassword = _Paths.forgotPassword;
   static const enterPin = _Paths.enterPin;
   static const createNewPassword = _Paths.createNewPassword;
+  static const notification = _Paths.notification;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const forgotPassword = '/forgot-password';
   static const enterPin = '/enter-pin';
   static const createNewPassword = '/create-new-password';
+  static const notification = '/notification';
 }

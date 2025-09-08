@@ -1,14 +1,16 @@
-import 'package:active_deer/feature/book_fitness_class/presentation/views/book_exercise.dart';
 import 'package:get/get.dart';
 
+import '../../feature/notification/presentation/getx/bindings/notification_binding.dart';
+import '../../feature/notification/presentation/views/notification_view.dart';
+import '../../feature/auth/presentation/getx/bindings/login_binding.dart';
+import '../../feature/auth/presentation/views/auth_view.dart';
 import '../../feature/auth/presentation/views/change_password_success.dart';
 import '../../feature/auth/presentation/views/create_new_password.dart';
 import '../../feature/auth/presentation/views/enter_pin_view.dart';
 import '../../feature/auth/presentation/views/forgot_password_view.dart';
 import '../../feature/book_fitness_class/presentation/getx/bindings/book_fitness_class_binding.dart';
+import '../../feature/book_fitness_class/presentation/views/book_exercise.dart';
 import '../../feature/book_fitness_class/presentation/views/book_fitness_class_view.dart';
-import '../../feature/auth/presentation/getx/bindings/login_binding.dart';
-import '../../feature/auth/presentation/views/auth_view.dart';
 import '../../feature/book_fitness_class/presentation/views/book_success.dart';
 import '../../feature/fitness_class_schedule/presentation/getx/bindings/fitness_class_schedule_binding.dart';
 import '../../feature/fitness_class_schedule/presentation/views/fitness_class_schedule_view.dart';
@@ -21,6 +23,7 @@ import '../../feature/nutritional_advice/presentation/views/advice_view.dart';
 import '../../feature/nutritional_advice/presentation/views/nutritional_advice_view.dart';
 import '../../feature/offers/presentation/getx/bindings/offers_binding.dart';
 import '../../feature/offers/presentation/views/offers_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -97,6 +100,11 @@ class AppPages {
       name: _Paths.createNewPassword,
       page: () => const CreateNewPasswordView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.notification,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }
