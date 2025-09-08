@@ -9,12 +9,14 @@ environment:
   sdk: ^3.9.0
 
 dependencies:
+  badges: ^3.1.2
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^5.9.0
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
+  flutter_local_notifications: ^19.4.1
   flutter_localizations:
     sdk: flutter
   flutter_native_splash: ^2.4.6

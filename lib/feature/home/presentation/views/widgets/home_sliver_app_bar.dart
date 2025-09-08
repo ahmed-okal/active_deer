@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
 
@@ -45,10 +46,17 @@ class HomeSliverAppBar extends StatelessWidget {
               Spacer(),
               Padding(
                 padding: AppPadding.endPadding20,
-                child: SvgPicture.asset(
-                  AppAssets.notification,
-                  height: AppSize.getHeight(18),
-                  width: AppSize.getWidth(18),
+                child: InkWell(
+                  onTap: () {},
+                  child: Badge.count(
+                    backgroundColor: AppColors.red,
+                    count: 5,
+                    child: SvgPicture.asset(
+                      AppAssets.notification,
+                      height: AppSize.getHeight(18),
+                      width: AppSize.getWidth(18),
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -4,6 +4,7 @@ import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
+import '../utils/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.title});
@@ -34,10 +35,17 @@ class CustomAppBar extends StatelessWidget {
               Text(title, style: AppTextTheme.white900(size: 12)),
               Padding(
                 padding: AppPadding.endPadding20,
-                child: SvgPicture.asset(
-                  AppAssets.notification,
-                  height: AppSize.getHeight(18),
-                  width: AppSize.getWidth(18),
+                child: InkWell(
+                  onTap: () {},
+                  child: Badge.count(
+                    backgroundColor: AppColors.red,
+                    count: 5,
+                    child: SvgPicture.asset(
+                      AppAssets.notification,
+                      height: AppSize.getHeight(18),
+                      width: AppSize.getWidth(18),
+                    ),
+                  ),
                 ),
               ),
             ],
