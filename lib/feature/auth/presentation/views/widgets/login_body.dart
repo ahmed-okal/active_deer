@@ -39,7 +39,7 @@ class LoginBody extends GetView<LoginController> {
                 title: 'password'.tr,
                 controller: controller.passwordController,
                 isObscure: controller.obscureText.value,
-                validator: (value) => AppValidation.password(value),
+                validator: (value) => AppValidation.enterPassword(value),
                 suffixIcon: Padding(
                   padding: AppPadding.suffixPadding,
                   child: InkWell(

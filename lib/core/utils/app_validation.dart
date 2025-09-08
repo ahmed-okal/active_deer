@@ -33,6 +33,9 @@ class AppValidation {
     if (value == null || value.isEmpty) {
       return 'passwordIsRequired'.tr;
     }
+    if (value.length < 8) {
+      return 'passwordMustBe8Characters'.tr;
+    }
     return null;
   }
 
