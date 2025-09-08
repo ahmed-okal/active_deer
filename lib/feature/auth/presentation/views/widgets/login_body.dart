@@ -27,7 +27,7 @@ class LoginBody extends GetView<LoginController> {
             title: 'phoneNumberMebership'.tr,
             controller: controller.phoneController,
             isObscure: false,
-            validator: AppValidation.phoneOrId,
+            validator: (value) => AppValidation.phoneOrId(value),
           ),
           SizedBox(height: AppSize.getHeight(9)),
           Obx(
@@ -37,7 +37,7 @@ class LoginBody extends GetView<LoginController> {
               title: 'password'.tr,
               controller: controller.passwordController,
               isObscure: controller.obscureText.value,
-              validator: AppValidation.name,
+              validator: (value) => AppValidation.password(value),
               suffixIcon: Padding(
                 padding: AppPadding.suffixPadding,
                 child: InkWell(

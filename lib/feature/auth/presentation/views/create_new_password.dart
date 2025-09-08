@@ -69,6 +69,7 @@ class CreateNewPasswordView extends GetView<CreateNewPasswordController> {
                       title: 'password'.tr,
                       controller: controller.passwordController,
                       isObscure: true,
+                      validator: (value) => AppValidation.password(value),
                       suffixIcon: Padding(
                         padding: AppPadding.suffixPadding,
                         child: InkWell(
@@ -82,7 +83,6 @@ class CreateNewPasswordView extends GetView<CreateNewPasswordController> {
                           ),
                         ),
                       ),
-                      validator: AppValidation.password,
                     ),
                   ),
                   SizedBox(height: AppSize.getHeight(14)),
@@ -92,6 +92,10 @@ class CreateNewPasswordView extends GetView<CreateNewPasswordController> {
                       title: 'confirmPassword'.tr,
                       controller: controller.confirmPasswordController,
                       isObscure: true,
+                      validator: (value) => AppValidation.confirmPassword(
+                        value,
+                        controller.passwordController.text,
+                      ),
                       suffixIcon: Padding(
                         padding: AppPadding.suffixPadding,
                         child: InkWell(

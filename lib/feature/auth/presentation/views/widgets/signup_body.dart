@@ -28,24 +28,28 @@ class SignUpBody extends GetView<SignUpController> {
             title: 'name'.tr,
             controller: controller.nameController,
             isObscure: false,
+            validator: (value) => AppValidation.name(value),
           ),
           AuthField(
             title: 'phoneNumber'.tr,
             hintText: 'enterPhoneNumber'.tr,
             controller: controller.phoneController,
             isObscure: false,
+            validator: (value) => AppValidation.phoneNumber(value),
           ),
           AuthField(
             hintText: 'mail'.tr,
             title: 'enterMail'.tr,
             controller: controller.emailController,
             isObscure: false,
+            validator: (value) => AppValidation.email(value),
           ),
           AuthField(
             hintText: 'enterIdNumber'.tr,
             title: 'idNumber'.tr,
             controller: controller.idNumberController,
             isObscure: true,
+            validator: (value) => AppValidation.idNumber(value),
           ),
           const BirthDateField(),
           AuthField(
@@ -53,6 +57,7 @@ class SignUpBody extends GetView<SignUpController> {
             title: 'password'.tr,
             controller: controller.passwordController,
             isObscure: true,
+            validator: (value) => AppValidation.password(value),
             suffixIcon: Padding(
               padding: AppPadding.suffixPadding,
               child: InkWell(
@@ -66,13 +71,16 @@ class SignUpBody extends GetView<SignUpController> {
                 ),
               ),
             ),
-            validator: AppValidation.password,
           ),
           AuthField(
             hintText: '******'.tr,
             title: 'confirmPassword'.tr,
             controller: controller.confirmPasswordController,
             isObscure: true,
+            validator: (value) => AppValidation.confirmPassword(
+              value,
+              controller.passwordController.text,
+            ),
             suffixIcon: Padding(
               padding: AppPadding.suffixPadding,
               child: InkWell(

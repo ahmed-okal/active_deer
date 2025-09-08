@@ -76,6 +76,7 @@ class EnTranslations extends Translations {
           "Verification code sent successfully to your phone.",
       "done": "Done",
       "failed": "Failed",
+      "invalidPinCode": "Invalid Pin Code",
     },
   };
 }

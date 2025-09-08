@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/routes/app_pages.dart';
 import '../../../../core/theme/app_text_theme.dart';
+import '../../../../core/utils/app_validation.dart';
 import '../../../../core/utils/size_config.dart';
 import '../getx/controllers/forgot_password_controller.dart';
 import 'widgets/auth_sliver_app_bar.dart';
@@ -65,6 +66,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     hintText: 'enterPhoneNumber'.tr,
                     controller: controller.phoneController,
                     isObscure: false,
+                    validator: (value) => AppValidation.phoneNumber(value),
                   ),
                 ],
               ),

@@ -74,6 +74,7 @@ class ArTranslations extends Translations {
           "تم إرسال رمز التحقق بنجاح إلى هاتفك.",
       "done": "تم",
       "failed": "فشل",
+      "invalidPinCode": "رمز التحقق غير صالح",
     },
   };
 }

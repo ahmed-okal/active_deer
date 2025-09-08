@@ -92,8 +92,7 @@ class EnterPinView extends GetView<EnterPinController> {
                       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                       validator: (pin) {
                         if (pin == '000000') return null;
-
-                        return 'Pin is incorrect';
+                        return 'invalidPinCode'.tr;
                       },
                     ),
                   ),
