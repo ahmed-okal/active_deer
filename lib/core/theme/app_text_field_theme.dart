@@ -10,11 +10,11 @@ class AppTextFieldTheme {
     border: AppBorder.textFieldBorder,
     focusedBorder: AppBorder.textFieldFocusedBorder,
     errorBorder: AppBorder.textFieldErrorBorder,
+    focusedErrorBorder: AppBorder.textFieldFocusedBorder,
     enabledBorder: AppBorder.textFieldBorder,
     disabledBorder: AppBorder.textFieldBorder,
     hintStyle: AppTextTheme.primary400(size: 12),
     suffixIconColor: AppColors.primary,
-
     suffixIconConstraints: BoxConstraints(
       minWidth: AppSize.getWidth(24),
       minHeight: AppSize.getHeight(24),

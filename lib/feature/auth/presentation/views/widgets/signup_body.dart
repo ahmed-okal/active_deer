@@ -1,4 +1,3 @@
-import 'package:active_deer/core/routes/app_pages.dart';
 import 'package:active_deer/core/widgets/custom_primary_button.dart';
 import 'package:active_deer/feature/auth/presentation/getx/controllers/signup_controller.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
@@ -20,146 +19,150 @@ class SignUpBody extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: AppPadding.horizontalPadding20,
-      child: Column(
-        spacing: AppSize.getHeight(10),
-        children: [
-          AuthField(
-            hintText: 'enterFullName'.tr,
-            title: 'name'.tr,
-            controller: controller.nameController,
-            isObscure: false,
-            validator: (value) => AppValidation.name(value),
-          ),
-          AuthField(
-            title: 'phoneNumber'.tr,
-            hintText: 'enterPhoneNumber'.tr,
-            controller: controller.phoneController,
-            isObscure: false,
-            validator: (value) => AppValidation.phoneNumber(value),
-          ),
-          AuthField(
-            hintText: 'mail'.tr,
-            title: 'enterMail'.tr,
-            controller: controller.emailController,
-            isObscure: false,
-            validator: (value) => AppValidation.email(value),
-          ),
-          AuthField(
-            hintText: 'enterIdNumber'.tr,
-            title: 'idNumber'.tr,
-            controller: controller.idNumberController,
-            isObscure: true,
-            validator: (value) => AppValidation.idNumber(value),
-          ),
-          const BirthDateField(),
-          AuthField(
-            hintText: '******'.tr,
-            title: 'password'.tr,
-            controller: controller.passwordController,
-            isObscure: true,
-            validator: (value) => AppValidation.password(value),
-            suffixIcon: Padding(
-              padding: AppPadding.suffixPadding,
-              child: InkWell(
-                onTap: controller.togglePasswordVisibility,
-                child: SvgPicture.asset(
-                  height: AppSize.getHeight(24),
-                  width: AppSize.getWidth(24),
-                  controller.obscurePasswordText.value
-                      ? AppAssets.eyeOff
-                      : AppAssets.eyeOn,
-                ),
-              ),
+      child: Form(
+        key: controller.formKey,
+        child: Column(
+          spacing: AppSize.getHeight(10),
+          children: [
+            AuthField(
+              hintText: 'enterFullName'.tr,
+              title: 'name'.tr,
+              controller: controller.nameController,
+              isObscure: false,
+              validator: (value) => AppValidation.name(value),
             ),
-          ),
-          AuthField(
-            hintText: '******'.tr,
-            title: 'confirmPassword'.tr,
-            controller: controller.confirmPasswordController,
-            isObscure: true,
-            validator: (value) => AppValidation.confirmPassword(
-              value,
-              controller.passwordController.text,
+            AuthField(
+              title: 'phoneNumber'.tr,
+              hintText: 'enterPhoneNumber'.tr,
+              controller: controller.phoneController,
+              isObscure: false,
+              validator: (value) => AppValidation.phoneNumber(value),
             ),
-            suffixIcon: Padding(
-              padding: AppPadding.suffixPadding,
-              child: InkWell(
-                onTap: controller.togglePasswordVisibility,
-                child: SvgPicture.asset(
-                  height: AppSize.getHeight(24),
-                  width: AppSize.getWidth(24),
-                  controller.obscureConfirmPasswordText.value
-                      ? AppAssets.eyeOff
-                      : AppAssets.eyeOn,
-                ),
-              ),
+            AuthField(
+              hintText: 'mail'.tr,
+              title: 'enterMail'.tr,
+              controller: controller.emailController,
+              isObscure: false,
+              validator: (value) => AppValidation.email(value),
             ),
-          ),
-          Row(
-            children: [
-              Obx(
-                () => SizedBox(
-                  width: AppSize.getWidth(24),
-                  height: AppSize.getHeight(24),
-                  child: Transform.scale(
-                    scale: 1.1,
-                    child: Checkbox(
-                      checkColor: AppColors.background,
-                      fillColor: WidgetStateProperty.all(
-                        controller.isAgree.value
-                            ? AppColors.primary
-                            : AppColors.background,
-                      ),
-                      activeColor: AppColors.background,
-                      value: controller.isAgree.value,
-                      onChanged: (value) {
-                        controller.toggleAgree();
-                      },
-                    ),
+            AuthField(
+              hintText: 'enterIdNumber'.tr,
+              title: 'idNumber'.tr,
+              controller: controller.idNumberController,
+              isObscure: true,
+              validator: (value) => AppValidation.idNumber(value),
+            ),
+            const BirthDateField(),
+            AuthField(
+              hintText: '******'.tr,
+              title: 'password'.tr,
+              controller: controller.passwordController,
+              isObscure: true,
+              validator: (value) => AppValidation.password(value),
+              suffixIcon: Padding(
+                padding: AppPadding.suffixPadding,
+                child: InkWell(
+                  onTap: controller.togglePasswordVisibility,
+                  child: SvgPicture.asset(
+                    height: AppSize.getHeight(24),
+                    width: AppSize.getWidth(24),
+                    controller.obscurePasswordText.value
+                        ? AppAssets.eyeOff
+                        : AppAssets.eyeOn,
                   ),
                 ),
               ),
-              Text('iAgreeToAll'.tr, style: AppTextTheme.primary500(size: 12)),
-              Text(
-                ' ${'termsAndConditions'.tr}',
-                style: AppTextTheme.primary800(size: 12).copyWith(
-                  decorationColor: AppColors.primary,
-                  decoration: TextDecoration.underline,
+            ),
+            AuthField(
+              hintText: '******'.tr,
+              title: 'confirmPassword'.tr,
+              controller: controller.confirmPasswordController,
+              isObscure: true,
+              validator: (value) => AppValidation.confirmPassword(
+                value,
+                controller.passwordController.text,
+              ),
+              suffixIcon: Padding(
+                padding: AppPadding.suffixPadding,
+                child: InkWell(
+                  onTap: controller.togglePasswordVisibility,
+                  child: SvgPicture.asset(
+                    height: AppSize.getHeight(24),
+                    width: AppSize.getWidth(24),
+                    controller.obscureConfirmPasswordText.value
+                        ? AppAssets.eyeOff
+                        : AppAssets.eyeOn,
+                  ),
                 ),
               ),
-            ],
-          ),
-          SizedBox(height: AppSize.getHeight(70)),
-          CustomPrimaryButton(
-            title: 'signUp'.tr,
-            onTap: () {
-              Get.toNamed(Routes.home);
-            },
-          ),
-          SizedBox(height: AppSize.getHeight(10)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'alreadyHaveAnAccount'.tr,
-                style: AppTextTheme.primary600(size: 13),
-              ),
-              InkWell(
-                onTap: () {
-                  controller.authController.changePage(0);
-                },
-                child: Text(
-                  ' ${'login'.tr}',
-                  style: AppTextTheme.primary800(size: 13).copyWith(
+            ),
+            Row(
+              children: [
+                Obx(
+                  () => SizedBox(
+                    width: AppSize.getWidth(24),
+                    height: AppSize.getHeight(24),
+                    child: Transform.scale(
+                      scale: 1.1,
+                      child: Checkbox(
+                        checkColor: AppColors.background,
+                        fillColor: WidgetStateProperty.all(
+                          controller.isAgree.value
+                              ? AppColors.primary
+                              : AppColors.background,
+                        ),
+                        activeColor: AppColors.background,
+                        value: controller.isAgree.value,
+                        onChanged: (value) {
+                          controller.toggleAgree();
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Text(
+                  'iAgreeToAll'.tr,
+                  style: AppTextTheme.primary500(size: 12),
+                ),
+                Text(
+                  ' ${'termsAndConditions'.tr}',
+                  style: AppTextTheme.primary800(size: 12).copyWith(
                     decorationColor: AppColors.primary,
                     decoration: TextDecoration.underline,
                   ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: AppSize.getHeight(70)),
-        ],
+              ],
+            ),
+            SizedBox(height: AppSize.getHeight(70)),
+            CustomPrimaryButton(
+              title: 'signUp'.tr,
+              onTap: controller.submitSignUp,
+            ),
+            SizedBox(height: AppSize.getHeight(10)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'alreadyHaveAnAccount'.tr,
+                  style: AppTextTheme.primary600(size: 13),
+                ),
+                InkWell(
+                  onTap: () {
+                    controller.authController.changePage(0);
+                  },
+                  child: Text(
+                    ' ${'login'.tr}',
+                    style: AppTextTheme.primary800(size: 13).copyWith(
+                      decorationColor: AppColors.primary,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: AppSize.getHeight(70)),
+          ],
+        ),
       ),
     );
   }

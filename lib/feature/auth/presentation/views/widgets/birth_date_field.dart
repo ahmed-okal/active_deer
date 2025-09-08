@@ -28,7 +28,9 @@ class BirthDateField extends GetView<DatePickerController> {
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: AppColors.primary,
+                  color: controller.hasError
+                      ? AppColors.red
+                      : AppColors.primary,
                   width: AppSize.getWidth(1.5),
                 ),
                 borderRadius: BorderRadius.circular(6.77),
@@ -59,6 +61,27 @@ class BirthDateField extends GetView<DatePickerController> {
                 ],
               ),
             ),
+          ),
+        ),
+        // Error text display
+        SizedBox(
+          height: AppSize.getHeight(16),
+          child: Obx(
+            () => controller.hasError
+                ? Padding(
+                    padding: EdgeInsets.only(top: AppSize.getHeight(2)),
+                    child: Text(
+                      controller.errorMessage.value,
+                      style: AppTextTheme.secondary400(size: 10).copyWith(
+                        color: AppColors.red,
+                        height: 1.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
         ),
       ],
