@@ -24,4 +24,6 @@ class AppAssets {
   static const String capacity = 'assets/icons/capacity.svg';
   static const String door = 'assets/icons/door.svg';
   static const String loading = 'assets/lotties/loading.json';
+  static const String notificationSuccess =
+      'assets/icons/notification_success.svg';
 }

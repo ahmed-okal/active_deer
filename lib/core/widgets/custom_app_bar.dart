@@ -9,8 +9,13 @@ import '../routes/app_pages.dart';
 import '../utils/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.notificationIcon = true,
+  });
   final String title;
+  final bool notificationIcon;
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
@@ -35,24 +40,35 @@ class CustomAppBar extends StatelessWidget {
                 ),
               ),
               Text(title, style: AppTextTheme.white900(size: 12)),
-              Padding(
-                padding: AppPadding.endPadding20,
-                child: InkWell(
-                  onTap: () {
-                    Get.toNamed(Routes.notification);
-                  },
-                  child: Badge.count(
-                    backgroundColor: AppColors.red,
-                    count: 5,
-                    child: SvgPicture.asset(
-                      AppAssets.notification,
-                      height: AppSize.getHeight(18),
-                      width: AppSize.getWidth(18),
-                    ),
-                  ),
-                ),
-              ),
+              notificationIcon
+                  ? const NotificationIcon()
+                  : SizedBox(width: AppSize.getWidth(36)),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NotificationIcon extends StatelessWidget {
+  const NotificationIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: AppPadding.endPadding20,
+      child: InkWell(
+        onTap: () {
+          Get.toNamed(Routes.notification);
+        },
+        child: Badge.count(
+          backgroundColor: AppColors.red,
+          count: 5,
+          child: SvgPicture.asset(
+            AppAssets.notification,
+            height: AppSize.getHeight(18),
+            width: AppSize.getWidth(18),
           ),
         ),
       ),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class AppPadding {
   static EdgeInsetsGeometry get horizontalPadding20 =>
       EdgeInsets.symmetric(horizontal: AppSize.getWidth(20));
+  static EdgeInsetsGeometry get horizontalPadding10 =>
+      EdgeInsets.symmetric(horizontal: AppSize.getWidth(10));
   static EdgeInsetsGeometry get verticalPadding20 =>
       EdgeInsets.symmetric(vertical: AppSize.getHeight(20));
   static EdgeInsetsGeometry get allPadding20 =>

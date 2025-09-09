@@ -108,6 +108,7 @@ class ArTranslations extends Translations {
       "invalidInput": "إدخال غير صالح",
       "pleaseEnterValidData": "يرجى إدخال بيانات صالحة",
       "error": "خطأ",
+      "notifications": "الإشعارات",
     },
   };
 }

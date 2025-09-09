@@ -109,6 +109,7 @@ class EnTranslations extends Translations {
       "invalidInput": "Invalid input",
       "pleaseEnterValidData": "Please enter valid data",
       "error": "Error",
+      "notifications": "Notifications",
     },
   };
 }

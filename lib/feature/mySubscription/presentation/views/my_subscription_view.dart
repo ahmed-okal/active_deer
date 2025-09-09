@@ -21,7 +21,7 @@ class MySubscriptionView extends GetView<MySubscriptionController> {
             pinned: true,
             flexibleSpace: CustomAppBar(title: 'mySubscriptions'.tr),
           ),
-          SliverToBoxAdapter(child: MySubscriptionTapBar()),
+          SliverToBoxAdapter(child: const MySubscriptionTapBar()),
           SliverPadding(
             padding: AppPadding.bottomPadding25,
             sliver: SliverList.separated(
