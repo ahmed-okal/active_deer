@@ -1,3 +1,4 @@
+import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/feature/home/presentation/views/widgets/home_pop_up_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,63 +18,71 @@ class HomePremiumCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
-      child: Container(
-        height: AppSize.getHeight(83),
-        decoration: AppBorder.homeContainerBorder,
+      child: InkWell(
+        onTap: () {
+          Get.find<NotificationService>().showNotification(
+            'اشتراك بريميم',
+            'تم تجديد اشتراكك بنجاح',
+          );
+        },
         child: Container(
-          margin: EdgeInsets.all(AppSize.getHeight(1)),
-          decoration: BoxDecoration(
-            color: AppColors.background,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Padding(
-            padding: AppPadding.homeCardPadding,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppAssets.premiumIcon,
-                      height: AppSize.getHeight(19),
-                      width: AppSize.getWidth(19),
-                    ),
-                    Text(
-                      'premiumSubscription'.tr,
-                      style: AppTextTheme.primary800(size: 14),
-                    ),
-                    const Spacer(),
-                    const HomePopupMenuButton(),
-                  ],
-                ),
-                SizedBox(height: AppSize.getHeight(10)),
-                const CustomPresentIndicator(percent: 0.5),
-                Spacer(),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.access_time_rounded,
-                      color: AppColors.primary,
-                      size: AppSize.getHeight(11),
-                    ),
-                    SizedBox(width: AppSize.getWidth(2)),
-                    Text(
-                      '${'startDate'.tr}: 29/4/2025',
-                      style: AppTextTheme.secondary700(size: 10),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.access_time_rounded,
-                      color: AppColors.primary,
-                      size: AppSize.getHeight(11),
-                    ),
-                    SizedBox(width: AppSize.getWidth(2)),
-                    Text(
-                      '${'endDate'.tr}: 29/4/2025',
-                      style: AppTextTheme.secondary700(size: 10),
-                    ),
-                  ],
-                ),
-              ],
+          height: AppSize.getHeight(83),
+          decoration: AppBorder.homeContainerBorder,
+          child: Container(
+            margin: EdgeInsets.all(AppSize.getHeight(1)),
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Padding(
+              padding: AppPadding.homeCardPadding,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.premiumIcon,
+                        height: AppSize.getHeight(19),
+                        width: AppSize.getWidth(19),
+                      ),
+                      Text(
+                        'premiumSubscription'.tr,
+                        style: AppTextTheme.primary800(size: 14),
+                      ),
+                      const Spacer(),
+                      const HomePopupMenuButton(),
+                    ],
+                  ),
+                  SizedBox(height: AppSize.getHeight(10)),
+                  const CustomPresentIndicator(percent: 0.5),
+                  Spacer(),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.access_time_rounded,
+                        color: AppColors.primary,
+                        size: AppSize.getHeight(11),
+                      ),
+                      SizedBox(width: AppSize.getWidth(2)),
+                      Text(
+                        '${'startDate'.tr}: 29/4/2025',
+                        style: AppTextTheme.secondary700(size: 10),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.access_time_rounded,
+                        color: AppColors.primary,
+                        size: AppSize.getHeight(11),
+                      ),
+                      SizedBox(width: AppSize.getWidth(2)),
+                      Text(
+                        '${'endDate'.tr}: 29/4/2025',
+                        style: AppTextTheme.secondary700(size: 10),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

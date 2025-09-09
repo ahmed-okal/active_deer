@@ -1,5 +1,6 @@
 import 'package:active_deer/core/locale/locale.dart';
 import 'package:active_deer/core/routes/app_pages.dart';
+import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/core/theme/app_themes.dart';
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:active_deer/injection_controller.dart';
@@ -12,13 +13,14 @@ import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
   await GetStorage.init();
   await InjectionController().initialize();
+  await Get.find<NotificationService>().initialize();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   await initializeDateFormatting('en_US', null);
   await initializeDateFormatting('ar_EG', null);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
