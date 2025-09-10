@@ -2,6 +2,7 @@ import 'package:active_deer/core/utils/app_padding.dart';
 import 'package:active_deer/core/widgets/custom_primary_button.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/routes/app_pages.dart';
@@ -67,6 +68,9 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     controller: controller.phoneController,
                     isObscure: false,
                     validator: (value) => AppValidation.phoneNumber(value),
+                    textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   ),
                 ],
               ),

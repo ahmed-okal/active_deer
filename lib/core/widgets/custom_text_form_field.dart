@@ -1,5 +1,6 @@
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/app_text_theme.dart';
 import '../utils/app_colors.dart';
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.style,
+    this.inputFormatters,
   });
   final FocusNode? focusNode;
   final TextEditingController? controller;
@@ -50,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextStyle? style;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +68,6 @@ class CustomTextFormField extends StatelessWidget {
         ).copyWith(height: AppSize.getHeight(1.5)),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        // Custom error text styling
         errorStyle: AppTextTheme.secondary400(size: 10).copyWith(
           color: AppColors.red,
           height: 1.0,
@@ -98,6 +100,7 @@ class CustomTextFormField extends StatelessWidget {
       readOnly: readOnly,
       enableSuggestions: enableSuggestions,
       autocorrect: autocorrect,
+      inputFormatters: inputFormatters,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -30,6 +31,11 @@ class LoginBody extends GetView<LoginController> {
               controller: controller.phoneController,
               isObscure: false,
               validator: (value) => AppValidation.phoneOrId(value),
+              keyboardType: TextInputType.phone,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              textInputAction: TextInputAction.next,
             ),
             SizedBox(height: AppSize.getHeight(9)),
             Obx(
@@ -40,6 +46,7 @@ class LoginBody extends GetView<LoginController> {
                 controller: controller.passwordController,
                 isObscure: controller.obscureText.value,
                 validator: (value) => AppValidation.enterPassword(value),
+                textInputAction: TextInputAction.done,
                 suffixIcon: Padding(
                   padding: AppPadding.suffixPadding,
                   child: InkWell(

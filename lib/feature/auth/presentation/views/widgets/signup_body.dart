@@ -3,6 +3,7 @@ import 'package:active_deer/feature/auth/presentation/getx/controllers/signup_co
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/birth_date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../core/theme/app_text_theme.dart';
@@ -30,6 +31,8 @@ class SignUpBody extends GetView<SignUpController> {
               controller: controller.nameController,
               isObscure: false,
               validator: (value) => AppValidation.name(value),
+              keyboardType: TextInputType.name,
+              textInputAction: TextInputAction.next,
             ),
             AuthField(
               title: 'phoneNumber'.tr,
@@ -37,6 +40,9 @@ class SignUpBody extends GetView<SignUpController> {
               controller: controller.phoneController,
               isObscure: false,
               validator: (value) => AppValidation.phoneNumber(value),
+              keyboardType: TextInputType.phone,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              textInputAction: TextInputAction.next,
             ),
             AuthField(
               hintText: 'mail'.tr,
@@ -44,6 +50,8 @@ class SignUpBody extends GetView<SignUpController> {
               controller: controller.emailController,
               isObscure: false,
               validator: (value) => AppValidation.email(value),
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
             ),
             AuthField(
               hintText: 'enterIdNumber'.tr,
@@ -51,6 +59,9 @@ class SignUpBody extends GetView<SignUpController> {
               controller: controller.idNumberController,
               isObscure: true,
               validator: (value) => AppValidation.idNumber(value),
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.numberWithOptions(signed: false),
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             const BirthDateField(),
             AuthField(
@@ -72,6 +83,8 @@ class SignUpBody extends GetView<SignUpController> {
                   ),
                 ),
               ),
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.visiblePassword,
             ),
             AuthField(
               hintText: '******'.tr,
@@ -95,6 +108,8 @@ class SignUpBody extends GetView<SignUpController> {
                   ),
                 ),
               ),
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.visiblePassword,
             ),
             Row(
               children: [

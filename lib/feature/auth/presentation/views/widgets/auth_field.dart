@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/size_config.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
@@ -15,6 +16,8 @@ class AuthField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.style,
+    this.textInputAction,
+    this.inputFormatters,
   });
   final String title, hintText;
   final TextInputType? keyboardType;
@@ -24,6 +27,8 @@ class AuthField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextStyle? style;
+  final TextInputAction? textInputAction;
+  final List<TextInputFormatter>? inputFormatters;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +45,8 @@ class AuthField extends StatelessWidget {
           keyboardType: keyboardType,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
+          textInputAction: textInputAction,
+          inputFormatters: inputFormatters,
         ),
       ],
     );
