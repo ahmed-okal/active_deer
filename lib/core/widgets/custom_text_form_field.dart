@@ -1,7 +1,9 @@
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/app_text_theme.dart';
+import '../utils/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -27,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.style,
+    this.inputFormatters,
   });
   final FocusNode? focusNode;
   final TextEditingController? controller;
@@ -49,47 +52,55 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextStyle? style;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: AppSize.getHeight(40),
-      child: TextFormField(
-        key: key,
-        focusNode: focusNode,
-        controller: controller,
-        decoration: InputDecoration(
-          hint: Text(
-            hintText,
-            style: AppTextTheme.secondary400(
-              size: 12,
-            ).copyWith(height: AppSize.getHeight(1.5)),
-          ),
-          suffixIcon: suffixIcon,
-          prefixIcon: prefixIcon,
+    return TextFormField(
+      key: key,
+      focusNode: focusNode,
+      controller: controller,
+      autovalidateMode: AutovalidateMode.disabled,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: AppTextTheme.secondary400(
+          size: 12,
+        ).copyWith(height: AppSize.getHeight(1.5)),
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        errorStyle: AppTextTheme.secondary400(size: 10).copyWith(
+          color: AppColors.red,
+          height: 1.0,
+          fontWeight: FontWeight.w400,
         ),
-        style:
-            style ??
-            AppTextTheme.primary600(
-              size: 15,
-            ).copyWith(height: AppSize.getHeight(1.5)),
-        validator: validator,
-        onSaved: onSaved,
-        onChanged: onChanged,
-        onTapOutside: onTapOutside,
-        onFieldSubmitted: onFieldSubmitted,
-        onEditingComplete: onEditingComplete,
-        obscureText: obscureText,
-        obscuringCharacter: '*',
-        textInputAction: textInputAction,
-        keyboardType: keyboardType,
-        maxLines: maxLines,
-        minLines: minLines,
-        enabled: enabled,
-        readOnly: readOnly,
-        enableSuggestions: enableSuggestions,
-        autocorrect: autocorrect,
+        errorMaxLines: 1,
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: AppSize.getWidth(14),
+          vertical: AppSize.getHeight(8),
+        ),
       ),
+      style:
+          style ??
+          AppTextTheme.primary600(
+            size: 15,
+          ).copyWith(height: AppSize.getHeight(1.5)),
+      validator: validator,
+      onSaved: onSaved,
+      onChanged: onChanged,
+      onTapOutside: onTapOutside,
+      onFieldSubmitted: onFieldSubmitted,
+      onEditingComplete: onEditingComplete,
+      obscureText: obscureText,
+      obscuringCharacter: '*',
+      textInputAction: textInputAction,
+      keyboardType: keyboardType,
+      maxLines: maxLines,
+      minLines: minLines,
+      enabled: enabled,
+      readOnly: readOnly,
+      enableSuggestions: enableSuggestions,
+      autocorrect: autocorrect,
+      inputFormatters: inputFormatters,
     );
   }
 }

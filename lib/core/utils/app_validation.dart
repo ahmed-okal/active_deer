@@ -28,6 +28,17 @@ class AppValidation {
     return null;
   }
 
+  // Simple password validation for login (less strict than signup)
+  static String? enterPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'passwordIsRequired'.tr;
+    }
+    if (value.length < 8) {
+      return 'passwordMustBe8Characters'.tr;
+    }
+    return null;
+  }
+
   // Confirm password validation
   static String? confirmPassword(String? value, String password) {
     if (value == null || value.isEmpty) {
@@ -141,6 +152,54 @@ class AppValidation {
       return 'idNumberCannotBeAllSameDigits'.tr;
     }
 
+    return null;
+  }
+
+  // Birth date validation
+  static String? birthDate(DateTime? value) {
+    if (value == null) {
+      return 'birthDateIsRequired'.tr;
+    }
+
+    final DateTime now = DateTime.now();
+    final DateTime eighteenYearsAgo = DateTime(
+      now.year - 18,
+      now.month,
+      now.day,
+    );
+
+    // Check if user is at least 18 years old
+    if (value.isAfter(eighteenYearsAgo)) {
+      return 'mustBe18OrOlder'.tr;
+    }
+
+    // Check if date is not in the future
+    if (value.isAfter(now)) {
+      return 'birthDateCannotBeFuture'.tr;
+    }
+
+    return null;
+  }
+
+  // PIN validation (6 digits)
+  static String? pin(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'pinIsRequired'.tr;
+    }
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'pinMustBeNumeric'.tr;
+    }
+    if (value.length != 6) {
+      return 'pinMustBe6Digits'.tr;
+    }
+    return null;
+  }
+
+  // Generic field validation
+  static String? required(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'fieldIsRequired'.tr;
+    }
     return null;
   }
 }

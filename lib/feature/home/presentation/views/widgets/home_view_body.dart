@@ -21,10 +21,10 @@ class HomeViewBody extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        SliverAppBar(
+        const SliverAppBar(
           automaticallyImplyLeading: false,
           pinned: true,
-          flexibleSpace: const HomeSliverAppBar(),
+          flexibleSpace: HomeSliverAppBar(),
         ),
         SliverList(
           delegate: SliverChildListDelegate([
@@ -45,10 +45,10 @@ class HomeViewBody extends GetView<HomeController> {
               child: Row(
                 children: [
                   Text(
-                    'fitnessClassesschedule'.tr,
+                    'fitnessClassSchedule'.tr,
                     style: AppTextTheme.primary700(size: 12),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {},
                     child: Text(

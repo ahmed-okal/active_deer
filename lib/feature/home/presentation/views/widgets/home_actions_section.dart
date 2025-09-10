@@ -19,30 +19,35 @@ class HomeActionsSection extends StatelessWidget {
       padding: AppPadding.horizontalPadding20,
       child: Row(
         children: [
-          Container(
-            height: AppSize.getHeight(146),
-            width: AppSize.getWidth(154),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(AppAssets.test),
-                fit: BoxFit.cover,
-              ),
+          InkWell(
+            onTap: () {
+              Get.toNamed(Routes.bookFitnessClass);
+            },
+            child: Container(
+              height: AppSize.getHeight(146),
+              width: AppSize.getWidth(154),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(AppAssets.test),
+                  fit: BoxFit.cover,
+                ),
 
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'bookFitnessClass'.tr,
-                  style: AppTextTheme.white800(size: 14),
-                ),
-                Text(
-                  'startYourJourney'.tr,
-                  style: AppTextTheme.white600(size: 8),
-                ),
-                SizedBox(height: AppSize.getHeight(13)),
-              ],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'bookFitnessClass'.tr,
+                    style: AppTextTheme.white800(size: 14),
+                  ),
+                  Text(
+                    'startYourJourney'.tr,
+                    style: AppTextTheme.white600(size: 8),
+                  ),
+                  SizedBox(height: AppSize.getHeight(13)),
+                ],
+              ),
             ),
           ),
           Spacer(),
@@ -50,7 +55,9 @@ class HomeActionsSection extends StatelessWidget {
             spacing: AppSize.getHeight(8),
             children: [
               HomeActionsCard(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(Routes.mySubscription);
+                },
                 title: 'mySubscriptions'.tr,
                 icon: Icon(
                   Icons.access_time_rounded,

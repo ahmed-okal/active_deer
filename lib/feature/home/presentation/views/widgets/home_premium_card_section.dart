@@ -1,6 +1,7 @@
 import 'package:active_deer/feature/home/presentation/views/widgets/home_premium_card.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
 
 class HomePremiumCardSection extends StatelessWidget {
@@ -38,7 +39,9 @@ class HomePremiumCardSection extends StatelessWidget {
             ),
           ],
         ),
-        const HomePremiumCard(),
+        Expanded(
+          child: HomePremiumCard(padding: AppPadding.horizontalPadding6),
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           spacing: AppSize.getHeight(3),

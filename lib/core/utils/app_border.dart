@@ -24,11 +24,8 @@ class AppBorder {
     borderRadius: BorderRadius.circular(6.77),
   );
   static final OutlineInputBorder textFieldErrorBorder = OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.primary,
-      width: AppSize.getHeight(1.5),
-    ),
     borderRadius: BorderRadius.circular(6.77),
+    borderSide: BorderSide(color: AppColors.red, width: AppSize.getWidth(1.5)),
   );
   static final Decoration primaryButtonBorder = BoxDecoration(
     color: AppColors.primary,

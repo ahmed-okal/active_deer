@@ -1,23 +1,26 @@
 import 'package:active_deer/core/locale/locale.dart';
 import 'package:active_deer/core/routes/app_pages.dart';
+import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/core/theme/app_themes.dart';
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:active_deer/injection_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-// import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await GetStorage.init();
   await InjectionController().initialize();
+  await Get.find<NotificationService>().initialize();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   await initializeDateFormatting('en_US', null);
   await initializeDateFormatting('ar_EG', null);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
