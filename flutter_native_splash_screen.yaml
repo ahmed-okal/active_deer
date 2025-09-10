@@ -1,0 +1,20 @@
+flutter_native_splash:
+  color_android: "#F7F7F7"
+  color_ios: "#F7F7F7"
+  image_android: assets/images/active_deer_logo.png
+  image_ios: assets/images/active_deer_logo.png
+  branding_bottom_padding_ios: 35
+  color: "#F7F7F7"
+  image: assets/images/active_deer_logo.png
+  color_dark: "#F7F7F7"
+  image_dark: assets/images/active_deer_logo.png
+  branding: assets/images/powered_by.png
+  branding_mode: bottom
+
+  android_12:
+    image: assets/images/active_deer_logo.png
+    image_dark: assets/images/active_deer_logo.png
+    color: "#F7F7F7"
+    color_dark: "#F7F7F7"
+    branding: assets/images/powered_by.png
+    branding_mode: bottom
