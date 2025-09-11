@@ -68,7 +68,7 @@ class NotificationView extends GetView<NotificationController> {
                         ),
 
                         Padding(
-                          padding: AppPadding.topPadding10,
+                          padding: AppPadding.allPadding12,
                           child: Align(
                             alignment: AlignmentDirectional.topEnd,
                             child: Text(

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
@@ -9,7 +10,7 @@ class NotificationService {
     if (!_initialized) {
       await notificationsPlugin.initialize(
         const InitializationSettings(
-          android: AndroidInitializationSettings('@drawable/notification_icon'),
+          android: AndroidInitializationSettings('notification'),
           iOS: DarwinInitializationSettings(),
         ),
       );
@@ -41,9 +42,16 @@ class NotificationService {
         android: AndroidNotificationDetails(
           'channel_id',
           'channel_name',
+          priority: Priority.high,
+          icon: 'notification',
+          color: Color(0xff000000),
           importance: Importance.max,
         ),
-        iOS: DarwinNotificationDetails(),
+        iOS: DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+        ),
       ),
     );
   }
