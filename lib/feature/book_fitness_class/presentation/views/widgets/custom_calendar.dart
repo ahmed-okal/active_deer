@@ -92,8 +92,8 @@ class CustomCalendar extends GetView<BookFitnessClassController> {
   /// ================== Days of Week ==================
   DaysOfWeekStyle _daysOfWeekStyle() {
     return DaysOfWeekStyle(
-      weekdayStyle: AppTextTheme.primary700(size: 14),
-      weekendStyle: AppTextTheme.primary700(size: 14),
+      weekdayStyle: AppTextTheme.primary700(size: 13),
+      weekendStyle: AppTextTheme.primary700(size: 13),
       decoration: BoxDecoration(
         border: Border(top: BorderSide(color: AppColors.grey, width: 1)),
       ),

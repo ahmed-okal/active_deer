@@ -47,6 +47,9 @@ class AuthField extends StatelessWidget {
           prefixIcon: prefixIcon,
           textInputAction: textInputAction,
           inputFormatters: inputFormatters,
+          onTapOutside: (event) {
+            FocusScope.of(context).unfocus();
+          },
         ),
       ],
     );

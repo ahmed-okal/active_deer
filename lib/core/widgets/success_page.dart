@@ -40,7 +40,7 @@ class _SuccessPageState extends State<SuccessPage>
       vsync: this,
     );
     _checkController = AnimationController(
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(microseconds: 200),
       vsync: this,
     );
     _topLinesAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
