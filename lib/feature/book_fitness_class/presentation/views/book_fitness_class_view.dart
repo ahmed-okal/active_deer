@@ -15,26 +15,29 @@ class BookFitnessClassView extends GetView<BookFitnessClassController> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const CustomDrawer(),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            pinned: true,
-            flexibleSpace: CustomAppBar(title: 'bookFitnessClass'.tr),
-          ),
-          const CustomCalendar(),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: AppPadding.horizontalPadding20,
-              child: Text(
-                '${'availableExercises'.tr} (12)',
-                style: AppTextTheme.primary700(size: 14),
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              pinned: true,
+              flexibleSpace: CustomAppBar(title: 'bookFitnessClass'.tr),
+            ),
+            const CustomCalendar(),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: AppPadding.horizontalPadding20,
+                child: Text(
+                  '${'availableExercises'.tr} (12)',
+                  style: AppTextTheme.primary700(size: 14),
+                ),
               ),
             ),
-          ),
-          const ExercisesListView(),
-          const FitnessClassListView(),
-        ],
+            const ExercisesListView(),
+            const FitnessClassListView(),
+          ],
+        ),
       ),
     );
   }

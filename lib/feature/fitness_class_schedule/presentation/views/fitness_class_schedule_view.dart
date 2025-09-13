@@ -18,50 +18,53 @@ class FitnessClassScheduleView extends GetView<FitnessClassScheduleController> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const CustomDrawer(),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            pinned: true,
-            flexibleSpace: CustomAppBar(title: 'fitnessClassSchedule'.tr),
-          ),
-          SliverPadding(
-            padding: AppPadding.allPadding20,
-            sliver: SliverToBoxAdapter(
-              child: InkWell(
-                onTap: () {
-                  Get.toNamed(Routes.bookFitnessClass);
-                },
-                child: Container(
-                  height: AppSize.getHeight(146),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(AppAssets.test),
-                      fit: BoxFit.cover,
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              pinned: true,
+              flexibleSpace: CustomAppBar(title: 'fitnessClassSchedule'.tr),
+            ),
+            SliverPadding(
+              padding: AppPadding.allPadding20,
+              sliver: SliverToBoxAdapter(
+                child: InkWell(
+                  onTap: () {
+                    Get.toNamed(Routes.bookFitnessClass);
+                  },
+                  child: Container(
+                    height: AppSize.getHeight(146),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(AppAssets.test),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'bookFitnessClass'.tr,
-                        style: AppTextTheme.white700(size: 18),
-                      ),
-                      Text(
-                        'startYourJourney'.tr,
-                        style: AppTextTheme.white600(size: 16),
-                      ),
-                      SizedBox(height: AppSize.getHeight(20)),
-                    ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'bookFitnessClass'.tr,
+                          style: AppTextTheme.white700(size: 18),
+                        ),
+                        Text(
+                          'startYourJourney'.tr,
+                          style: AppTextTheme.white600(size: 16),
+                        ),
+                        SizedBox(height: AppSize.getHeight(20)),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          const HomeDaysSection(),
-          const HomeDailyExercises(),
-        ],
+            const HomeDaysSection(),
+            const HomeDailyExercises(),
+          ],
+        ),
       ),
     );
   }

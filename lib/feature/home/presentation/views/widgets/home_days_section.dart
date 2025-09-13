@@ -1,3 +1,4 @@
+import 'package:active_deer/feature/home/presentation/getx/controllers/days_section_picker_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,9 +7,8 @@ import '../../../../../core/utils/app_border.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
-import '../../getx/controllers/home_controller.dart';
 
-class HomeDaysSection extends GetView<HomeController> {
+class HomeDaysSection extends GetView<DaysSectionPickerController> {
   const HomeDaysSection({super.key});
 
   @override
@@ -27,34 +27,53 @@ class HomeDaysSection extends GetView<HomeController> {
             final isToday = controller.isToday(dayDate);
             final dayName = controller.getDayName(dayDate);
 
-            return Container(
-              height: AppSize.getHeight(73),
-              width: AppSize.getWidth(56),
-              decoration: isToday
-                  ? AppBorder.homeCardPrimaryBorder
-                  : AppBorder.homeCardBorder,
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: AppSize.getHeight(8)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(dayName, style: AppTextTheme.primary400(size: 12)),
-                    Text(
-                      '${dayDate.day}',
-                      style: AppTextTheme.primary800(size: 14),
+            return Obx(() {
+              final isSelected = controller.isSelected(dayDate);
+
+              return InkWell(
+                onTap: () {
+                  controller.selectDate(dayDate);
+                },
+                child: Container(
+                  height: AppSize.getHeight(73),
+                  width: AppSize.getWidth(56),
+                  decoration: isSelected
+                      ? BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: AppColors.primary,
+                            width: AppSize.getWidth(1.5),
+                          ),
+                        )
+                      : AppBorder.homeCardBorder,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: AppSize.getHeight(8),
                     ),
-                    Container(
-                      height: AppSize.getHeight(8),
-                      width: AppSize.getWidth(8),
-                      decoration: BoxDecoration(
-                        color: isToday ? AppColors.green : AppColors.darkGrey,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(dayName, style: AppTextTheme.primary400(size: 12)),
+                        Text(
+                          '${dayDate.day}',
+                          style: AppTextTheme.primary800(size: 14),
+                        ),
+                        Container(
+                          height: AppSize.getHeight(8),
+                          width: AppSize.getWidth(8),
+                          decoration: BoxDecoration(
+                            color: isSelected || isToday
+                                ? AppColors.green
+                                : AppColors.darkGrey,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            );
+              );
+            });
           },
         ),
       ),

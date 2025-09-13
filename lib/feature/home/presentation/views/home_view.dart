@@ -9,6 +9,9 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: HomeViewBody(), drawer: CustomDrawer());
+    return const Scaffold(
+      body: SafeArea(top: false, child: HomeViewBody()),
+      drawer: CustomDrawer(),
+    );
   }
 }

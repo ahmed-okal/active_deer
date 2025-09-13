@@ -12,55 +12,60 @@ class AuthView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AuthSliverAppBar(),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                SizedBox(height: AppSize.getHeight(12)),
-                Center(
-                  child: Text(
-                    'welcome'.tr,
-                    style: AppTextTheme.primary800(size: 20),
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: [
+            const AuthSliverAppBar(),
+
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  SizedBox(height: AppSize.getHeight(12)),
+                  Center(
+                    child: Text(
+                      'welcome'.tr,
+                      style: AppTextTheme.primary800(size: 20),
+                    ),
                   ),
-                ),
-                Center(
-                  child: Text(
-                    'pleaseEnerYourLoginInfo'.tr,
-                    style: AppTextTheme.primary600(size: 18),
+                  Center(
+                    child: Text(
+                      'pleaseEnerYourLoginInfo'.tr,
+                      style: AppTextTheme.primary600(size: 18),
+                    ),
                   ),
-                ),
-                SizedBox(height: AppSize.getHeight(42)),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Obx(
-              () => AnimatedSwitcher(
-                duration: const Duration(milliseconds: 600),
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  return SlideTransition(
-                    position:
-                        Tween<Offset>(
-                          begin: const Offset(1.0, 0.0),
-                          end: Offset.zero,
-                        ).animate(
-                          CurvedAnimation(
-                            parent: animation,
-                            curve: Curves.easeInOut,
-                          ),
-                        ),
-                    child: child,
-                  );
-                },
-                child: controller.authController.currentPage.value == 0
-                    ? const LoginBody()
-                    : const SignUpBody(),
+                  SizedBox(height: AppSize.getHeight(42)),
+                ],
               ),
             ),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: Obx(
+                () => AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 600),
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
+                        return SlideTransition(
+                          position:
+                              Tween<Offset>(
+                                begin: const Offset(1.0, 0.0),
+                                end: Offset.zero,
+                              ).animate(
+                                CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeInOut,
+                                ),
+                              ),
+                          child: child,
+                        );
+                      },
+                  child: controller.authController.currentPage.value == 0
+                      ? const LoginBody()
+                      : const SignUpBody(),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

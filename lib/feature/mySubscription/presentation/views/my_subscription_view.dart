@@ -14,27 +14,32 @@ class MySubscriptionView extends GetView<MySubscriptionController> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const CustomDrawer(),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            pinned: true,
-            flexibleSpace: CustomAppBar(title: 'mySubscriptions'.tr),
-          ),
-          SliverToBoxAdapter(child: const MySubscriptionTapBar()),
-          SliverPadding(
-            padding: AppPadding.bottomPadding25,
-            sliver: SliverList.separated(
-              itemCount: 30,
-              itemBuilder: (context, index) {
-                return HomePremiumCard(padding: AppPadding.horizontalPadding20);
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(height: AppSize.getHeight(16));
-              },
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              pinned: true,
+              flexibleSpace: CustomAppBar(title: 'mySubscriptions'.tr),
             ),
-          ),
-        ],
+            SliverToBoxAdapter(child: const MySubscriptionTapBar()),
+            SliverPadding(
+              padding: AppPadding.bottomPadding25,
+              sliver: SliverList.separated(
+                itemCount: 30,
+                itemBuilder: (context, index) {
+                  return HomePremiumCard(
+                    padding: AppPadding.horizontalPadding20,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: AppSize.getHeight(16));
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

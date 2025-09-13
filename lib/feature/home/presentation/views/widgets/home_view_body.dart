@@ -7,6 +7,7 @@ import 'package:active_deer/feature/home/presentation/views/widgets/home_sliver_
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -50,7 +51,9 @@ class HomeViewBody extends GetView<HomeController> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(Routes.fitnessClassSchedule);
+                    },
                     child: Text(
                       'more'.tr,
                       style: AppTextTheme.secondary700(size: 12).copyWith(

@@ -13,26 +13,29 @@ class OffersView extends GetView<OffersController> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const CustomDrawer(),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            pinned: true,
-            flexibleSpace: CustomAppBar(title: 'offers'.tr),
-          ),
-          SliverPadding(
-            padding: AppPadding.allPadding20,
-            sliver: SliverList.separated(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return const OfferItem();
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(height: AppSize.getHeight(18));
-              },
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              pinned: true,
+              flexibleSpace: CustomAppBar(title: 'offers'.tr),
             ),
-          ),
-        ],
+            SliverPadding(
+              padding: AppPadding.allPadding20,
+              sliver: SliverList.separated(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return const OfferItem();
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: AppSize.getHeight(18));
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
