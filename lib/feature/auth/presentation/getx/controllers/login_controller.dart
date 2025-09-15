@@ -25,11 +25,4 @@ class LoginController extends GetxController {
       Get.offAllNamed(Routes.home);
     }
   }
-
-  @override
-  void onClose() {
-    phoneController.dispose();
-    passwordController.dispose();
-    super.onClose();
-  }
 }

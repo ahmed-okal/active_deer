@@ -56,7 +56,13 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           Divider(height: AppSize.getHeight(15)),
-          DrawerItem(icon: AppAssets.card, title: 'idCard'.tr, onTap: () {}),
+          DrawerItem(
+            icon: AppAssets.card,
+            title: 'idCard'.tr,
+            onTap: () {
+              Get.toNamed(Routes.enterCard);
+            },
+          ),
           Divider(height: AppSize.getHeight(15)),
           DrawerItem(
             icon: AppAssets.persent,

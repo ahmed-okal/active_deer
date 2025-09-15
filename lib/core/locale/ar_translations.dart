@@ -109,6 +109,8 @@ class ArTranslations extends Translations {
       "pleaseEnterValidData": "يرجى إدخال بيانات صالحة",
       "error": "خطأ",
       "notifications": "الإشعارات",
+      "qrCode": "رمز QR",
+      "thisIsYourDigitalIdCode": "هذا هو رمز الهوية الرقمية الخاص بك.",
     },
   };
 }

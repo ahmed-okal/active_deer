@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../feature/notification/presentation/getx/bindings/notification_binding.dart';
-import '../../feature/notification/presentation/views/notification_view.dart';
+import '../../feature/enter_card/presentation/getx/bindings/enter_card_binding.dart';
+import '../../feature/enter_card/presentation/views/enter_card_view.dart';
 import '../../feature/auth/presentation/getx/bindings/login_binding.dart';
 import '../../feature/auth/presentation/views/auth_view.dart';
 import '../../feature/auth/presentation/views/change_password_success.dart';
@@ -18,6 +18,8 @@ import '../../feature/home/presentation/getx/bindings/home_binding.dart';
 import '../../feature/home/presentation/views/home_view.dart';
 import '../../feature/mySubscription/presentation/getx/bindings/my_subscription_binding.dart';
 import '../../feature/mySubscription/presentation/views/my_subscription_view.dart';
+import '../../feature/notification/presentation/getx/bindings/notification_binding.dart';
+import '../../feature/notification/presentation/views/notification_view.dart';
 import '../../feature/nutritional_advice/presentation/getx/bindings/nutritional_advice_binding.dart';
 import '../../feature/nutritional_advice/presentation/views/advice_view.dart';
 import '../../feature/nutritional_advice/presentation/views/nutritional_advice_view.dart';
@@ -105,6 +107,11 @@ class AppPages {
       name: _Paths.notification,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.enterCard,
+      page: () => const EnterCardView(),
+      binding: EnterCardBinding(),
     ),
   ];
 }

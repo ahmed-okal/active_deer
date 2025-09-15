@@ -110,6 +110,8 @@ class EnTranslations extends Translations {
       "pleaseEnterValidData": "Please enter valid data",
       "error": "Error",
       "notifications": "Notifications",
+      "qrCode": "QR Code",
+      "thisIsYourDigitalIdCode": "This is your digital ID code.",
     },
   };
 }
