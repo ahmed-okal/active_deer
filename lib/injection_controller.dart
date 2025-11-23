@@ -1,4 +1,3 @@
-import 'package:active_deer/core/controllers/network_controller.dart';
 import 'package:active_deer/core/services/api_service.dart';
 import 'package:active_deer/core/services/cash_data_source.dart';
 import 'package:active_deer/core/services/language_service.dart';
@@ -37,7 +36,6 @@ class InjectionController {
     Get.put(ThemeService(), permanent: true);
     Get.put(LanguageService(), permanent: true);
     Get.put(NotificationService(), permanent: true);
-    Get.put(NetworkController(), permanent: true);
 
     getIt.registerLazySingleton<CashDataSource>(
       () => CashDataSource(

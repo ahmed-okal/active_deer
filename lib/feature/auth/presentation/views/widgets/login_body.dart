@@ -26,15 +26,13 @@ class LoginBody extends GetView<LoginController> {
         child: Column(
           children: [
             AuthField(
-              hintText: 'enterPhoneNumberMembership'.tr,
-              title: 'phoneNumberMebership'.tr,
+              hintText: 'enterPhoneNumber'.tr,
+              title: 'phoneNumber'.tr,
               controller: controller.phoneController,
               isObscure: false,
-              validator: (value) => AppValidation.phoneOrId(value),
+              validator: (value) => AppValidation.phoneNumber(value),
               keyboardType: TextInputType.phone,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               textInputAction: TextInputAction.next,
             ),
             SizedBox(height: AppSize.getHeight(9)),

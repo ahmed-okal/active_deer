@@ -1,3 +1,4 @@
+import 'package:active_deer/core/controllers/network_controller.dart';
 import 'package:active_deer/core/locale/locale.dart';
 import 'package:active_deer/core/routes/app_pages.dart';
 import 'package:active_deer/core/services/language_service.dart';
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.initial,
           getPages: AppPages.routes,
+          initialBinding: BindingsBuilder(() {
+            Get.put(NetworkController(), permanent: true);
+          }),
         );
       },
     );

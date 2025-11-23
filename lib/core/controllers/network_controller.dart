@@ -13,7 +13,9 @@ class NetworkController extends GetxController {
 
   void _updateConnectionStatus(List<ConnectivityResult> connectivityResult) {
     if (connectivityResult.contains(ConnectivityResult.none)) {
-      Get.to(() => const NoInternetView());
+      if (Get.currentRoute != '/NoInternetView') {
+        Get.to(() => const NoInternetView(), routeName: '/NoInternetView');
+      }
     } else {
       if (Get.currentRoute == '/NoInternetView') {
         Get.back();
