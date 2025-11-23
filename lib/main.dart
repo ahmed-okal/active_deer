@@ -4,6 +4,7 @@ import 'package:active_deer/core/routes/app_pages.dart';
 import 'package:active_deer/core/services/language_service.dart';
 import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/core/theme/app_themes.dart';
+import 'package:active_deer/core/enums/flavors_enum.dart';
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:active_deer/injection_controller.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-void main() async {
+import 'core/flavor/flavor_config.dart';
+
+void main({Flavor? flavor}) async {
+  if (flavor != null) {
+    FlavorConfig(flavor: flavor);
+  }
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await InjectionController().initialize();

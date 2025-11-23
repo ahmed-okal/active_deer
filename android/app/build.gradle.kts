@@ -32,6 +32,26 @@ android {
         multiDexEnabled = true
     }
 
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("production") {
+            dimension = "default"
+            applicationIdSuffix = ""
+            resValue("string", "app_name", "Active Deer")
+        }
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue("string", "app_name", "Active Deer (Dev)")
+        }
+        create("qa") {
+            dimension = "default"
+            applicationIdSuffix = ".qa"
+            resValue("string", "app_name", "Active Deer (Test)")
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
