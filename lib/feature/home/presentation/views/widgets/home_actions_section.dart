@@ -1,12 +1,8 @@
-import 'package:active_deer/feature/home/presentation/views/widgets/home_actions_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
-import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
 
@@ -25,7 +21,7 @@ class HomeActionsSection extends StatelessWidget {
             },
             child: Container(
               height: AppSize.getHeight(146),
-              width: AppSize.getWidth(154),
+              width: AppSize.getWidth(170),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(AppAssets.test),
@@ -51,42 +47,73 @@ class HomeActionsSection extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Column(
-            spacing: AppSize.getHeight(8),
-            children: [
-              HomeActionsCard(
-                onTap: () {
-                  Get.toNamed(Routes.mySubscription);
-                },
-                title: 'mySubscriptions'.tr,
-                icon: Icon(
-                  Icons.access_time_rounded,
-                  color: AppColors.white,
-                  size: AppSize.getHeight(16),
+          InkWell(
+            onTap: () {
+              Get.toNamed(Routes.nutritionalAdvice);
+            },
+            child: Container(
+              height: AppSize.getHeight(146),
+              width: AppSize.getWidth(170),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(AppAssets.test),
+                  fit: BoxFit.cover,
                 ),
+
+                borderRadius: BorderRadius.circular(12),
               ),
-              HomeActionsCard(
-                onTap: () {
-                  Get.toNamed(Routes.offers);
-                },
-                title: 'offers'.tr,
-                icon: SvgPicture.asset(
-                  AppAssets.persent,
-                  height: AppSize.getHeight(16),
-                  width: AppSize.getWidth(16),
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'healthyNutritionalTips'.tr,
+                    style: AppTextTheme.white800(size: 14),
+                  ),
+                  Text(
+                    'mealsThatGiveYouEnergyAndKeepYouFit'.tr,
+                    style: AppTextTheme.white600(size: 8),
+                  ),
+                  SizedBox(height: AppSize.getHeight(13)),
+                ],
               ),
-              HomeActionsCard(
-                onTap: () {},
-                title: 'idCard'.tr,
-                icon: SvgPicture.asset(
-                  AppAssets.card,
-                  height: AppSize.getHeight(16),
-                  width: AppSize.getWidth(16),
-                ),
-              ),
-            ],
+            ),
           ),
+          // Column(
+          //   spacing: AppSize.getHeight(8),
+          //   children: [
+          //     HomeActionsCard(
+          //       onTap: () {
+          //         Get.toNamed(Routes.mySubscription);
+          //       },
+          //       title: 'mySubscriptions'.tr,
+          //       icon: Icon(
+          //         Icons.access_time_rounded,
+          //         color: AppColors.white,
+          //         size: AppSize.getHeight(16),
+          //       ),
+          //     ),
+          //     HomeActionsCard(
+          //       onTap: () {
+          //         Get.toNamed(Routes.offers);
+          //       },
+          //       title: 'offers'.tr,
+          //       icon: SvgPicture.asset(
+          //         AppAssets.persent,
+          //         height: AppSize.getHeight(16),
+          //         width: AppSize.getWidth(16),
+          //       ),
+          //     ),
+          //     HomeActionsCard(
+          //       onTap: () {},
+          //       title: 'idCard'.tr,
+          //       icon: SvgPicture.asset(
+          //         AppAssets.idCard,
+          //         height: AppSize.getHeight(16),
+          //         width: AppSize.getWidth(16),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

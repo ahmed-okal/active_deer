@@ -42,37 +42,17 @@ class DaysSectionPickerController extends GetxController {
         ? 30
         : 31;
 
-    // If today is 1st, show only current month days
-    return currentDate.day == 1
-        ? daysInMonth
-        : daysInMonth -
-              currentDate.day +
-              2; // +2 to include yesterday and today
+    // Show days from today to end of month
+    return daysInMonth - currentDate.day + 1;
   }
 
   DateTime getCalendarDate(int index) {
-    if (currentDate.day == 1) {
-      // If today is 1st, start from day 1
-      return DateTime(currentDate.year, currentDate.month, index + 1);
-    } else {
-      // Start from yesterday
-      final yesterday = currentDate.subtract(Duration(days: 1));
-      if (yesterday.month != currentDate.month) {
-        // Yesterday was in previous month, start from today
-        return DateTime(
-          currentDate.year,
-          currentDate.month,
-          currentDate.day + index,
-        );
-      } else {
-        // Yesterday was in same month
-        return DateTime(
-          currentDate.year,
-          currentDate.month,
-          yesterday.day + index,
-        );
-      }
-    }
+    // Always start from today
+    return DateTime(
+      currentDate.year,
+      currentDate.month,
+      currentDate.day + index,
+    );
   }
 
   bool isToday(DateTime date) {

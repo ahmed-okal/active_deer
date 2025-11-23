@@ -1,5 +1,6 @@
 import 'package:active_deer/core/locale/locale.dart';
 import 'package:active_deer/core/routes/app_pages.dart';
+import 'package:active_deer/core/services/language_service.dart';
 import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/core/theme/app_themes.dart';
 import 'package:active_deer/core/utils/size_config.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         AppSize.init(context);
         return GetMaterialApp(
           translations: MyLocale(),
-          locale: Get.deviceLocale,
+          locale: Get.find<LanguageService>().locale,
           fallbackLocale: const Locale('en', 'US'),
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,

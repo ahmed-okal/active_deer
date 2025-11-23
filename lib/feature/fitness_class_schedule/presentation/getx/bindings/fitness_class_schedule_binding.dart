@@ -1,6 +1,7 @@
 import 'package:active_deer/feature/home/presentation/getx/controllers/days_section_picker_controller.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/widgets/bottom_nav_bar_controller.dart';
 import '../controllers/fitness_class_schedule_controller.dart';
 
 class FitnessClassScheduleBinding extends Bindings {
@@ -12,5 +13,6 @@ class FitnessClassScheduleBinding extends Bindings {
     Get.lazyPut<DaysSectionPickerController>(
       () => DaysSectionPickerController(),
     );
+    Get.lazyPut<BottomNavBarController>(() => BottomNavBarController());
   }
 }

@@ -1,5 +1,4 @@
 import 'package:active_deer/core/routes/app_pages.dart';
-import 'package:active_deer/core/widgets/failed_snack_bar.dart';
 import 'package:active_deer/feature/auth/presentation/getx/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,6 +22,8 @@ class SignUpController extends GetxController {
   final RxBool obscurePasswordText = true.obs;
   final RxBool obscureConfirmPasswordText = true.obs;
   final RxBool isAgree = false.obs;
+
+  final RxBool isLoading = false.obs;
 
   void togglePasswordVisibility() {
     obscurePasswordText.value = !obscurePasswordText.value;
@@ -48,10 +49,8 @@ class SignUpController extends GetxController {
   }
 
   void submitSignUp() {
-    if (validateForm() && isAgree.value) {
-      Get.offAllNamed(Routes.home);
-    } else if (!isAgree.value) {
-      failedSnaskBar('pleaseAgreeToTermsAndConditions'.tr);
+    if (validateForm()) {
+      Get.toNamed(Routes.home);
     }
   }
 

@@ -63,7 +63,7 @@ class HomeDaysSection extends GetView<DaysSectionPickerController> {
                           width: AppSize.getWidth(8),
                           decoration: BoxDecoration(
                             color: isSelected || isToday
-                                ? AppColors.green
+                                ? AppColors.lightGreen
                                 : AppColors.darkGrey,
                             borderRadius: BorderRadius.circular(4),
                           ),

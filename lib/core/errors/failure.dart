@@ -3,49 +3,79 @@ import 'package:get/get.dart';
 
 abstract class Failure {
   final String message;
-  Failure(this.message);
+  final int? statusCode;
+
+  Failure({required this.message, this.statusCode});
 
   @override
-  String toString() => message;
+  String toString() => 'Error: $message (Code: $statusCode)';
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.message);
+  ServerFailure({required super.message, super.statusCode});
 
   factory ServerFailure.fromDioError(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure('connectionTimeout'.tr);
+        return ServerFailure(
+          message: 'connectionTimeout'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.sendTimeout:
-        return ServerFailure('sendTimeout'.tr);
+        return ServerFailure(
+          message: 'sendTimeout'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.receiveTimeout:
-        return ServerFailure('receiveTimeout'.tr);
+        return ServerFailure(
+          message: 'receiveTimeout'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.badCertificate:
-        return ServerFailure('badCertificate'.tr);
+        return ServerFailure(
+          message: 'badCertificate'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            e.response!.statusCode!, e.response!.data);
+          e.response?.statusCode ?? 0,
+          e.response?.data,
+        );
       case DioExceptionType.cancel:
-        return ServerFailure('requestCanceled'.tr);
+        return ServerFailure(
+          message: 'requestCanceled'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.connectionError:
-        return ServerFailure('noInternetConnection'.tr);
+        return ServerFailure(
+          message: 'noInternetConnection'.tr,
+          statusCode: e.response?.statusCode,
+        );
       case DioExceptionType.unknown:
-        return ServerFailure('unknownError'.tr);
+        return ServerFailure(
+          message: 'unknownError'.tr,
+          statusCode: e.response?.statusCode,
+        );
     }
   }
 
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     if (statusCode == 404) {
-      return ServerFailure('userNotFound'.tr);
+      return ServerFailure(message: 'userNotFound'.tr, statusCode: statusCode);
     } else if (statusCode == 500) {
-      return ServerFailure('serverProblem'.tr);
+      return ServerFailure(message: 'serverProblem'.tr, statusCode: statusCode);
     } else if (statusCode == 409 ||
         statusCode == 400 ||
         statusCode == 401 ||
         statusCode == 403) {
-      return ServerFailure(response['message']);
+      return ServerFailure(
+        message: response is Map<String, dynamic>
+            ? response['message']
+            : 'generalError'.tr,
+        statusCode: statusCode,
+      );
     } else {
-      return ServerFailure('generalError'.tr);
+      return ServerFailure(message: 'generalError'.tr, statusCode: statusCode);
     }
   }
 }

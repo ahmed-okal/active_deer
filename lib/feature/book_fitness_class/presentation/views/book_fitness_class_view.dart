@@ -3,7 +3,6 @@ import 'package:active_deer/core/utils/app_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
-import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/book_fitness_class_controller.dart';
 import 'widgets/custom_calendar.dart';
 import 'widgets/exercises_list_view.dart';
@@ -14,7 +13,7 @@ class BookFitnessClassView extends GetView<BookFitnessClassController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SafeArea(
         top: false,
         child: CustomScrollView(

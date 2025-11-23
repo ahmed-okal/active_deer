@@ -1,4 +1,7 @@
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../routes/app_pages.dart';
 
 class CashDataSource {
   final box = GetStorage();
@@ -26,8 +29,10 @@ class CashDataSource {
   }
 
   void logout() {
-    // Clear all data including session data
+    Get.find<CashDataSource>().clearInvoiceData();
+    Get.find<CashDataSource>().clearSessionData();
     box.erase();
+    Get.offAllNamed(Routes.auth);
   }
 
   // Save invoice data

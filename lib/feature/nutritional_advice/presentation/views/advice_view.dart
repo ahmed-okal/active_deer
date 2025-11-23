@@ -4,11 +4,9 @@ import 'package:active_deer/core/utils/size_config.dart';
 import 'package:active_deer/feature/nutritional_advice/presentation/views/widgets/bottom_sheet_title.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
-import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/advice_controller.dart';
 
 class AdviceView extends GetView<AdviceController> {
@@ -21,7 +19,7 @@ class AdviceView extends GetView<AdviceController> {
     final heroTag = arguments?['heroTag'] ?? 'advice';
 
     return Scaffold(
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SafeArea(
         top: false,
         child: Stack(

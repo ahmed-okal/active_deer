@@ -1,10 +1,17 @@
 import 'dart:async';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/widgets/failed_snack_bar.dart';
 import '../../../../../core/widgets/success_snack_bar.dart';
 
 class EnterPinController extends GetxController {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  bool validateForm() {
+    return formKey.currentState?.validate() ?? false;
+  }
+
   // Observables
   final RxBool isTimerRunning = false.obs;
   final RxInt currentTimerCount = 0.obs;

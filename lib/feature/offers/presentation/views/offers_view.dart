@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../../core/utils/app_padding.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
-import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/offers_controller.dart';
 
 class OffersView extends GetView<OffersController> {
@@ -12,7 +11,6 @@ class OffersView extends GetView<OffersController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CustomDrawer(),
       body: SafeArea(
         top: false,
         child: CustomScrollView(

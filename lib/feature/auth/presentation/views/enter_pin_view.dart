@@ -33,7 +33,9 @@ class EnterPinView extends GetView<EnterPinController> {
                   child: CustomPrimaryButton(
                     title: 'next'.tr,
                     onTap: () {
-                      Get.toNamed(Routes.createNewPassword);
+                      if (controller.validateForm()) {
+                        Get.toNamed(Routes.createNewPassword);
+                      }
                     },
                   ),
                 );
@@ -63,39 +65,43 @@ class EnterPinView extends GetView<EnterPinController> {
                       ),
                     ),
                     SizedBox(height: AppSize.getHeight(42)),
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: Pinput(
-                        autofocus: true,
-                        obscureText: true,
-                        showCursor: true,
-                        obscuringWidget: Container(
-                          height: AppSize.getHeight(14),
-                          width: AppSize.getWidth(14),
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        defaultPinTheme: PinTheme(
-                          width: AppSize.getWidth(53),
-                          height: AppSize.getHeight(50),
-                          decoration: BoxDecoration(
-                            border: Border.all(
+                    Form(
+                      key: controller.formKey,
+                      child: Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: Pinput(
+                          autofocus: true,
+                          obscureText: true,
+                          showCursor: true,
+                          obscuringWidget: Container(
+                            height: AppSize.getHeight(14),
+                            width: AppSize.getWidth(14),
+                            decoration: BoxDecoration(
                               color: AppColors.primary,
-                              width: AppSize.getHeight(1.5),
+                              shape: BoxShape.circle,
                             ),
-                            borderRadius: BorderRadius.circular(16),
                           ),
-                          textStyle: AppTextTheme.primary500(size: 24),
+                          defaultPinTheme: PinTheme(
+                            width: AppSize.getWidth(53),
+                            height: AppSize.getHeight(50),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColors.primary,
+                                width: AppSize.getHeight(1.5),
+                              ),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            textStyle: AppTextTheme.primary500(size: 24),
+                          ),
+                          length: 6,
+                          forceErrorState: true,
+                          pinputAutovalidateMode:
+                              PinputAutovalidateMode.onSubmit,
+                          validator: (pin) {
+                            if (pin == '000000') return null;
+                            return 'invalidPinCode'.tr;
+                          },
                         ),
-                        length: 6,
-                        forceErrorState: true,
-                        pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                        validator: (pin) {
-                          if (pin == '000000') return null;
-                          return 'invalidPinCode'.tr;
-                        },
                       ),
                     ),
                     SizedBox(height: AppSize.getHeight(8)),

@@ -34,7 +34,9 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   child: CustomPrimaryButton(
                     title: 'next'.tr,
                     onTap: () {
-                      Get.toNamed(Routes.enterPin);
+                      if (controller.validateForm()) {
+                        Get.toNamed(Routes.enterPin);
+                      }
                     },
                   ),
                 );
@@ -64,15 +66,20 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       ),
                     ),
                     SizedBox(height: AppSize.getHeight(42)),
-                    AuthField(
-                      title: 'phoneNumber'.tr,
-                      hintText: 'enterPhoneNumber'.tr,
-                      controller: controller.phoneController,
-                      isObscure: false,
-                      validator: (value) => AppValidation.phoneNumber(value),
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.phone,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    Form(
+                      key: controller.formKey,
+                      child: AuthField(
+                        title: 'phoneNumber'.tr,
+                        hintText: 'enterPhoneNumber'.tr,
+                        controller: controller.phoneController,
+                        isObscure: false,
+                        validator: (value) => AppValidation.phoneNumber(value),
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.phone,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -4,12 +4,9 @@ import 'package:active_deer/core/utils/size_config.dart';
 import 'package:active_deer/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
-
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/utils/app_assets.dart';
-import '../../../../core/widgets/custom_drawer.dart';
 import '../getx/controllers/notification_controller.dart';
 
 class NotificationView extends GetView<NotificationController> {
@@ -17,7 +14,7 @@ class NotificationView extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       body: SafeArea(
         top: false,
 

@@ -2,6 +2,7 @@ import 'package:active_deer/core/widgets/custom_primary_button.dart';
 import 'package:active_deer/feature/auth/presentation/getx/controllers/signup_controller.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/birth_date_field.dart';
+import 'package:active_deer/feature/auth/presentation/views/widgets/terms_andconditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -64,94 +65,66 @@ class SignUpBody extends GetView<SignUpController> {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             const BirthDateField(),
-            AuthField(
-              hintText: '******'.tr,
-              title: 'password'.tr,
-              controller: controller.passwordController,
-              isObscure: true,
-              validator: (value) => AppValidation.password(value),
-              suffixIcon: Padding(
-                padding: AppPadding.suffixPadding,
-                child: InkWell(
-                  onTap: controller.togglePasswordVisibility,
-                  child: SvgPicture.asset(
-                    height: AppSize.getHeight(24),
-                    width: AppSize.getWidth(24),
-                    controller.obscurePasswordText.value
-                        ? AppAssets.eyeOff
-                        : AppAssets.eyeOn,
-                  ),
-                ),
-              ),
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            AuthField(
-              hintText: '******'.tr,
-              title: 'confirmPassword'.tr,
-              controller: controller.confirmPasswordController,
-              isObscure: true,
-              validator: (value) => AppValidation.confirmPassword(
-                value,
-                controller.passwordController.text,
-              ),
-              suffixIcon: Padding(
-                padding: AppPadding.suffixPadding,
-                child: InkWell(
-                  onTap: controller.togglePasswordVisibility,
-                  child: SvgPicture.asset(
-                    height: AppSize.getHeight(24),
-                    width: AppSize.getWidth(24),
-                    controller.obscureConfirmPasswordText.value
-                        ? AppAssets.eyeOff
-                        : AppAssets.eyeOn,
-                  ),
-                ),
-              ),
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            Row(
-              children: [
-                Obx(
-                  () => SizedBox(
-                    width: AppSize.getWidth(24),
-                    height: AppSize.getHeight(24),
-                    child: Transform.scale(
-                      scale: 1.1,
-                      child: Checkbox(
-                        checkColor: AppColors.background,
-                        fillColor: WidgetStateProperty.all(
-                          controller.isAgree.value
-                              ? AppColors.primary
-                              : AppColors.background,
-                        ),
-                        activeColor: AppColors.background,
-                        value: controller.isAgree.value,
-                        onChanged: (value) {
-                          controller.toggleAgree();
-                        },
-                      ),
+            Obx(
+              () => AuthField(
+                hintText: '******'.tr,
+                title: 'password'.tr,
+                controller: controller.passwordController,
+                isObscure: controller.obscurePasswordText.value,
+                validator: (value) => AppValidation.password(value),
+                suffixIcon: Padding(
+                  padding: AppPadding.suffixPadding,
+                  child: InkWell(
+                    onTap: controller.togglePasswordVisibility,
+                    child: SvgPicture.asset(
+                      height: AppSize.getHeight(24),
+                      width: AppSize.getWidth(24),
+                      controller.obscurePasswordText.value
+                          ? AppAssets.eyeOff
+                          : AppAssets.eyeOn,
                     ),
                   ),
                 ),
-                Text(
-                  'iAgreeToAll'.tr,
-                  style: AppTextTheme.primary500(size: 12),
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+            ),
+            Obx(
+              () => AuthField(
+                hintText: '******'.tr,
+                title: 'confirmPassword'.tr,
+                controller: controller.confirmPasswordController,
+                isObscure: controller.obscureConfirmPasswordText.value,
+                validator: (value) => AppValidation.confirmPassword(
+                  value,
+                  controller.passwordController.text,
                 ),
-                Text(
-                  ' ${'termsAndConditions'.tr}',
-                  style: AppTextTheme.primary800(size: 12).copyWith(
-                    decorationColor: AppColors.primary,
-                    decoration: TextDecoration.underline,
+                suffixIcon: Padding(
+                  padding: AppPadding.suffixPadding,
+                  child: InkWell(
+                    onTap: controller.toggleConfirmPasswordVisibility,
+                    child: SvgPicture.asset(
+                      height: AppSize.getHeight(24),
+                      width: AppSize.getWidth(24),
+                      controller.obscureConfirmPasswordText.value
+                          ? AppAssets.eyeOff
+                          : AppAssets.eyeOn,
+                    ),
                   ),
                 ),
-              ],
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.visiblePassword,
+              ),
             ),
+            const TermsAndConditions(),
             SizedBox(height: AppSize.getHeight(70)),
-            CustomPrimaryButton(
-              title: 'signUp'.tr,
-              onTap: controller.submitSignUp,
+            Obx(
+              () => CustomPrimaryButton(
+                title: 'signUp'.tr,
+                onTap: controller.submitSignUp,
+                isLoading: controller.isLoading.value,
+                isEnable: controller.isAgree.value,
+              ),
             ),
             SizedBox(height: AppSize.getHeight(10)),
             Row(

@@ -26,7 +26,7 @@ class HomePremiumCard extends StatelessWidget {
           );
         },
         child: Container(
-          height: AppSize.getHeight(83),
+          height: AppSize.getHeight(94),
           decoration: AppBorder.homeContainerBorder,
           child: Container(
             margin: EdgeInsets.all(AppSize.getHeight(1)),
@@ -53,7 +53,17 @@ class HomePremiumCard extends StatelessWidget {
                       const HomePopupMenuButton(),
                     ],
                   ),
-                  SizedBox(height: AppSize.getHeight(10)),
+                  SizedBox(height: AppSize.getHeight(8)),
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                      Get.locale?.languageCode == 'ar'
+                          ? '5 أيام متبقية'
+                          : '5 Days Left',
+                      style: AppTextTheme.primary700(size: 12),
+                    ),
+                  ),
+                  SizedBox(height: AppSize.getHeight(8)),
                   const CustomPresentIndicator(percent: 0.5),
                   Spacer(),
                   Row(

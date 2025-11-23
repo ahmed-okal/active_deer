@@ -1,0 +1,104 @@
+import 'package:get/get.dart';
+import 'package:moyasar/moyasar.dart';
+
+import '../../../../../core/routes/app_pages.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/failed_snack_bar.dart';
+
+class PaymentProcessingController extends GetxController {
+  // ------------------- Observables -------------------
+  final isLoading = false.obs;
+  final amount = 100.0.obs;
+  final description = 'Payment for services'.obs;
+
+  // ------------------- Payment Config -------------------
+  static const String publishableApiKey = Constants.paymentPublicableTestApiKey;
+
+  PaymentConfig get paymentConfig => PaymentConfig(
+    publishableApiKey: publishableApiKey,
+    amount: (amount.value * 100).toInt(),
+    description: description.value,
+  );
+
+  // ------------------- Payment Processing -------------------
+  Future<void> processPayment(Map<String, String> cardData) async {
+    try {
+      isLoading.value = true;
+
+      // Validate card data
+      if (!_isCardDataValid(cardData)) {
+        failedSnaskBar('Invalid card data provided');
+        return;
+      }
+
+      // Simulate payment processing
+      await Future.delayed(const Duration(seconds: 2));
+
+      // Simulate success (90% success rate)
+      bool success = DateTime.now().millisecond % 10 != 0;
+
+      if (success) {
+        _handlePaymentSuccess();
+      } else {
+        _handlePaymentFailure();
+      }
+    } catch (e) {
+      _handlePaymentError(e);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  // ------------------- Moyasar Payment Result Handler -------------------
+  void onPaymentResult(PaymentResponse result) {
+    switch (result.status) {
+      case PaymentStatus.paid:
+      case PaymentStatus.authorized:
+      case PaymentStatus.captured:
+        _handlePaymentSuccess();
+        break;
+      case PaymentStatus.failed:
+        _handlePaymentFailure();
+        break;
+      case PaymentStatus.initiated:
+        break;
+    }
+  }
+
+  // ------------------- Private Methods -------------------
+  bool _isCardDataValid(Map<String, String> cardData) {
+    return cardData['cardNumber']?.isNotEmpty == true &&
+        cardData['expiryDate']?.isNotEmpty == true &&
+        cardData['cardHolderName']?.isNotEmpty == true &&
+        cardData['cvvCode']?.isNotEmpty == true;
+  }
+
+  void _handlePaymentSuccess() {
+    Get.toNamed(Routes.paymentSuccess);
+  }
+
+  void _handlePaymentFailure() {
+    failedSnaskBar('Payment failed. Please try again.');
+  }
+
+  void _handlePaymentError(dynamic error) {
+    failedSnaskBar('An error occurred: ${error.toString()}');
+  }
+
+  // ------------------- Utility Methods -------------------
+  void setAmount(double newAmount) {
+    amount.value = newAmount;
+  }
+
+  void setDescription(String newDescription) {
+    description.value = newDescription;
+  }
+
+  Map<String, dynamic> getPaymentSummary() {
+    return {
+      'amount': amount.value,
+      'formattedAmount': '${amount.value.toStringAsFixed(2)} SAR',
+      'description': description.value,
+    };
+  }
+}

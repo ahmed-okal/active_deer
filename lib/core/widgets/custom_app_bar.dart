@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     required this.title,
     this.notificationIcon = true,
+    // this.lisIcon = true,
   });
   final String title;
   final bool notificationIcon;
@@ -29,16 +30,7 @@ class CustomAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: AppSize.getWidth(12),
             children: [
-              InkWell(
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                child: SvgPicture.asset(
-                  AppAssets.menuIcon,
-                  height: AppSize.getHeight(18),
-                  width: AppSize.getWidth(18),
-                ),
-              ),
+              const SizedBox(),
               Text(title, style: AppTextTheme.white900(size: 12)),
               notificationIcon
                   ? const NotificationIcon()
@@ -46,6 +38,24 @@ class CustomAppBar extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ListIcon extends StatelessWidget {
+  const ListIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Scaffold.of(context).openDrawer();
+      },
+      child: SvgPicture.asset(
+        AppAssets.menuIcon,
+        height: AppSize.getHeight(18),
+        width: AppSize.getWidth(18),
       ),
     );
   }

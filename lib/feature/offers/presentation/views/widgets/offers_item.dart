@@ -3,7 +3,9 @@ import 'package:active_deer/feature/offers/presentation/views/widgets/offers_ima
 import 'package:active_deer/feature/offers/presentation/views/widgets/offers_price_container.dart';
 import 'package:active_deer/feature/offers/presentation/views/widgets/offers_title.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/utils/app_border.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
@@ -13,33 +15,38 @@ class OfferItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppSize.getHeight(112),
-      decoration: AppBorder.homeCardBorder,
-      child: Stack(
-        children: [
-          Row(
-            children: [
-              const OfferImage(),
-              Padding(
-                padding: AppPadding.allPadding8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: AppSize.getHeight(2),
-                  children: [
-                    const OfferTitle(),
-                    SizedBox(height: AppSize.getHeight(2)),
+    return InkWell(
+      onTap: () {
+        Get.toNamed(Routes.payment);
+      },
+      child: Container(
+        height: AppSize.getHeight(112),
+        decoration: AppBorder.homeCardBorder,
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                const OfferImage(),
+                Padding(
+                  padding: AppPadding.allPadding8,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: AppSize.getHeight(2),
+                    children: [
+                      const OfferTitle(),
+                      SizedBox(height: AppSize.getHeight(2)),
 
-                    const OfferDetails(),
-                    const OfferDetails(),
-                    const OfferDetails(),
-                  ],
+                      const OfferDetails(),
+                      const OfferDetails(),
+                      const OfferDetails(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const OfferPriceContainer(),
-        ],
+              ],
+            ),
+            const OfferPriceContainer(),
+          ],
+        ),
       ),
     );
   }

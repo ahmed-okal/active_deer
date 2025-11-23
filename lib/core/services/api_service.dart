@@ -82,7 +82,7 @@ class ApiService {
     } on dio.DioException catch (e) {
       throw ServerFailure.fromDioError(e);
     } catch (e) {
-      throw ServerFailure('generalError'.tr);
+      throw ServerFailure(message: 'generalError'.tr, statusCode: 500);
     }
   }
 

@@ -1,18 +1,17 @@
 import 'package:active_deer/feature/home/presentation/views/widgets/home_actions_section.dart';
-import 'package:active_deer/feature/home/presentation/views/widgets/home_daily_exercises.dart';
-import 'package:active_deer/feature/home/presentation/views/widgets/home_days_section.dart';
-import 'package:active_deer/feature/home/presentation/views/widgets/home_final_card.dart';
 import 'package:active_deer/feature/home/presentation/views/widgets/home_premium_card_section.dart';
 import 'package:active_deer/feature/home/presentation/views/widgets/home_sliver_app_bar.dart';
+import 'package:active_deer/feature/home/presentation/views/widgets/panner_dots.dart';
+import 'package:active_deer/feature/home/presentation/views/widgets/panner_slider.dart';
+import 'package:active_deer/feature/home/presentation/views/widgets/premium_card_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/theme/app_text_theme.dart';
-import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/size_config.dart';
+import '../../../../offers/presentation/views/widgets/offers_item.dart';
 import '../../getx/controllers/home_controller.dart';
 
 class HomeViewBody extends GetView<HomeController> {
@@ -29,15 +28,14 @@ class HomeViewBody extends GetView<HomeController> {
         ),
         SliverList(
           delegate: SliverChildListDelegate([
-            Padding(
-              padding: AppPadding.verticalPadding20,
-              child: Image.asset(
-                AppAssets.logo,
-                height: AppSize.getHeight(98),
-                width: AppSize.getWidth(98),
-              ),
-            ),
+            SizedBox(height: AppSize.getHeight(20)),
+            const PannerSlider(),
+            SizedBox(height: AppSize.getHeight(6)),
+            const PannerDots(),
+            SizedBox(height: AppSize.getHeight(13)),
             const HomePremiumCardSection(),
+            SizedBox(height: AppSize.getHeight(6)),
+            const PremiumCardDots(),
             SizedBox(height: AppSize.getHeight(13)),
             const HomeActionsSection(),
             SizedBox(height: AppSize.getHeight(15)),
@@ -45,10 +43,7 @@ class HomeViewBody extends GetView<HomeController> {
               padding: AppPadding.horizontalPadding20,
               child: Row(
                 children: [
-                  Text(
-                    'fitnessClassSchedule'.tr,
-                    style: AppTextTheme.primary700(size: 12),
-                  ),
+                  Text('offers'.tr, style: AppTextTheme.primary700(size: 12)),
                   const Spacer(),
                   InkWell(
                     onTap: () {
@@ -65,12 +60,22 @@ class HomeViewBody extends GetView<HomeController> {
                 ],
               ),
             ),
-            SizedBox(height: AppSize.getHeight(15)),
           ]),
         ),
-        const HomeDaysSection(),
-        const HomeDailyExercises(),
-        const HomeFinalCard(),
+        // const HomeDaysSection(),
+        SliverPadding(
+          padding: AppPadding.allPadding20,
+          sliver: SliverList.separated(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return const OfferItem();
+            },
+            separatorBuilder: (context, index) {
+              return SizedBox(height: AppSize.getHeight(18));
+            },
+          ),
+        ),
+        // const HomeFinalCard(),
       ],
     );
   }

@@ -7,6 +7,11 @@ class CreateNewPasswordController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  bool validateForm() {
+    return formKey.currentState?.validate() ?? false;
+  }
 
   void togglePasswordVisibility() {
     obscurePasswordText.value = !obscurePasswordText.value;
