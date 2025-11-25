@@ -207,6 +207,9 @@ class ArTranslations extends Translations {
       "subscriptionWillResumeOn": "سيُستأنف اشتراكك تلقائياً في تاريخ",
       "youCanCancelFreezeAnytime":
           "يمكنك إلغاء التجميد في أي وقت من خلال صفحة اشتراكك.",
+      "noInternetConnection": "خطأ في الشبكة",
+      "pleaseCheckYourInternetConnection":
+          "يرجى التحقق من الشبكة وإعادة المحاولة",
     },
   };
 }

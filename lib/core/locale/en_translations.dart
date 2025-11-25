@@ -212,6 +212,9 @@ class EnTranslations extends Translations {
           "Your subscription will resume automatically on",
       "youCanCancelFreezeAnytime":
           "You can cancel the freeze at any time from your subscription page.",
+      "noInternetConnection": "No Internet Connection",
+      "pleaseCheckYourInternetConnection":
+          "Please check your internet connection and try again.",
     },
   };
 }

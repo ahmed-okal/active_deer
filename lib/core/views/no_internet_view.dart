@@ -1,7 +1,10 @@
 import 'package:active_deer/core/utils/app_colors.dart';
 import 'package:active_deer/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
+import '../utils/app_assets.dart';
 
 class NoInternetView extends StatelessWidget {
   const NoInternetView({super.key});
@@ -16,10 +19,10 @@ class NoInternetView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.wifi_off_rounded,
-                size: AppSize.getHeight(100),
-                color: AppColors.primary,
+              SvgPicture.asset(
+                AppAssets.wifiError,
+                height: AppSize.getHeight(80),
+                width: AppSize.getWidth(80),
               ),
               SizedBox(height: AppSize.getHeight(20)),
               Text(

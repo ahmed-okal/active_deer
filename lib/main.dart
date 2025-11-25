@@ -13,8 +13,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
 import 'core/flavor/flavor_config.dart';
+import 'package:active_deer/core/routes/app_router.dart';
 
 void main({Flavor? flavor}) async {
   if (flavor != null) {
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           // themeMode: ThemeMode.system,
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.initial,
-          getPages: AppPages.routes,
+          onGenerateRoute: AppRouter.generateRoute,
           initialBinding: BindingsBuilder(() {
             Get.put(NetworkController(), permanent: true);
           }),

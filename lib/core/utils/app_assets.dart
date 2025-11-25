@@ -35,4 +35,7 @@ class AppAssets {
   static const String aboutUs = 'assets/icons/about_us.svg';
   static const String form = 'assets/icons/form.svg';
   static const String delete = 'assets/icons/delete.svg';
+  static const String wifiError = 'assets/icons/wifi_error.svg';
+  static const String error = 'assets/icons/error.svg';
+  static const String empty = 'assets/icons/empty.svg';
 }
