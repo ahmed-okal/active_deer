@@ -13,7 +13,9 @@ class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: controller.signUpController.isLoading.value
+      body:
+          (controller.signUpController.isLoading.value ||
+              controller.loginController.isLoading.value)
           ? const LoadingWidget()
           : SafeArea(
               top: false,
