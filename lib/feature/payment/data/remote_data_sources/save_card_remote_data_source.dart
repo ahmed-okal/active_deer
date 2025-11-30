@@ -18,11 +18,11 @@ class SaveCardRemoteDataSourceImpl implements SaveCardRemoteDataSource {
 
   @override
   Future<SavedCardModel> saveCard(CardTokenRequest request) async {
-    final pk = Constants.paymentSecretTestApiKey;
+    final pk = AppConstants.paymentSecretTestApiKey;
     final basic = base64Encode(utf8.encode('$pk:'));
 
     final result = await apiService.post(
-      '${Constants.paymentBaseUrl}tokens',
+      '${AppConstants.paymentBaseUrl}tokens',
       request.toMap(),
       Options(
         headers: {'Authorization': 'Basic $basic'},

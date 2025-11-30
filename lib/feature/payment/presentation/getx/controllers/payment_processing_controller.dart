@@ -6,13 +6,11 @@ import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/failed_snack_bar.dart';
 
 class PaymentProcessingController extends GetxController {
-  // ------------------- Observables -------------------
   final isLoading = false.obs;
   final amount = 100.0.obs;
   final description = 'Payment for services'.obs;
-
-  // ------------------- Payment Config -------------------
-  static const String publishableApiKey = Constants.paymentPublicableTestApiKey;
+  static const String publishableApiKey =
+      AppConstants.paymentPublicableTestApiKey;
 
   PaymentConfig get paymentConfig => PaymentConfig(
     publishableApiKey: publishableApiKey,
@@ -20,21 +18,17 @@ class PaymentProcessingController extends GetxController {
     description: description.value,
   );
 
-  // ------------------- Payment Processing -------------------
   Future<void> processPayment(Map<String, String> cardData) async {
     try {
       isLoading.value = true;
 
-      // Validate card data
       if (!_isCardDataValid(cardData)) {
         failedSnaskBar('Invalid card data provided');
         return;
       }
 
-      // Simulate payment processing
       await Future.delayed(const Duration(seconds: 2));
 
-      // Simulate success (90% success rate)
       bool success = DateTime.now().millisecond % 10 != 0;
 
       if (success) {
@@ -49,7 +43,6 @@ class PaymentProcessingController extends GetxController {
     }
   }
 
-  // ------------------- Moyasar Payment Result Handler -------------------
   void onPaymentResult(PaymentResponse result) {
     switch (result.status) {
       case PaymentStatus.paid:
@@ -65,7 +58,6 @@ class PaymentProcessingController extends GetxController {
     }
   }
 
-  // ------------------- Private Methods -------------------
   bool _isCardDataValid(Map<String, String> cardData) {
     return cardData['cardNumber']?.isNotEmpty == true &&
         cardData['expiryDate']?.isNotEmpty == true &&
@@ -85,7 +77,6 @@ class PaymentProcessingController extends GetxController {
     failedSnaskBar('An error occurred: ${error.toString()}');
   }
 
-  // ------------------- Utility Methods -------------------
   void setAmount(double newAmount) {
     amount.value = newAmount;
   }

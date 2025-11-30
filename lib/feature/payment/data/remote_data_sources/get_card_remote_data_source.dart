@@ -13,7 +13,7 @@ class GetCardRemoteDataSourceImpl implements GetCardRemoteDataSource {
   @override
   Future<SavedCardModel> getCardByToken(String token) async {
     final result = await apiService.getRequest(
-      '${Constants.paymentBaseUrl}tokens/$token',
+      '${AppConstants.paymentBaseUrl}tokens/$token',
     );
     final responseData = result.data;
     if (result.statusCode == 200) {

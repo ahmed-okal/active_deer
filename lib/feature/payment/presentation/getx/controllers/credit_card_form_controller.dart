@@ -24,7 +24,6 @@ class CreditCardFormController extends GetxController {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  // Save card option
   final RxBool saveCard = false.obs;
 
   @override
@@ -115,14 +114,12 @@ class CreditCardFormController extends GetxController {
     cvvCode.value = value;
   }
 
-  // Validate individual fields using AppValidation
   String? validateCardNumber() => AppValidation.cardNumber(cardNumber.value);
   String? validateExpiryDate() => AppValidation.expiryDate(expiryDate.value);
   String? validateCardHolderName() =>
       AppValidation.cardHolderName(cardHolderName.value);
   String? validateCvv() => AppValidation.cvv(cvvCode.value);
 
-  // Validate entire form
   bool validateForm() {
     final validationResults = AppValidation.validateCreditCardForm(
       cardNumber: cardNumber.value,
@@ -131,7 +128,6 @@ class CreditCardFormController extends GetxController {
       cvvCode: cvvCode.value,
     );
 
-    // Check if any field has validation errors
     for (final entry in validationResults.entries) {
       if (entry.value != null) {
         failedSnaskBar(entry.value!);
@@ -142,7 +138,6 @@ class CreditCardFormController extends GetxController {
     return true;
   }
 
-  // Get validation errors for UI display
   Map<String, String?> getValidationErrors() {
     return AppValidation.validateCreditCardForm(
       cardNumber: cardNumber.value,
@@ -152,30 +147,27 @@ class CreditCardFormController extends GetxController {
     );
   }
 
-  // Toggle save card option
   void toggleSaveCard() {
     saveCard.value = !saveCard.value;
   }
 
-  // Create card token request from current form data
   CardTokenRequest createCardTokenRequest() {
-  final expiryParts = expiryDate.value.split('/');
-  String month = expiryParts.isNotEmpty ? expiryParts[0] : '';
-  String year = expiryParts.length > 1 ? expiryParts[1] : '';
+    final expiryParts = expiryDate.value.split('/');
+    String month = expiryParts.isNotEmpty ? expiryParts[0] : '';
+    String year = expiryParts.length > 1 ? expiryParts[1] : '';
 
-  // normalize year to two digits if user entered 2027 -> 27
-  if (year.length == 4) {
-    year = year.substring(2);
+    if (year.length == 4) {
+      year = year.substring(2);
+    }
+
+    return CardTokenRequest(
+      cardNumber: cardNumber.value.replaceAll(' ', ''),
+      expiryMonth: month.padLeft(2, '0'),
+      expiryYear: year.padLeft(2, '0'),
+      cvv: cvvCode.value,
+      holderName: cardHolderName.value.trim(),
+    );
   }
-
-  return CardTokenRequest(
-    cardNumber: cardNumber.value.replaceAll(' ', ''),
-    expiryMonth: month.padLeft(2, '0'),
-    expiryYear: year.padLeft(2, '0'),
-    cvv: cvvCode.value,
-    holderName: cardHolderName.value.trim(),
-  );
-}
 
   void clearForm() {
     cardNumberController.clear();

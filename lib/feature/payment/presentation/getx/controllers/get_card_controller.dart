@@ -23,7 +23,6 @@ class GetSavedCardsController extends GetxController {
   }
 
   Future<void> fetchSavedCards() async {
-    // التأكد إن عندك tokens
     if (savedTokens.isEmpty) {
       errorMessage.value = 'No saved cards found';
       return;

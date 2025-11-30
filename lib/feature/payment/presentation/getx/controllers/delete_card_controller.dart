@@ -9,7 +9,6 @@ class DeleteCardController extends GetxController {
 
   DeleteCardController({required this.deleteCardUseCase});
 
-  // States
   final RxBool isLoading = false.obs;
   final Rx<SavedCardModel?> deletedCard = Rx<SavedCardModel?>(null);
   final RxString errorMessage = ''.obs;

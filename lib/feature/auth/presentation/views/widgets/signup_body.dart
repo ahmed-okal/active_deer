@@ -1,5 +1,5 @@
 import 'package:active_deer/core/widgets/custom_primary_button.dart';
-import 'package:active_deer/feature/auth/presentation/getx/controllers/signup_controller.dart';
+import 'package:active_deer/feature/auth/presentation/getx/controllers/auth_controller.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/birth_date_field.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/terms_andconditions.dart';
@@ -14,7 +14,7 @@ import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/app_validation.dart';
 import '../../../../../core/utils/size_config.dart';
 
-class SignUpBody extends GetView<SignUpController> {
+class SignUpBody extends GetView<AuthController> {
   const SignUpBody({super.key});
 
   @override
@@ -22,14 +22,14 @@ class SignUpBody extends GetView<SignUpController> {
     return Padding(
       padding: AppPadding.horizontalPadding20,
       child: Form(
-        key: controller.formKey,
+        key: controller.signUpController.formKey,
         child: Column(
           spacing: AppSize.getHeight(10),
           children: [
             AuthField(
               hintText: 'enterFullName'.tr,
               title: 'name'.tr,
-              controller: controller.nameController,
+              controller: controller.signUpController.nameController,
               isObscure: false,
               validator: (value) => AppValidation.name(value),
               keyboardType: TextInputType.name,
@@ -38,7 +38,7 @@ class SignUpBody extends GetView<SignUpController> {
             AuthField(
               title: 'phoneNumber'.tr,
               hintText: 'enterPhoneNumber'.tr,
-              controller: controller.phoneController,
+              controller: controller.signUpController.phoneController,
               isObscure: false,
               validator: (value) => AppValidation.phoneNumber(value),
               keyboardType: TextInputType.phone,
@@ -48,7 +48,7 @@ class SignUpBody extends GetView<SignUpController> {
             AuthField(
               hintText: 'mail'.tr,
               title: 'enterMail'.tr,
-              controller: controller.emailController,
+              controller: controller.signUpController.emailController,
               isObscure: false,
               validator: (value) => AppValidation.email(value),
               keyboardType: TextInputType.emailAddress,
@@ -57,8 +57,8 @@ class SignUpBody extends GetView<SignUpController> {
             AuthField(
               hintText: 'enterIdNumber'.tr,
               title: 'idNumber'.tr,
-              controller: controller.idNumberController,
-              isObscure: true,
+              controller: controller.signUpController.idNumberController,
+              isObscure: false,
               validator: (value) => AppValidation.idNumber(value),
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.numberWithOptions(signed: false),
@@ -69,17 +69,18 @@ class SignUpBody extends GetView<SignUpController> {
               () => AuthField(
                 hintText: '******'.tr,
                 title: 'password'.tr,
-                controller: controller.passwordController,
-                isObscure: controller.obscurePasswordText.value,
+                controller: controller.signUpController.passwordController,
+                isObscure:
+                    controller.signUpController.obscurePasswordText.value,
                 validator: (value) => AppValidation.password(value),
                 suffixIcon: Padding(
                   padding: AppPadding.suffixPadding,
                   child: InkWell(
-                    onTap: controller.togglePasswordVisibility,
+                    onTap: controller.signUpController.togglePasswordVisibility,
                     child: SvgPicture.asset(
                       height: AppSize.getHeight(24),
                       width: AppSize.getWidth(24),
-                      controller.obscurePasswordText.value
+                      controller.signUpController.obscurePasswordText.value
                           ? AppAssets.eyeOff
                           : AppAssets.eyeOn,
                     ),
@@ -93,20 +94,29 @@ class SignUpBody extends GetView<SignUpController> {
               () => AuthField(
                 hintText: '******'.tr,
                 title: 'confirmPassword'.tr,
-                controller: controller.confirmPasswordController,
-                isObscure: controller.obscureConfirmPasswordText.value,
+                controller:
+                    controller.signUpController.confirmPasswordController,
+                isObscure: controller
+                    .signUpController
+                    .obscureConfirmPasswordText
+                    .value,
                 validator: (value) => AppValidation.confirmPassword(
                   value,
-                  controller.passwordController.text,
+                  controller.signUpController.passwordController.text,
                 ),
                 suffixIcon: Padding(
                   padding: AppPadding.suffixPadding,
                   child: InkWell(
-                    onTap: controller.toggleConfirmPasswordVisibility,
+                    onTap: controller
+                        .signUpController
+                        .toggleConfirmPasswordVisibility,
                     child: SvgPicture.asset(
                       height: AppSize.getHeight(24),
                       width: AppSize.getWidth(24),
-                      controller.obscureConfirmPasswordText.value
+                      controller
+                              .signUpController
+                              .obscureConfirmPasswordText
+                              .value
                           ? AppAssets.eyeOff
                           : AppAssets.eyeOn,
                     ),
@@ -121,9 +131,9 @@ class SignUpBody extends GetView<SignUpController> {
             Obx(
               () => CustomPrimaryButton(
                 title: 'signUp'.tr,
-                onTap: controller.submitSignUp,
-                isLoading: controller.isLoading.value,
-                isEnable: controller.isAgree.value,
+                onTap: controller.signUpController.submitSignUp,
+                isLoading: controller.signUpController.isLoading.value,
+                isEnable: controller.signUpController.isAgree.value,
               ),
             ),
             SizedBox(height: AppSize.getHeight(10)),
@@ -136,7 +146,7 @@ class SignUpBody extends GetView<SignUpController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.authController.changePage(0);
+                    controller.changePage(0);
                   },
                   child: Text(
                     ' ${'login'.tr}',

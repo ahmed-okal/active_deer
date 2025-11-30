@@ -14,7 +14,7 @@ class DeleteCardRemoteDataSourceImpl implements DeleteCardRemoteDataSource {
   @override
   Future<SavedCardModel> deleteCard(String token) async {
     final result = await apiService.deleteRequest(
-      '${Constants.paymentBaseUrl}tokens/$token',
+      '${AppConstants.paymentBaseUrl}tokens/$token',
     );
     final responseData = result.data;
     if (result.statusCode == 200 || result.statusCode == 204) {

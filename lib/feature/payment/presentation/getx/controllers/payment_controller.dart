@@ -4,23 +4,19 @@ import 'package:get/get.dart';
 import 'payment_processing_controller.dart';
 
 class PaymentController extends GetxController {
-  // ------------------- Observables -------------------
   final cardNumber = ''.obs;
   final expiryDate = ''.obs;
   final cardHolderName = ''.obs;
   final cvvCode = ''.obs;
   final showBackView = false.obs;
 
-  // Payment processing controller
   late final PaymentProcessingController _paymentProcessingController;
 
-  // ------------------- Text Controllers -------------------
   final cardNumberController = TextEditingController();
   final expiryDateController = TextEditingController();
   final cardHolderController = TextEditingController();
   final cvvController = TextEditingController();
 
-  // ------------------- Focus Nodes -------------------
   final cardNumberFocus = FocusNode();
   final expiryDateFocus = FocusNode();
   final cardHolderFocus = FocusNode();
@@ -50,7 +46,6 @@ class PaymentController extends GetxController {
   }
 
   void _setupListeners() {
-    // Text controller listeners to update observables
     cardNumberController.addListener(() {
       cardNumber.value = cardNumberController.text;
     });
@@ -67,13 +62,11 @@ class PaymentController extends GetxController {
       cvvCode.value = cvvController.text;
     });
 
-    // Focus listeners
     cvvFocus.addListener(() {
       showBackView.value = cvvFocus.hasFocus;
     });
   }
 
-  // ------------------- Payment Processing -------------------
   Future<void> processPayment() async {
     if (!validateForm()) {
       return;
@@ -83,9 +76,7 @@ class PaymentController extends GetxController {
     await _paymentProcessingController.processPayment(cardData);
   }
 
-  // ------------------- Form Utils -------------------
   void updateCardNumber(String value) {
-    // Format card number with spaces
     String formatted = value.replaceAll(' ', '');
     if (formatted.length > 16) {
       formatted = formatted.substring(0, 16);
@@ -101,7 +92,6 @@ class PaymentController extends GetxController {
 
     cardNumber.value = result;
 
-    // Update controller without triggering listener
     if (cardNumberController.text != result) {
       cardNumberController.value = TextEditingValue(
         text: result,
@@ -111,7 +101,6 @@ class PaymentController extends GetxController {
   }
 
   void updateExpiryDate(String value) {
-    // Format expiry date as MM/YY
     String formatted = value.replaceAll('/', '');
     if (formatted.length > 4) {
       formatted = formatted.substring(0, 4);
@@ -123,7 +112,6 @@ class PaymentController extends GetxController {
 
     expiryDate.value = formatted;
 
-    // Update controller without triggering listener
     if (expiryDateController.text != formatted) {
       expiryDateController.value = TextEditingValue(
         text: formatted,
@@ -133,11 +121,9 @@ class PaymentController extends GetxController {
   }
 
   void updateCardHolderName(String value) {
-    // Convert to uppercase for card display
     String uppercaseValue = value.toUpperCase();
     cardHolderName.value = uppercaseValue;
 
-    // Update controller without triggering listener
     if (cardHolderController.text != uppercaseValue) {
       cardHolderController.value = TextEditingValue(
         text: uppercaseValue,
@@ -175,7 +161,6 @@ class PaymentController extends GetxController {
     showBackView.value = false;
   }
 
-  // ------------------- Getters for Payment Processing -------------------
   RxBool get isLoading => _paymentProcessingController.isLoading;
   RxDouble get amount => _paymentProcessingController.amount;
   RxString get description => _paymentProcessingController.description;

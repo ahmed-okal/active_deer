@@ -9,6 +9,10 @@ import 'package:active_deer/feature/payment/domain/repositories/delete_card_repo
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
+import 'feature/auth/data/remote/sign_up_remote_data_source.dart';
+import 'feature/auth/data/repo_impl/sign_up_repo_impl.dart';
+import 'feature/auth/domain/repo/sign_up_repo.dart';
+import 'feature/auth/domain/use_case/sign_up_use_case.dart';
 import 'feature/payment/data/remote_data_sources/get_card_remote_data_source.dart';
 import 'feature/payment/data/repo_impl/delete_card_repo_impl.dart';
 import 'feature/payment/data/repo_impl/get_card_repo_impl.dart';
@@ -63,5 +67,10 @@ class InjectionController {
       () => SaveCardUseCase(getIt()),
     );
     getIt.registerLazySingleton<GetCardUseCase>(() => GetCardUseCase(getIt()));
+    getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl(getIt()));
+    getIt.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(getIt()));
+    getIt.registerLazySingleton<SignUpRemoteDataSource>(
+      () => SignUpRemoteDataSourceImpl(getIt()),
+    );
   }
 }

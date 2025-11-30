@@ -16,7 +16,7 @@ class ApiService {
 
   void _initializeDio() {
     dio.BaseOptions options = dio.BaseOptions(
-      baseUrl: Constants.baseUrl,
+      baseUrl: AppConstants.baseUrl,
       connectTimeout: const Duration(minutes: 1),
       receiveTimeout: const Duration(minutes: 1),
       headers: {'Content-Type': 'application/json'},
@@ -52,7 +52,10 @@ class ApiService {
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          if (response.data is Map && response.data['success'] == false) {
+          // Check for API error responses with either success == false or status == 0
+          if (response.data is Map &&
+              (response.data['success'] == false ||
+                  response.data['status'] == 0)) {
             return handler.reject(
               dio.DioException(
                 requestOptions: response.requestOptions,

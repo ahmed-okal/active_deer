@@ -67,7 +67,6 @@ class SavedCardsController extends GetxController {
     storage.write('saved_cards', savedCards.map((e) => e.toJson()).toList());
   }
 
-  // Additional methods for UI integration
   bool get hasActiveCards => activeCards.isNotEmpty;
 
   List<SavedCardModel> get activeCards {
