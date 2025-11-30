@@ -18,7 +18,7 @@ class OfferPriceContainer extends StatelessWidget {
           color: AppColors.primary,
           borderRadius: BorderRadiusDirectional.only(
             topStart: Radius.circular(6),
-            bottomEnd: Radius.circular(6),
+            bottomEnd: Radius.circular(5),
           ),
         ),
         child: Row(

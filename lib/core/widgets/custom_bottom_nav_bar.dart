@@ -17,14 +17,11 @@ class CustomBottomNavBar extends GetView<BottomNavBarController> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.transparent,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
-        boxShadow: [
-          BoxShadow(blurRadius: 20, color: AppColors.black.withAlpha(75)),
-        ],
       ),
       padding: EdgeInsets.only(bottom: AppSize.getHeight(10)),
       height: AppSize.getHeight(70),
@@ -33,7 +30,8 @@ class CustomBottomNavBar extends GetView<BottomNavBarController> {
           index: controller.currentIndex.value,
           iconPadding: AppSize.getHeight(14),
           buttonBackgroundColor: AppColors.primary,
-          backgroundColor: AppColors.white,
+          backgroundColor: AppColors.transparent,
+          color: AppColors.white,
           items: [
             CurvedNavigationBarItem(
               child: SvgPicture.asset(
