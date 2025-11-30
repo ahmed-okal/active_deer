@@ -1,4 +1,6 @@
-class LogInEntity {
+import 'package:active_deer/core/services/use_case.dart';
+
+class LogInEntity extends Param {
   final String phoneNumber;
   final String password;
   final String tenantId;
@@ -10,6 +12,7 @@ class LogInEntity {
     required this.tenantId,
     required this.companyId,
     required this.branchId,
+    required super.loading,
   });
   Map<String, dynamic> toJson() {
     return {
