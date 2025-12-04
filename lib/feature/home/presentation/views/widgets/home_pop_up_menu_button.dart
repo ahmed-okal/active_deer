@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/size_config.dart';
+import 'show_stop_bottom_sheet.dart';
 
 class HomePopupMenuButton extends StatelessWidget {
   const HomePopupMenuButton({super.key});
@@ -24,7 +26,17 @@ class HomePopupMenuButton extends StatelessWidget {
         itemBuilder: (context) => [
           PopupMenuItem<String>(
             height: AppSize.getHeight(29),
-            onTap: () {},
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: false,
+                backgroundColor: AppColors.background,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                builder: (_) => const ShowStopBottomSheet(),
+              );
+            },
             child: Row(
               children: [
                 Icon(Icons.block, size: AppSize.getHeight(12)),
@@ -37,7 +49,9 @@ class HomePopupMenuButton extends StatelessWidget {
           PopupMenuItem<String>(
             height: AppSize.getHeight(29),
 
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(Routes.waiver);
+            },
             child: Row(
               children: [
                 SvgPicture.asset(

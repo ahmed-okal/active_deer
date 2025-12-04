@@ -11,7 +11,7 @@ class LoadingWidget extends StatelessWidget {
     return Center(
       child: LottieBuilder.asset(
         AppAssets.loading,
-        height: AppSize.getHeight(75),
+        height: AppSize.getHeight(150),
       ),
     );
   }

@@ -12,9 +12,11 @@ class AuthSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       centerTitle: true,
+      floating: true,
       pinned: true,
-      backgroundColor: AppColors.transparent,
-      surfaceTintColor: AppColors.transparent,
+      elevation: 0,
+      backgroundColor: AppColors.background,
+      surfaceTintColor: AppColors.background,
       toolbarHeight: AppSize.getHeight(160),
       flexibleSpace: FlexibleSpaceBar(
         background: CustomPaint(

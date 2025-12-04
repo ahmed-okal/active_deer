@@ -18,6 +18,7 @@ class AuthField extends StatelessWidget {
     this.style,
     this.textInputAction,
     this.inputFormatters,
+    this.readOnly = false,
   });
   final String title, hintText;
   final TextInputType? keyboardType;
@@ -29,6 +30,7 @@ class AuthField extends StatelessWidget {
   final TextStyle? style;
   final TextInputAction? textInputAction;
   final List<TextInputFormatter>? inputFormatters;
+  final bool readOnly;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -47,6 +49,7 @@ class AuthField extends StatelessWidget {
           prefixIcon: prefixIcon,
           textInputAction: textInputAction,
           inputFormatters: inputFormatters,
+          readOnly: readOnly,
           onTapOutside: (event) {
             FocusScope.of(context).unfocus();
           },

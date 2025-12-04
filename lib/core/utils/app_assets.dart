@@ -9,7 +9,7 @@ class AppAssets {
   static const String menuIcon = 'assets/icons/menu_icon.svg';
   static const String test = 'assets/images/test_image.png';
   static const String persent = 'assets/icons/persent.svg';
-  static const String card = 'assets/icons/card.svg';
+  static const String idCard = 'assets/icons/id_card.svg';
   static const String star = 'assets/icons/star.svg';
   static const String person = 'assets/icons/person.svg';
   static const String waiver = 'assets/icons/waiver.svg';
@@ -26,4 +26,16 @@ class AppAssets {
   static const String loading = 'assets/lotties/loading.json';
   static const String notificationSuccess =
       'assets/icons/notification_success.svg';
+  static const String applePay = 'assets/icons/apple_pay.svg';
+  static const String sar = 'assets/icons/sar.svg';
+  static const String edit = 'assets/icons/edit.svg';
+  static const String language = 'assets/icons/language.svg';
+  static const String bankCard = 'assets/icons/bank_card.svg';
+  static const String location = 'assets/icons/location.svg';
+  static const String aboutUs = 'assets/icons/about_us.svg';
+  static const String form = 'assets/icons/form.svg';
+  static const String delete = 'assets/icons/delete.svg';
+  static const String wifiError = 'assets/icons/wifi_error.svg';
+  static const String error = 'assets/icons/error.svg';
+  static const String empty = 'assets/icons/empty.svg';
 }

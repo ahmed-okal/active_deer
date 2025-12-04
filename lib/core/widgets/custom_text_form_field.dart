@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.style,
     this.inputFormatters,
+    this.hintStyle,
   });
   final FocusNode? focusNode;
   final TextEditingController? controller;
@@ -53,6 +54,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final TextStyle? style;
   final List<TextInputFormatter>? inputFormatters;
+  final TextStyle? hintStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +65,7 @@ class CustomTextFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.disabled,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppTextTheme.secondary400(
-          size: 12,
-        ).copyWith(height: AppSize.getHeight(1.5)),
+        hintStyle: hintStyle ?? AppTextTheme.primary400(size: 12),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         errorStyle: AppTextTheme.secondary400(size: 10).copyWith(
@@ -101,6 +101,9 @@ class CustomTextFormField extends StatelessWidget {
       enableSuggestions: enableSuggestions,
       autocorrect: autocorrect,
       inputFormatters: inputFormatters,
+      onTapUpOutside: (event) {
+        FocusScope.of(context).unfocus();
+      },
     );
   }
 }

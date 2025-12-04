@@ -34,49 +34,65 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   child: CustomPrimaryButton(
                     title: 'next'.tr,
                     onTap: () {
-                      Get.toNamed(Routes.enterPin);
+                      if (controller.validateForm()) {
+                        Get.toNamed(
+                          Routes.enterPin,
+                          arguments: {
+                            'phone': controller.phoneController.text,
+                            'flow': 'forgotPassword',
+                          },
+                        );
+                      }
                     },
                   ),
                 );
         },
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          AuthSliverAppBar(),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: AppPadding.horizontalPadding20,
-              child: Column(
-                children: [
-                  SizedBox(height: AppSize.getHeight(12)),
-                  Center(
-                    child: Text(
-                      'forgotPassword'.tr,
-                      style: AppTextTheme.primary800(size: 20),
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            const AuthSliverAppBar(),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: AppPadding.horizontalPadding20,
+                child: Column(
+                  children: [
+                    SizedBox(height: AppSize.getHeight(12)),
+                    Center(
+                      child: Text(
+                        'forgotPassword'.tr,
+                        style: AppTextTheme.primary800(size: 20),
+                      ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'dontWorryEnterYourPhoneNumber'.tr,
-                      style: AppTextTheme.primary600(size: 16),
+                    Center(
+                      child: Text(
+                        'dontWorryEnterYourPhoneNumber'.tr,
+                        style: AppTextTheme.primary600(size: 16),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: AppSize.getHeight(42)),
-                  AuthField(
-                    title: 'phoneNumber'.tr,
-                    hintText: 'enterPhoneNumber'.tr,
-                    controller: controller.phoneController,
-                    isObscure: false,
-                    validator: (value) => AppValidation.phoneNumber(value),
-                    textInputAction: TextInputAction.done,
-                    keyboardType: TextInputType.phone,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  ),
-                ],
+                    SizedBox(height: AppSize.getHeight(42)),
+                    Form(
+                      key: controller.formKey,
+                      child: AuthField(
+                        title: 'phoneNumber'.tr,
+                        hintText: 'enterPhoneNumber'.tr,
+                        controller: controller.phoneController,
+                        isObscure: false,
+                        validator: (value) => AppValidation.phoneNumber(value),
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.phone,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

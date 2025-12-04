@@ -12,9 +12,9 @@ import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/app_validation.dart';
 import '../../../../../core/utils/size_config.dart';
 import '../../../../../core/widgets/custom_primary_button.dart';
-import '../../getx/controllers/login_controller.dart';
+import '../../getx/controllers/auth_controller.dart';
 
-class LoginBody extends GetView<LoginController> {
+class LoginBody extends GetView<AuthController> {
   const LoginBody({super.key});
 
   @override
@@ -22,19 +22,17 @@ class LoginBody extends GetView<LoginController> {
     return Padding(
       padding: AppPadding.horizontalPadding20,
       child: Form(
-        key: controller.formKey,
+        key: controller.loginController.formKey,
         child: Column(
           children: [
             AuthField(
-              hintText: 'enterPhoneNumberMembership'.tr,
-              title: 'phoneNumberMebership'.tr,
-              controller: controller.phoneController,
+              hintText: 'enterPhoneNumber'.tr,
+              title: 'phoneNumber'.tr,
+              controller: controller.loginController.phoneController,
               isObscure: false,
-              validator: (value) => AppValidation.phoneOrId(value),
+              validator: (value) => AppValidation.phoneNumber(value),
               keyboardType: TextInputType.phone,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               textInputAction: TextInputAction.next,
             ),
             SizedBox(height: AppSize.getHeight(9)),
@@ -43,18 +41,18 @@ class LoginBody extends GetView<LoginController> {
                 hintText: '******'.tr,
                 style: AppTextTheme.primary700(size: 18),
                 title: 'password'.tr,
-                controller: controller.passwordController,
-                isObscure: controller.obscureText.value,
+                controller: controller.loginController.passwordController,
+                isObscure: controller.loginController.obscureText.value,
                 validator: (value) => AppValidation.enterPassword(value),
                 textInputAction: TextInputAction.done,
                 suffixIcon: Padding(
                   padding: AppPadding.suffixPadding,
                   child: InkWell(
-                    onTap: controller.togglePasswordVisibility,
+                    onTap: controller.loginController.togglePasswordVisibility,
                     child: SvgPicture.asset(
                       height: AppSize.getHeight(24),
                       width: AppSize.getWidth(24),
-                      controller.obscureText.value
+                      controller.loginController.obscureText.value
                           ? AppAssets.eyeOff
                           : AppAssets.eyeOn,
                     ),
@@ -81,7 +79,7 @@ class LoginBody extends GetView<LoginController> {
             SizedBox(height: AppSize.getHeight(105)),
             CustomPrimaryButton(
               title: 'login'.tr,
-              onTap: controller.submitLogin,
+              onTap: controller.loginController.logIn,
             ),
             SizedBox(height: AppSize.getHeight(10)),
             Row(
@@ -93,7 +91,7 @@ class LoginBody extends GetView<LoginController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.authController.changePage(1);
+                    controller.changePage(1);
                   },
                   child: Text(
                     ' ${'signUp'.tr}',

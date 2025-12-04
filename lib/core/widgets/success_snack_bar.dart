@@ -23,7 +23,7 @@ SnackbarController successSnackBar(String message) {
       ),
       child: Text(message, style: AppTextTheme.white700(size: 10)),
     ),
-    backgroundColor: AppColors.green,
+    backgroundColor: AppColors.lightGreen,
     icon: Padding(
       padding: EdgeInsets.symmetric(
         vertical: AppSize.getHeight(8),

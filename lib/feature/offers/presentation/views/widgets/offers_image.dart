@@ -8,16 +8,16 @@ class OfferImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppSize.getHeight(112),
-      width: AppSize.getWidth(175),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadiusDirectional.only(
-          bottomStart: Radius.circular(6),
-          topStart: Radius.circular(6),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadiusDirectional.only(
+        bottomStart: Radius.circular(5),
+        topStart: Radius.circular(5),
       ),
-      child: Image.asset(AppAssets.test, fit: BoxFit.cover),
+      child: Image.asset(
+        AppAssets.test,
+        fit: BoxFit.cover,
+        width: AppSize.getWidth(168),
+      ),
     );
   }
 }

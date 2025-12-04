@@ -1,19 +1,17 @@
 import 'package:active_deer/core/widgets/custom_primary_button.dart';
-import 'package:active_deer/feature/auth/presentation/getx/controllers/signup_controller.dart';
+import 'package:active_deer/feature/auth/presentation/getx/controllers/auth_controller.dart';
 import 'package:active_deer/feature/auth/presentation/views/widgets/auth_field.dart';
-import 'package:active_deer/feature/auth/presentation/views/widgets/birth_date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../core/routes/app_pages.dart';
 import '../../../../../core/theme/app_text_theme.dart';
-import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_padding.dart';
 import '../../../../../core/utils/app_validation.dart';
 import '../../../../../core/utils/size_config.dart';
 
-class SignUpBody extends GetView<SignUpController> {
+class SignUpBody extends GetView<AuthController> {
   const SignUpBody({super.key});
 
   @override
@@ -21,137 +19,29 @@ class SignUpBody extends GetView<SignUpController> {
     return Padding(
       padding: AppPadding.horizontalPadding20,
       child: Form(
-        key: controller.formKey,
+        key: controller.signUpController.formKey,
         child: Column(
           spacing: AppSize.getHeight(10),
           children: [
             AuthField(
-              hintText: 'enterFullName'.tr,
-              title: 'name'.tr,
-              controller: controller.nameController,
-              isObscure: false,
-              validator: (value) => AppValidation.name(value),
-              keyboardType: TextInputType.name,
-              textInputAction: TextInputAction.next,
-            ),
-            AuthField(
               title: 'phoneNumber'.tr,
               hintText: 'enterPhoneNumber'.tr,
-              controller: controller.phoneController,
+              controller: controller.signUpController.phoneController,
               isObscure: false,
               validator: (value) => AppValidation.phoneNumber(value),
               keyboardType: TextInputType.phone,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               textInputAction: TextInputAction.next,
             ),
-            AuthField(
-              hintText: 'mail'.tr,
-              title: 'enterMail'.tr,
-              controller: controller.emailController,
-              isObscure: false,
-              validator: (value) => AppValidation.email(value),
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-            ),
-            AuthField(
-              hintText: 'enterIdNumber'.tr,
-              title: 'idNumber'.tr,
-              controller: controller.idNumberController,
-              isObscure: true,
-              validator: (value) => AppValidation.idNumber(value),
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.numberWithOptions(signed: false),
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            ),
-            const BirthDateField(),
-            AuthField(
-              hintText: '******'.tr,
-              title: 'password'.tr,
-              controller: controller.passwordController,
-              isObscure: true,
-              validator: (value) => AppValidation.password(value),
-              suffixIcon: Padding(
-                padding: AppPadding.suffixPadding,
-                child: InkWell(
-                  onTap: controller.togglePasswordVisibility,
-                  child: SvgPicture.asset(
-                    height: AppSize.getHeight(24),
-                    width: AppSize.getWidth(24),
-                    controller.obscurePasswordText.value
-                        ? AppAssets.eyeOff
-                        : AppAssets.eyeOn,
-                  ),
-                ),
+            SizedBox(height: AppSize.getHeight(230)),
+            Obx(
+              () => CustomPrimaryButton(
+                title: 'signUp'.tr,
+                onTap: () {
+                  Get.toNamed(Routes.enterPin);
+                },
+                isLoading: controller.signUpController.isLoading.value,
               ),
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            AuthField(
-              hintText: '******'.tr,
-              title: 'confirmPassword'.tr,
-              controller: controller.confirmPasswordController,
-              isObscure: true,
-              validator: (value) => AppValidation.confirmPassword(
-                value,
-                controller.passwordController.text,
-              ),
-              suffixIcon: Padding(
-                padding: AppPadding.suffixPadding,
-                child: InkWell(
-                  onTap: controller.togglePasswordVisibility,
-                  child: SvgPicture.asset(
-                    height: AppSize.getHeight(24),
-                    width: AppSize.getWidth(24),
-                    controller.obscureConfirmPasswordText.value
-                        ? AppAssets.eyeOff
-                        : AppAssets.eyeOn,
-                  ),
-                ),
-              ),
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.visiblePassword,
-            ),
-            Row(
-              children: [
-                Obx(
-                  () => SizedBox(
-                    width: AppSize.getWidth(24),
-                    height: AppSize.getHeight(24),
-                    child: Transform.scale(
-                      scale: 1.1,
-                      child: Checkbox(
-                        checkColor: AppColors.background,
-                        fillColor: WidgetStateProperty.all(
-                          controller.isAgree.value
-                              ? AppColors.primary
-                              : AppColors.background,
-                        ),
-                        activeColor: AppColors.background,
-                        value: controller.isAgree.value,
-                        onChanged: (value) {
-                          controller.toggleAgree();
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                Text(
-                  'iAgreeToAll'.tr,
-                  style: AppTextTheme.primary500(size: 12),
-                ),
-                Text(
-                  ' ${'termsAndConditions'.tr}',
-                  style: AppTextTheme.primary800(size: 12).copyWith(
-                    decorationColor: AppColors.primary,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: AppSize.getHeight(70)),
-            CustomPrimaryButton(
-              title: 'signUp'.tr,
-              onTap: controller.submitSignUp,
             ),
             SizedBox(height: AppSize.getHeight(10)),
             Row(
@@ -163,7 +53,7 @@ class SignUpBody extends GetView<SignUpController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.authController.changePage(0);
+                    controller.changePage(0);
                   },
                   child: Text(
                     ' ${'login'.tr}',

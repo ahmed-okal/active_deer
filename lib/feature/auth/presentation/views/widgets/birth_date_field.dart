@@ -53,10 +53,6 @@ class BirthDateField extends GetView<DatePickerController> {
                     AppAssets.date,
                     height: AppSize.getHeight(27),
                     width: AppSize.getWidth(27),
-                    colorFilter: ColorFilter.mode(
-                      AppColors.primary,
-                      BlendMode.srcIn,
-                    ),
                   ),
                 ],
               ),

@@ -264,4 +264,17 @@ class AppTextTheme {
       fontFamily: _fontFamily,
     );
   }
+
+  static TextStyle darkRed700({
+    FontWeight weight = FontWeight.w700,
+    Color? customColor,
+    required double size,
+  }) {
+    return TextStyle(
+      fontSize: AppSize.getSize(size),
+      fontWeight: weight,
+      color: AppColors.darkRed,
+      fontFamily: _fontFamily,
+    );
+  }
 }

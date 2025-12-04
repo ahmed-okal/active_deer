@@ -31,8 +31,20 @@ class AppBorder {
     color: AppColors.primary,
     borderRadius: BorderRadius.circular(10.4),
   );
+  static final Decoration disabledPrimaryButtonBorder = BoxDecoration(
+    color: AppColors.grey,
+    borderRadius: BorderRadius.circular(10.4),
+  );
   static final Decoration secondaryButtonBorder = BoxDecoration(
     border: Border.all(color: AppColors.primary, width: AppSize.getHeight(1.5)),
+    borderRadius: BorderRadius.circular(6.77),
+  );
+  static final Decoration thirdButtonBorder = BoxDecoration(
+    color: AppColors.secondry,
+    border: Border.all(
+      color: AppColors.secondry,
+      width: AppSize.getHeight(1.5),
+    ),
     borderRadius: BorderRadius.circular(6.77),
   );
   static final Decoration homeContainerBorder = BoxDecoration(

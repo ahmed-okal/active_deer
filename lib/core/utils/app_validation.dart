@@ -4,10 +4,10 @@ class AppValidation {
   // Email validation
   static String? email(String? value) {
     if (value == null || value.isEmpty) {
-      return 'emailIsRequired'.tr;
+      return null;
     }
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-      return 'emailIsNotValid'.tr;
+      return null;
     }
     return null;
   }
@@ -201,5 +201,148 @@ class AppValidation {
       return 'fieldIsRequired'.tr;
     }
     return null;
+  }
+
+  // ===== CREDIT CARD VALIDATION METHODS =====
+
+  // Credit card number validation
+  static String? cardNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'cardNumberIsRequired'.tr;
+    }
+
+    // Remove spaces for validation
+    String cleanedNumber = value.replaceAll(' ', '');
+
+    // Check if it contains only digits
+    if (!RegExp(r'^\d+$').hasMatch(cleanedNumber)) {
+      return 'cardNumberMustBeNumeric'.tr;
+    }
+
+    // Check length (most cards are 16 digits, some are 13-19)
+    if (cleanedNumber.length < 13 || cleanedNumber.length > 19) {
+      return 'cardNumberMustBe13to19Digits'.tr;
+    }
+
+    // Basic Luhn algorithm check for card number validity
+    if (!_isValidLuhn(cleanedNumber)) {
+      return 'cardNumberIsNotValid'.tr;
+    }
+
+    return null;
+  }
+
+  // Credit card expiry date validation
+  static String? expiryDate(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'expiryDateIsRequired'.tr;
+    }
+
+    // Check format MM/YY
+    if (!RegExp(r'^\d{2}/\d{2}$').hasMatch(value)) {
+      return 'expiryDateMustBeMMYY'.tr;
+    }
+
+    final parts = value.split('/');
+    final month = int.tryParse(parts[0]);
+    final year = int.tryParse(parts[1]);
+
+    if (month == null || year == null) {
+      return 'expiryDateIsNotValid'.tr;
+    }
+
+    // Validate month (01-12)
+    if (month < 1 || month > 12) {
+      return 'expiryMonthMustBe01to12'.tr;
+    }
+
+    // Validate year (not in the past)
+    final currentYear = DateTime.now().year % 100; // Get last 2 digits
+    final currentMonth = DateTime.now().month;
+
+    if (year < currentYear || (year == currentYear && month < currentMonth)) {
+      return 'expiryDateCannotBePast'.tr;
+    }
+
+    return null;
+  }
+
+  // Credit card holder name validation
+  static String? cardHolderName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'cardHolderNameIsRequired'.tr;
+    }
+
+    if (value.trim().length < 2) {
+      return 'cardHolderNameMustBe2Characters'.tr;
+    }
+
+    if (value.trim().length > 50) {
+      return 'cardHolderNameMustBeLessThan50Characters'.tr;
+    }
+
+    // Allow letters, spaces, hyphens, and apostrophes
+    if (!RegExp(r"^[a-zA-Z\u0600-\u06FF\s\-']+$").hasMatch(value.trim())) {
+      return 'cardHolderNameCanOnlyContainLetters'.tr;
+    }
+
+    return null;
+  }
+
+  // CVV validation
+  static String? cvv(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'cvvIsRequired'.tr;
+    }
+
+    // Check if it contains only digits
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'cvvMustBeNumeric'.tr;
+    }
+
+    // Check length (3 or 4 digits)
+    if (value.length < 3 || value.length > 4) {
+      return 'cvvMustBe3or4Digits'.tr;
+    }
+
+    return null;
+  }
+
+  // Complete credit card form validation
+  static Map<String, String?> validateCreditCardForm({
+    required String cardNumber,
+    required String expiryDate,
+    required String cardHolderName,
+    required String cvvCode,
+  }) {
+    return {
+      'cardNumber': AppValidation.cardNumber(cardNumber),
+      'expiryDate': AppValidation.expiryDate(expiryDate),
+      'cardHolderName': AppValidation.cardHolderName(cardHolderName),
+      'cvv': AppValidation.cvv(cvvCode),
+    };
+  }
+
+  // Helper method for Luhn algorithm validation
+  static bool _isValidLuhn(String cardNumber) {
+    int sum = 0;
+    bool alternate = false;
+
+    // Process digits from right to left
+    for (int i = cardNumber.length - 1; i >= 0; i--) {
+      int digit = int.parse(cardNumber[i]);
+
+      if (alternate) {
+        digit *= 2;
+        if (digit > 9) {
+          digit = (digit % 10) + 1;
+        }
+      }
+
+      sum += digit;
+      alternate = !alternate;
+    }
+
+    return sum % 10 == 0;
   }
 }
