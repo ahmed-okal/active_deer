@@ -8,11 +8,15 @@ import '../../../../../core/widgets/success_snack_bar.dart';
 class EnterPinController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  // Variables to receive arguments
+  String? phone;
+  String? flow;
+
   bool validateForm() {
     return formKey.currentState?.validate() ?? false;
   }
 
-  // Observables
+  // Timer Observables
   final RxBool isTimerRunning = false.obs;
   final RxInt currentTimerCount = 0.obs;
   final RxInt resendAttempts = 0.obs;
@@ -41,7 +45,6 @@ class EnterPinController extends GetxController {
     });
   }
 
-  /// Handle resend code action
   void onResendCodeTapped() {
     if (isTimerRunning.value) return;
 
@@ -55,7 +58,6 @@ class EnterPinController extends GetxController {
     successSnackBar('verificationCodeSentSuccessfully'.tr);
   }
 
-  /// Timer formatted as MM:SS
   String get formattedTime {
     final minutes = currentTimerCount.value ~/ 60;
     final seconds = currentTimerCount.value % 60;
@@ -72,6 +74,14 @@ class EnterPinController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    // Read arguments ONLY here
+    final args = Get.arguments;
+    if (args is Map) {
+      phone = args['phone'];
+      flow = args['flow'];
+    }
+
     startTimer();
   }
 

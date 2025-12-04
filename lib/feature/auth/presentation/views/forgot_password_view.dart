@@ -35,7 +35,13 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     title: 'next'.tr,
                     onTap: () {
                       if (controller.validateForm()) {
-                        Get.toNamed(Routes.enterPin);
+                        Get.toNamed(
+                          Routes.enterPin,
+                          arguments: {
+                            'phone': controller.phoneController.text,
+                            'flow': 'forgotPassword',
+                          },
+                        );
                       }
                     },
                   ),
@@ -46,7 +52,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
         top: false,
         child: CustomScrollView(
           slivers: <Widget>[
-            AuthSliverAppBar(),
+            const AuthSliverAppBar(),
             SliverToBoxAdapter(
               child: Padding(
                 padding: AppPadding.horizontalPadding20,

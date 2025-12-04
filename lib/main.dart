@@ -1,11 +1,13 @@
 import 'package:active_deer/core/controllers/network_controller.dart';
 import 'package:active_deer/core/locale/locale.dart';
 import 'package:active_deer/core/routes/app_pages.dart';
+import 'package:active_deer/core/routes/custom_global_transition.dart';
 import 'package:active_deer/core/services/language_service.dart';
 import 'package:active_deer/core/services/notification_service.dart';
 import 'package:active_deer/core/theme/app_themes.dart';
 import 'package:active_deer/core/enums/flavors_enum.dart';
 import 'package:active_deer/core/utils/size_config.dart';
+import 'package:active_deer/core/views/error_view.dart';
 import 'package:active_deer/injection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,13 +16,26 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'core/flavor/flavor_config.dart';
-import 'package:active_deer/core/routes/app_router.dart';
 
 void main({Flavor? flavor}) async {
   if (flavor != null) {
     FlavorConfig(flavor: flavor);
   }
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Global error handler - catches all Flutter framework errors
+  FlutterError.onError = (FlutterErrorDetails details) {
+    // Log the error for debugging
+    FlutterError.presentError(details);
+
+    // Navigate to error page with error message
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (Get.context != null) {
+        Get.toNamed('/error', arguments: details.exceptionAsString());
+      }
+    });
+  };
+
   await GetStorage.init();
   await InjectionController().initialize();
   await Get.find<NotificationService>().initialize();
@@ -54,7 +69,14 @@ class MyApp extends StatelessWidget {
           // themeMode: ThemeMode.system,
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.initial,
-          onGenerateRoute: AppRouter.generateRoute,
+          defaultTransition: Transition.noTransition,
+          customTransition: GlobalCustomTransition(),
+          transitionDuration: const Duration(milliseconds: 100),
+          getPages: AppPages.routes,
+          unknownRoute: GetPage(
+            name: '/error',
+            page: () => const ErrorView(errorMessage: 'Page not found'),
+          ),
           initialBinding: BindingsBuilder(() {
             Get.put(NetworkController(), permanent: true);
           }),

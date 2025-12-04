@@ -4,10 +4,10 @@ class AppValidation {
   // Email validation
   static String? email(String? value) {
     if (value == null || value.isEmpty) {
-      return 'emailIsRequired'.tr;
+      return null;
     }
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-      return 'emailIsNotValid'.tr;
+      return null;
     }
     return null;
   }

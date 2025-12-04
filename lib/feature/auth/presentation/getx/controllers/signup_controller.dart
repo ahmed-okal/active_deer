@@ -1,4 +1,3 @@
-import 'package:active_deer/core/routes/app_pages.dart';
 import 'package:active_deer/feature/auth/data/models/sign_up_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +15,7 @@ class SignUpController extends GetxController {
       Get.find<DatePickerController>();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -70,7 +70,16 @@ class SignUpController extends GetxController {
       },
       (data) {
         signUpModel = data;
-        Get.toNamed(Routes.home);
+        // Check if signup was successful (status == 1)
+        if (data.status == 1) {
+          // TODO: Navigate to appropriate screen after successful signup
+          // For now, just show success message
+          // Get.offAllNamed(Routes.home);
+        } else {
+          // Signup failed - show error message from API
+          final errorMessage = data.message ?? 'signupFailed'.tr;
+          failedSnaskBar(errorMessage);
+        }
       },
     );
   }

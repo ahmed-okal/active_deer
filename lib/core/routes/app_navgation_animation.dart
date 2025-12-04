@@ -42,7 +42,7 @@ class SlideToBottom extends PageRouteBuilder {
 
 class SlideToLeft extends PageRouteBuilder {
   final Widget page;
-  SlideToLeft({required this.page})
+  SlideToLeft({required this.page, super.settings})
     : super(
         pageBuilder: (context, animation, animationTwo) => page,
         transitionsBuilder: (context, animation, animationTwo, child) {

@@ -29,7 +29,7 @@ dependencies:
   flutter_map: ^8.2.2
   flutter_native_splash: ^2.4.6
   flutter_svg: ^2.2.1
-  get: ^4.7.2
+  get: ^4.7.3
   get_cli: ^1.9.1
   get_it: ^9.1.0
   get_storage: ^2.1.1

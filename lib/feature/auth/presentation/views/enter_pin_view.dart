@@ -34,7 +34,16 @@ class EnterPinView extends GetView<EnterPinController> {
                     title: 'next'.tr,
                     onTap: () {
                       if (controller.validateForm()) {
-                        Get.toNamed(Routes.createNewPassword);
+                        final flow = controller.flow;
+
+                        if (flow == 'signUp') {
+                          Get.toNamed(
+                            Routes.signUp,
+                            arguments: {'phone': controller.phone},
+                          );
+                        } else if (flow == 'forgotPassword') {
+                          Get.toNamed(Routes.createNewPassword);
+                        }
                       }
                     },
                   ),
@@ -45,7 +54,7 @@ class EnterPinView extends GetView<EnterPinController> {
         top: false,
         child: CustomScrollView(
           slivers: <Widget>[
-            AuthSliverAppBar(),
+            const AuthSliverAppBar(),
             SliverToBoxAdapter(
               child: Padding(
                 padding: AppPadding.horizontalPadding20,
