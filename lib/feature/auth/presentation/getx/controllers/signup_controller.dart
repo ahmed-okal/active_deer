@@ -70,13 +70,9 @@ class SignUpController extends GetxController {
       },
       (data) {
         signUpModel = data;
-        // Check if signup was successful (status == 1)
         if (data.status == 1) {
-          // TODO: Navigate to appropriate screen after successful signup
-          // For now, just show success message
-          // Get.offAllNamed(Routes.home);
+          submitSignUp();
         } else {
-          // Signup failed - show error message from API
           final errorMessage = data.message ?? 'signupFailed'.tr;
           failedSnaskBar(errorMessage);
         }

@@ -14,19 +14,31 @@ import '../../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import 'widgets/auth_sliver_app_bar.dart';
 
-class SignUpView extends GetView<AuthController> {
+class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Get phone from arguments if available
-    final arguments = Get.arguments;
-    if (arguments != null &&
-        arguments is Map &&
-        arguments.containsKey('phone')) {
-      controller.signUpController.phoneController.text = arguments['phone'];
-    }
+  State<SignUpView> createState() => _SignUpViewState();
+}
 
+class _SignUpViewState extends State<SignUpView> {
+  final AuthController controller = Get.find<AuthController>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final arguments = Get.arguments;
+      if (arguments != null &&
+          arguments is Map &&
+          arguments.containsKey('phone')) {
+        controller.signUpController.phoneController.text = arguments['phone'];
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
         key: controller.signUpController.formKey,
@@ -52,7 +64,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -75,7 +87,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -93,7 +105,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -116,7 +128,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -163,7 +175,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Obx(
@@ -211,7 +223,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(10)),
+                      child: SizedBox(height: AppSize.getHeight(6)),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -220,7 +232,7 @@ class SignUpView extends GetView<AuthController> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: SizedBox(height: AppSize.getHeight(70)),
+                      child: SizedBox(height: AppSize.getHeight(24)),
                     ),
                     SliverToBoxAdapter(
                       child: Obx(
@@ -235,6 +247,9 @@ class SignUpView extends GetView<AuthController> {
                           ),
                         ),
                       ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: SizedBox(height: AppSize.getHeight(70)),
                     ),
                   ],
                 ),

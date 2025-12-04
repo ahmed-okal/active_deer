@@ -50,11 +50,9 @@ class LoginController extends GetxController {
       },
       (data) {
         logInModel = data;
-        // Check if login was successful (status == 1)
         if (data.status == 1) {
           submitLogin();
         } else {
-          // Login failed - show error message from API
           final errorMessage = data.message ?? 'invalidCredentials'.tr;
           failedSnaskBar(errorMessage);
         }

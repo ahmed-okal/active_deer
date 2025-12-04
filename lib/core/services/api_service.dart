@@ -60,6 +60,7 @@ class ApiService {
               dio.DioException(
                 requestOptions: response.requestOptions,
                 response: response,
+                type: dio.DioExceptionType.badResponse,
                 error: response.data['message'] ?? 'unknownError'.tr,
               ),
             );
