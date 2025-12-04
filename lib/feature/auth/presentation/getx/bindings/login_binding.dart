@@ -21,7 +21,9 @@ class LoginBinding extends Bindings {
       () => SignUpController(InjectionController().getIt()),
     );
     Get.lazyPut<DatePickerController>(() => DatePickerController());
-    Get.lazyPut<ForgotPasswordController>(() => ForgotPasswordController());
+    Get.lazyPut<ForgotPasswordController>(
+      () => ForgotPasswordController(InjectionController().getIt()),
+    );
     Get.lazyPut<EnterPinController>(() => EnterPinController());
     Get.lazyPut<CreateNewPasswordController>(
       () => CreateNewPasswordController(),

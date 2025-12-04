@@ -9,12 +9,16 @@ import 'package:active_deer/feature/payment/domain/repositories/delete_card_repo
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
+import 'feature/auth/data/remote/forget_password_remote_data_source.dart';
 import 'feature/auth/data/remote/log_in_remote_data_source.dart';
 import 'feature/auth/data/remote/sign_up_remote_data_source.dart';
+import 'feature/auth/data/repo_impl/forget_password_repo_impl.dart';
 import 'feature/auth/data/repo_impl/log_in_repo_impl.dart';
 import 'feature/auth/data/repo_impl/sign_up_repo_impl.dart';
+import 'feature/auth/domain/repo/forget_password_repo.dart';
 import 'feature/auth/domain/repo/log_in_repo.dart';
 import 'feature/auth/domain/repo/sign_up_repo.dart';
+import 'feature/auth/domain/use_case/forget_password_use_case.dart';
 import 'feature/auth/domain/use_case/log_in_use_case.dart';
 import 'feature/auth/domain/use_case/sign_up_use_case.dart';
 import 'feature/payment/data/remote_data_sources/get_card_remote_data_source.dart';
@@ -80,6 +84,15 @@ class InjectionController {
     getIt.registerLazySingleton<LogInUseCase>(() => LogInUseCase(getIt()));
     getIt.registerLazySingleton<LogInRemoteDataSource>(
       () => LogInRemoteDataSourceImpl(getIt()),
+    );
+    getIt.registerLazySingleton<ForgetPasswordRepo>(
+      () => ForgetPasswordRepoImpl(getIt()),
+    );
+    getIt.registerLazySingleton<ForgetPasswordUseCase>(
+      () => ForgetPasswordUseCase(getIt()),
+    );
+    getIt.registerLazySingleton<ForgetPasswordRemoteDataSource>(
+      () => ForgetPasswordRemoteDataSourceImpl(getIt()),
     );
   }
 }

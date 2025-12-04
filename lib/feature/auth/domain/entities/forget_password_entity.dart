@@ -1,10 +1,10 @@
 import '../../../../core/services/use_case.dart';
 
 class ForgetPasswordEntity extends Param {
-  final String phoneNumber;
+  final String mobile;
 
-  ForgetPasswordEntity({required this.phoneNumber, required super.loading});
+  ForgetPasswordEntity({required this.mobile, required super.loading});
   Map<String, dynamic> toJson() {
-    return {'phoneNumber': phoneNumber};
+    return {'mobile': mobile};
   }
 }
